@@ -13,7 +13,7 @@ export function obj_new() {
 }
 
 export function obj_get(o, k) {
-  return k in o ? Ok(o[k]) : Error(undefined);
+  return k in o ? new Ok(o[k]) : new Error(undefined);
 }
 
 export function obj_set(o, k, v) {

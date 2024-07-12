@@ -9,7 +9,7 @@ export function get_current_pages() {
 }
 
 export function obj_new() {
-  return Ok({});
+  return {};
 }
 
 export function obj_get(o, k) {
@@ -17,9 +17,12 @@ export function obj_get(o, k) {
 }
 
 export function obj_set(o, k, v) {
-  return Ok({
+  return {
     ...o,
     [k]: v
-  });
+  };
 }
 
+export function obj_assign(o, n) {
+  return Object.assign({}, o, n)
+}

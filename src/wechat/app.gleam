@@ -1,5 +1,6 @@
+import wechat/object.{type JsObject}
+
 pub type App
 
-pub type AppType {
-
-}
+@external(javascript, "../wechat_ffi.mjs", "get_app")
+pub fn get_app() -> JsObject

@@ -1,5 +1,7 @@
+import gleam/javascript/array.{type Array}
+import wechat/object.{type JsObject}
+
 pub type Page
 
-pub type PageType {
-
-}
+@external(javascript, "../wechat_ffi.mjs", "get_current_pages")
+pub fn get_current_pages() -> Array(JsObject)

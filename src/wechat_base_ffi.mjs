@@ -1,21 +1,56 @@
 import { Ok, Error } from "./gleam.mjs"
+import { WechatError } from "./wechat/object.mjs"
 
-export async function switchTab(o) {
-  return await wx.switchTab(o)
+export function switchTab(u, cb) {
+  return new Promise(resolve => {
+    wx.switchTab({
+      url: u,
+      complete: cb,
+      success(res) { resolve(new Ok({})) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
-export async function reLaunch(o) {
-  return await wx.reLaunch(o)
+export function reLaunch(u, cb) {
+  return new Promise(resolve => {
+    wx.reLaunch({
+      url: u,
+      complete: cb,
+      success(res) { resolve(new Ok({})) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
-export async function navigateTo(o) {
-  return await wx.navigateTo(o)
+export function navigateTo(u, cb) {
+  return new Promise(resolve => {
+    wx.navigateTo({
+      url: u,
+      complete: cb,
+      success(res) { resolve(new Ok({})) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
-export async function navigateBack(o) {
-  return await wx.navigateTo(o)
+export function navigateBack(d, cb) {
+  return new Promise(resolve => {
+    wx.navigateBack({
+      delta: d,
+      complete: cb,
+      success(res) { resolve(new Ok({})) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
-export async function request(o) {
-  return await wx.request(o)
+export function request(o) {
+  return new Promise(resolve => {
+    wx.request({
+      ...o,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) },
+    })
+  })
 }

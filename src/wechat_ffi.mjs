@@ -9,8 +9,11 @@ export function get_current_pages() {
   return getCurrentPages();
 }
 
-export async function set_data(p, d, f) {
-  return await p.setData(d, f)
+export function set_data(p, d, f) {
+  return new Promise(resolve => {
+    p.setData(d, f);
+    resolve(new Ok(p.data))
+  })
 }
 
 export function obj_new() {

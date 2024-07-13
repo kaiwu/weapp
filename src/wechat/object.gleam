@@ -13,6 +13,9 @@ pub type WechatError {
   WechatDecodeError(es: DecodeErrors)
 }
 
+pub type WechatResult = Result(JsObject, WechatError)
+pub type WechatCallback = fn() -> Nil
+
 @external(javascript, "../wechat_ffi.mjs", "obj_new")
 pub fn new() -> JsObject
 

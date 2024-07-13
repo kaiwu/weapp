@@ -1,4 +1,5 @@
 import { Ok, Error } from "./gleam.mjs"
+import { NilError } from "./wechat/object.mjs"
 
 export function get_app() {
   return getApp();
@@ -12,8 +13,13 @@ export function obj_new() {
   return {};
 }
 
+export function obj_dynamic(o) {
+  return o;
+}
+
 export function obj_get(o, k) {
-  return k in o ? new Ok(o[k]) : new Error(undefined);
+  let e = new NilError(undefined)
+  return k in o ? new Ok(o[k]) : new Error(e);
 }
 
 export function obj_set(o, k, v) {

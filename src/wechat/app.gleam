@@ -1,6 +1,6 @@
-import gleam/dynamic.{type Dynamic}
+import wechat/object.{type JsObject}
 
 pub type App
 
 @external(javascript, "../wechat_ffi.mjs", "get_app")
-pub fn get_app() -> Dynamic
+pub fn get_app() -> JsObject

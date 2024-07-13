@@ -73,3 +73,11 @@ pub fn field(o: Dynamic, name a: name, of b: Decoder(t)) -> Result(t, WechatErro
      Error([]) -> Error(WechatError(""))
    }
 }
+
+pub fn list(o: Dynamic, of f: fn(Dynamic) -> Result(t, DecodeErrors)) -> Result(List(t), WechatError) {
+   case dynamic.list(f)(o) {
+     Ok(x) -> Ok(x)
+     Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
+     Error([]) -> Error(WechatError(""))
+   }
+}

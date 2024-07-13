@@ -15,3 +15,7 @@ export async function navigateTo(o) {
 export async function navigateBack(o) {
   return await wx.navigateTo(o)
 }
+
+export async function request(o) {
+  return await wx.request(o)
+}

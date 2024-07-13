@@ -49,7 +49,15 @@ pub fn int(o: Dynamic) -> Result(Int, WechatError) {
   case dynamic.int(o) {
     Ok(i) -> Ok(i)
     Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-    Error([]) -> Error(WechatError(""))
+    Error([]) -> Error(WechatError("decode int error"))
+  }
+}
+
+pub fn float(o: Dynamic) -> Result(Float, WechatError) {
+  case dynamic.float(o) {
+    Ok(i) -> Ok(i)
+    Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
+    Error([]) -> Error(WechatError("decode float error"))
   }
 }
 
@@ -57,7 +65,7 @@ pub fn bool(o: Dynamic) -> Result(Bool, WechatError) {
   case dynamic.bool(o) {
     Ok(i) -> Ok(i)
     Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-    Error([]) -> Error(WechatError(""))
+    Error([]) -> Error(WechatError("decode bool error"))
   }
 }
 
@@ -65,7 +73,7 @@ pub fn string(o: Dynamic) -> Result(String, WechatError) {
   case dynamic.string(o) {
     Ok(i) -> Ok(i)
     Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-    Error([]) -> Error(WechatError(""))
+    Error([]) -> Error(WechatError("decode string error"))
   }
 }
 
@@ -73,7 +81,7 @@ pub fn field(o: Dynamic, name a: name, of b: Decoder(t)) -> Result(t, WechatErro
    case dynamic.field(a, b)(o) {
      Ok(x) -> Ok(x)
      Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-     Error([]) -> Error(WechatError(""))
+     Error([]) -> Error(WechatError("decode field error"))
    }
 }
 
@@ -81,6 +89,6 @@ pub fn list(o: Dynamic, of f: fn(Dynamic) -> Result(t, DecodeErrors)) -> Result(
    case dynamic.list(f)(o) {
      Ok(x) -> Ok(x)
      Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-     Error([]) -> Error(WechatError(""))
+     Error([]) -> Error(WechatError("decode list error"))
    }
 }

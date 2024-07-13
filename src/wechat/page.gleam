@@ -1,7 +1,7 @@
 import gleam/javascript/array.{type Array}
 import gleam/javascript/promise.{type Promise}
 import gleam/result
-import wechat/object.{type JsObject, type WechatError}
+import wechat/object.{type JsObject, type WechatResult}
 
 pub type Page
 
@@ -15,7 +15,7 @@ pub fn current_page() -> JsObject {
   |> result.unwrap(object.new())
 }
 
-pub fn get_data(index: Int) -> Result(JsObject, WechatError) {
+pub fn get_data(index: Int) -> WechatResult {
   let ps = get_current_pages()
   case array.get(ps, array.size(ps) - index - 1) {
       Ok(p) -> object.path(p, "data")
@@ -24,4 +24,4 @@ pub fn get_data(index: Int) -> Result(JsObject, WechatError) {
 }
 
 @external(javascript, "../wechat_ffi.mjs", "set_data")
-pub fn set_data(page p: JsObject, data d: JsObject, callback f: fn() -> Nil) -> Promise(Nil)
+pub fn set_data(page p: JsObject, data d: JsObject, callback f: fn() -> Nil) -> Promise(WechatResult)

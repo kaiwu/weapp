@@ -16,3 +16,6 @@ pub fn set_interval(callback cb: fn(JsObject) -> Nil, delay d: Int, with o: JsOb
 
 @external(javascript, "../wechat_ffi.mjs", "clear_interval")
 pub fn clear_interval(id id: Int) -> Nil
+
+@external(javascript, "../wechat_ffi.mjs", "decode_uri_component")
+pub fn decode_uri_component(uri: String) -> JsObject

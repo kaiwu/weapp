@@ -16,6 +16,10 @@ export function set_data(p, d, f) {
   })
 }
 
+export function decode_uri_component(u) {
+  return decodeURIComponent(u);
+}
+
 export function select_component(p, c) {
   return p.selectComponent(c);
 }

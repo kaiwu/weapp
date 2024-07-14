@@ -7,6 +7,17 @@ pub fn new_test() {
   object.new()
   |> type_of
   |> should.equal(javascript.ObjectType)
+
+  object.literal([#("a", fn(x) { x + 1})])
+  |> object.path("a")
+  |> result.map(type_of)
+  |> should.equal(Ok(javascript.FunctionType))
+
+  let b = object.literal([#("a", fn(x) { x + 1})])
+  object.literal([#("b", b)])
+  |> object.paths("b.a")
+  |> result.map(type_of)
+  |> should.equal(Ok(javascript.FunctionType))
 }
 
 pub fn set_test() {

@@ -16,6 +16,30 @@ export function set_data(p, d, f) {
   })
 }
 
+export function select_component(p, c) {
+  return p.selectComponent(c);
+}
+
+export function set_timeout(cb, d, o) {
+  return setTimeout(cb, d, o)
+}
+
+export function clear_timeout(id) {
+  return clearTimeout(id)
+}
+
+export function set_interval(cb, d, o) {
+  return setInterval(cb, d, o)
+}
+
+export function clear_interval(id) {
+  return clearInverval(id)
+}
+
+export function page_route(p) {
+  return p.route(); 
+}
+
 export function obj_new() {
   return {};
 }

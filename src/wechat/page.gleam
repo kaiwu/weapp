@@ -25,3 +25,9 @@ pub fn get_data(index: Int) -> WechatResult {
 
 @external(javascript, "../wechat_ffi.mjs", "set_data")
 pub fn set_data(page p: JsObject, data d: JsObject, callback f: fn() -> Nil) -> Promise(WechatResult)
+
+@external(javascript, "../wechat_ffi.mjs", "select_component")
+pub fn select_component(page p: JsObject, component c: String) -> JsObject
+
+@external(javascript, "../wechat_ffi.mjs", "page_route")
+pub fn route(page p: JsObject) -> String

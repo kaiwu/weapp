@@ -93,6 +93,137 @@ export function uploadFile(u, p, h, f, cb) {
   })
 }
 
+export function getSystemInfo(cb) {
+  return new Promise(resolve => {
+    wx.getSystemInfo({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getSetting(s, cb) {
+  return new Promise(resolve => {
+    wx.getSetting({
+      withSubscriptions: s,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function setClipboardData(d, cb) {
+  return new Promise(resolve => {
+    wx.setClipboardData({
+      data: d,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function setNavigationBarTitle(t, cb) {
+  return new Promise(resolve => {
+    wx.setNavigationBarTitle({
+      title: t,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function vibrateShort(t, cb) {
+  return new Promise(resolve => {
+    wx.vibrateShort({
+      type: t,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function showTabbar(a, cb) {
+  return new Promise(resolve => {
+    wx.showTabbar({
+      animation: a,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function hideTabbar(cb) {
+  return new Promise(resolve => {
+    wx.hideTabbar({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function showLoading(t, m, cb) {
+  return new Promise(resolve => {
+    wx.showLoading({
+      title: t,
+      mask: m,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function hideLoading(cb) {
+  return new Promise(resolve => {
+    wx.hideLoading({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function showToast(t, i, m, d, cb) {
+  return new Promise(resolve => {
+    wx.showToast({
+      title: t,
+      icon: i,
+      mask: m,
+      duration: d,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getPrivacySetting(cb) {
+  return new Promise(resolve => {
+    wx.getPrivacySetting({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getPrivacyContract(cb) {
+  return new Promise(resolve => {
+    wx.getPrivacyContract({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
 export function switchTab(u, cb) {
   return new Promise(resolve => {
     wx.switchTab({
@@ -140,6 +271,16 @@ export function navigateBack(d, cb) {
 export function request(o) {
   return new Promise(resolve => {
     wx.request({
+      ...o,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) },
+    })
+  })
+}
+
+export function requestPayment(o) {
+  return new Promise(resolve => {
+    wx.requestPayment({
       ...o,
       success(res) { resolve(new Ok(res)) },
       fail(err) { resolve(new Error(new WechatError(err.errMsg))) },

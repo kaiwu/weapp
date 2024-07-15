@@ -29,6 +29,11 @@ pub fn dict(o: JsObject) -> Dict(String, JsObject)
 @external(javascript, "../wechat_ffi.mjs", "obj_get")
 pub fn path(o: JsObject, k: k) -> Result(JsObject, WechatError)
 
+pub fn exist(o: JsObject, k: k) -> Bool {
+  path(o, k)
+  |> result.is_ok
+}
+
 pub fn paths(o: JsObject, path p: String) -> Result(JsObject, WechatError) {
     string.split(p, ".")
     |> list.try_fold(o, fn(xo, xp) { path(xo, xp) })

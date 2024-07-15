@@ -1,3 +1,7 @@
+import gleam/int
+import gleam/list
+import gleam/result
+import gleam/string
 import gleam/javascript/promise.{type Promise}
 import wechat/object.{type JsObject, type WechatResult, type WechatCallback}
 
@@ -110,4 +114,40 @@ pub fn request_payment(
   |> object.set("complete", cb)
   |> wx_request_payment
 }
+
+fn to_int(s: String) -> Int {
+  int.parse(s)
+  |> result.unwrap(0)
+}
+
+pub fn to_payment(p: String) -> Int {
+  let t3 = 
+    string.to_graphemes(p)
+    |> list.fold(#(0,0,0), fn (t, c) {
+      let i = to_int(c)
+      case c {
+        "." -> #(t.0, t.1, 1)
+        "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" -> case t {
+          #(a, b, 0) -> #(a * 10 + i, b, 0)
+          #(a, b, 1) -> #(a, b * 10 + i, 2)
+          #(a, b, 2) -> #(a, b * 10 + i, 3)
+          _          -> t
+        }
+        _ -> t
+      }
+    })
+
+  case t3.2 {
+    2 -> t3.0 * 100 + t3.1 * 10
+    _ -> t3.0 * 100 + t3.1
+  }
+}
+
+pub type Date
+
+@external(javascript, "../wechat_base_ffi.mjs", "now")
+pub fn now() -> Date
+
+@external(javascript, "../wechat_base_ffi.mjs", "ymd")
+pub fn ymd(d: Date) -> String
 

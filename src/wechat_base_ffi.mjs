@@ -287,3 +287,17 @@ export function requestPayment(o) {
     })
   })
 }
+
+export function now() {
+  return new Date();
+}
+
+export function ymd(dt) {
+  let y = dt.getFullYear();
+  let m = dt.getMonth() + 1;
+  let d = dt.getDate();
+
+  let month = m < 10 ? `0${m}` : `${m}`;
+  let day = d < 10 ? `0${d}` : `${d}`;
+  return `${y}-${month}-${day}`;
+}

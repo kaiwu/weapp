@@ -2,6 +2,7 @@ import gleam/dynamic.{type Dynamic, type DecodeErrors, type Decoder}
 import gleam/list
 import gleam/result
 import gleam/string
+import gleam/dict.{type Dict}
 
 pub type JsObject {
   JsObject
@@ -22,6 +23,9 @@ pub fn new() -> JsObject
 @external(javascript, "../wechat_ffi.mjs", "obj_dynamic")
 pub fn dynamic(o: JsObject) -> Dynamic
 
+@external(javascript, "../wechat_ffi.mjs", "obj_dynamic")
+pub fn dict(o: JsObject) -> Dict(String, JsObject)
+
 @external(javascript, "../wechat_ffi.mjs", "obj_get")
 pub fn path(o: JsObject, k: k) -> Result(JsObject, WechatError)
 
@@ -35,6 +39,12 @@ pub fn get(o: JsObject, k: k) -> Result(Dynamic, WechatError) {
     |> result.map(dynamic)
 }
 
+pub fn get_kv(o: JsObject, key k: String) -> Result(JsObject, WechatError) {
+    dict(o)
+    |> dict.get(k)
+    |> result.map_error(NilError(_))
+}
+
 @external(javascript, "../wechat_ffi.mjs", "obj_set")
 pub fn set(o: JsObject, k: k, v: v) -> JsObject
 
@@ -46,49 +56,31 @@ pub fn literal(ls: List(#(k, v))) -> JsObject {
 }
 
 pub fn int(o: Dynamic) -> Result(Int, WechatError) {
-  case dynamic.int(o) {
-    Ok(i) -> Ok(i)
-    Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-    Error([]) -> Error(WechatError("decode int error"))
-  }
+  dynamic.int(o)
+  |> result.map_error(WechatDecodeError(_))
 }
 
 pub fn float(o: Dynamic) -> Result(Float, WechatError) {
-  case dynamic.float(o) {
-    Ok(i) -> Ok(i)
-    Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-    Error([]) -> Error(WechatError("decode float error"))
-  }
+  dynamic.float(o)
+  |> result.map_error(WechatDecodeError(_))
 }
 
 pub fn bool(o: Dynamic) -> Result(Bool, WechatError) {
-  case dynamic.bool(o) {
-    Ok(i) -> Ok(i)
-    Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-    Error([]) -> Error(WechatError("decode bool error"))
-  }
+  dynamic.bool(o)
+  |> result.map_error(WechatDecodeError(_))
 }
 
 pub fn string(o: Dynamic) -> Result(String, WechatError) {
-  case dynamic.string(o) {
-    Ok(i) -> Ok(i)
-    Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-    Error([]) -> Error(WechatError("decode string error"))
-  }
+  dynamic.string(o)
+  |> result.map_error(WechatDecodeError(_))
 }
 
 pub fn field(o: Dynamic, name a: name, of b: Decoder(t)) -> Result(t, WechatError) {
-   case dynamic.field(a, b)(o) {
-     Ok(x) -> Ok(x)
-     Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-     Error([]) -> Error(WechatError("decode field error"))
-   }
+  dynamic.field(a, b)(o)
+  |> result.map_error(WechatDecodeError(_))
 }
 
 pub fn list(o: Dynamic, of f: fn(Dynamic) -> Result(t, DecodeErrors)) -> Result(List(t), WechatError) {
-   case dynamic.list(f)(o) {
-     Ok(x) -> Ok(x)
-     Error([f, ..t]) -> Error(WechatDecodeError([f, ..t]))
-     Error([]) -> Error(WechatError("decode list error"))
-   }
+  dynamic.list(f)(o)
+  |> result.map_error(WechatDecodeError(_))
 }

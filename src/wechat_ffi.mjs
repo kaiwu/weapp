@@ -48,6 +48,10 @@ export function obj_new() {
   return {};
 }
 
+export function obj_stringify(o) {
+  return JSON.stringify(o);
+}
+
 export function obj_dynamic(o) {
   return o;
 }

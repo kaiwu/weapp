@@ -20,6 +20,9 @@ pub type WechatCallback = fn() -> Nil
 @external(javascript, "../wechat_ffi.mjs", "obj_new")
 pub fn new() -> JsObject
 
+@external(javascript, "../wechat_ffi.mjs", "obj_stringify")
+pub fn stringify() -> String
+
 @external(javascript, "../wechat_ffi.mjs", "obj_dynamic")
 pub fn dynamic(o: JsObject) -> Dynamic
 

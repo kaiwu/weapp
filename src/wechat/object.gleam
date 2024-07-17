@@ -2,6 +2,7 @@ import gleam/dynamic.{type Dynamic, type DecodeErrors, type Decoder}
 import gleam/list
 import gleam/result
 import gleam/string
+import gleam/json.{type Json}
 import gleam/dict.{type Dict}
 
 pub type JsObject {
@@ -28,6 +29,9 @@ pub fn dynamic(o: JsObject) -> Dynamic
 
 @external(javascript, "../wechat_ffi.mjs", "obj_dynamic")
 pub fn dict(o: JsObject) -> Dict(String, JsObject)
+
+@external(javascript, "../wechat_ffi.mjs", "obj_dynamic")
+pub fn json(o: JsObject) -> Json
 
 @external(javascript, "../wechat_ffi.mjs", "obj_get")
 pub fn path(o: JsObject, k: k) -> Result(JsObject, WechatError)

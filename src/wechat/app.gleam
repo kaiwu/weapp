@@ -5,6 +5,9 @@ pub type App
 @external(javascript, "../wechat_ffi.mjs", "get_app")
 pub fn get_app() -> JsObject
 
+@external(javascript, "../wechat_ffi.mjs", "run_app")
+pub fn run_app(o: JsObject) -> Nil
+
 @external(javascript, "../wechat_ffi.mjs", "set_timeout")
 pub fn set_timeout(callback cb: fn(JsObject) -> Nil, delay d: Int, with o: JsObject) -> Int
 

@@ -5,6 +5,9 @@ import wechat/object.{type JsObject, type WechatResult}
 
 pub type Page
 
+@external(javascript, "../wechat_ffi.mjs", "run_page")
+pub fn run_page(o: JsObject) -> Nil
+
 @external(javascript, "../wechat_ffi.mjs", "get_current_pages")
 pub fn get_current_pages() -> Array(JsObject)
 

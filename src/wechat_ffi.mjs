@@ -5,6 +5,14 @@ export function get_app() {
   return getApp();
 }
 
+export function run_app(o) {
+  App(o);
+}
+
+export function run_page(o) {
+  Page(o);
+}
+
 export function get_current_pages() {
   return getCurrentPages();
 }

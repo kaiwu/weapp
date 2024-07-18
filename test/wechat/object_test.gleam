@@ -1,4 +1,4 @@
-import wechat/object
+import wechat/object.{WechatError}
 import gleam/javascript.{type_of}
 import gleeunit/should
 import gleam/result
@@ -64,5 +64,23 @@ pub fn literal_test() {
   |> object.get("a")
   |> result.try(object.int)
   |> should.equal(Ok(1))
+}
+
+pub fn call_test() {
+  let f = fn(x) {x + 1}
+
+  object.literal([#("f", f)])
+  |> object.path("f")
+  |> result.try(object.call(_, 1))
+  |> result.map(object.dynamic)
+  |> result.try(object.int)
+  |> should.equal(Ok(2))
+
+  object.literal([#("a", 1)])
+  |> object.path("a")
+  |> result.try(object.call(_, 1))
+  |> result.map(object.dynamic)
+  |> result.try(object.int)
+  |> should.equal(Error(WechatError("not a function")))
 }
 

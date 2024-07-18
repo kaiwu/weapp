@@ -1,5 +1,5 @@
 import { Ok, Error } from "./gleam.mjs"
-import { NilError } from "./wechat/object.mjs"
+import { NilError, WechatError } from "./wechat/object.mjs"
 
 export function get_app() {
   return getApp();
@@ -46,6 +46,16 @@ export function page_route(p) {
 
 export function obj_new() {
   return {};
+}
+
+export function obj_call(o, v) {
+  if (typeof(o) == "function") {
+    return new Ok(o(v))
+  }
+  else {
+    let e = new WechatError("not a function")
+    return new Error(e)
+  }
 }
 
 export function obj_stringify(o) {

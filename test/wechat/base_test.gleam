@@ -1,6 +1,10 @@
-import wechat/base
-import gleeunit/should
 import gleam/io
+import gleam/result
+import gleam/javascript/promise
+import wechat/base
+import wechat/object
+import gleeunit/should
+
 
 pub fn payment_test() {
   base.to_payment("2.9")
@@ -17,7 +21,11 @@ pub fn payment_test() {
 }
 
 pub fn date_test() {
-  base.now()
-  |> base.ymd
-  |> io.println
+  let d = base.now()
+  use ymd <- promise.await(base.ymd(d))
+  ymd
+  |> result.map(object.dynamic)
+  |> result.try(object.string)
+  |> result.map(io.println)
+  |> promise.resolve
 }

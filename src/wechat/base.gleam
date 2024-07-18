@@ -149,5 +149,5 @@ pub type Date
 pub fn now() -> Date
 
 @external(javascript, "../wechat_base_ffi.mjs", "ymd")
-pub fn ymd(d: Date) -> String
+pub fn ymd(d: Date) -> Promise(WechatResult)
 

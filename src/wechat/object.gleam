@@ -36,6 +36,9 @@ pub fn json(o: JsObject) -> Json
 @external(javascript, "../wechat_ffi.mjs", "obj_get")
 pub fn path(o: JsObject, k: k) -> Result(JsObject, WechatError)
 
+@external(javascript, "../wechat_ffi.mjs", "obj_call")
+pub fn call(o: JsObject, k: k) -> Result(JsObject, WechatError)
+
 pub fn exist(o: JsObject, k: k) -> Bool {
   path(o, k)
   |> result.is_ok

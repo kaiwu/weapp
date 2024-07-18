@@ -293,11 +293,13 @@ export function now() {
 }
 
 export function ymd(dt) {
-  let y = dt.getFullYear();
-  let m = dt.getMonth() + 1;
-  let d = dt.getDate();
+  return new Promise(resolve => {
+    let y = dt.getFullYear();
+    let m = dt.getMonth() + 1;
+    let d = dt.getDate();
 
-  let month = m < 10 ? `0${m}` : `${m}`;
-  let day = d < 10 ? `0${d}` : `${d}`;
-  return `${y}-${month}-${day}`;
+    let month = m < 10 ? `0${m}` : `${m}`;
+    let day = d < 10 ? `0${d}` : `${d}`;
+    resolve(new Ok(`${y}-${month}-${day}`));
+  })
 }

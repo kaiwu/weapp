@@ -13,6 +13,10 @@ export function run_page(o) {
   Page(o);
 }
 
+export function run_component(o) {
+  Component(o);
+}
+
 export function get_current_pages() {
   return getCurrentPages();
 }

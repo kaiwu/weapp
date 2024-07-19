@@ -3,8 +3,6 @@ import gleam/javascript/promise.{type Promise}
 import gleam/result
 import wechat/object.{type JsObject, type WechatResult}
 
-pub type Page
-
 @external(javascript, "../wechat_ffi.mjs", "run_page")
 pub fn run_page(o: JsObject) -> Nil
 

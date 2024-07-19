@@ -24,7 +24,6 @@ pub fn date_test() {
   let d = base.now()
   use ymd <- promise.await(base.ymd(d))
   ymd
-  |> result.map(object.dynamic)
   |> result.try(object.string)
   |> result.map(io.println)
   |> promise.resolve

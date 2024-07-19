@@ -72,14 +72,12 @@ pub fn call_test() {
   object.literal([#("f", f)])
   |> object.path("f")
   |> result.try(object.call(_, 1))
-  |> result.map(object.dynamic)
   |> result.try(object.int)
   |> should.equal(Ok(2))
 
   object.literal([#("a", 1)])
   |> object.path("a")
   |> result.try(object.call(_, 1))
-  |> result.map(object.dynamic)
   |> result.try(object.int)
   |> should.equal(Error(WechatError("not a function")))
 }

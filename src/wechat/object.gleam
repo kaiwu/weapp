@@ -49,9 +49,8 @@ pub fn paths(o: JsObject, path p: String) -> Result(JsObject, WechatError) {
     |> list.try_fold(o, fn(xo, xp) { path(xo, xp) })
 }
 
-pub fn get(o: JsObject, k: k) -> Result(Dynamic, WechatError) {
+pub fn get(o: JsObject, k: k) -> Result(JsObject, WechatError) {
     path(o, k)
-    |> result.map(dynamic)
 }
 
 pub fn get_kv(o: JsObject, key k: String) -> Result(JsObject, WechatError) {
@@ -70,32 +69,44 @@ pub fn literal(ls: List(#(k, v))) -> JsObject {
   list.fold(ls, new(), fn(o, p) {set(o, p.0, p.1)}) 
 }
 
-pub fn int(o: Dynamic) -> Result(Int, WechatError) {
-  dynamic.int(o)
+pub fn int(o: JsObject) -> Result(Int, WechatError) {
+  o
+  |> dynamic
+  |> dynamic.int
   |> result.map_error(WechatDecodeError(_))
 }
 
-pub fn float(o: Dynamic) -> Result(Float, WechatError) {
-  dynamic.float(o)
+pub fn float(o: JsObject) -> Result(Float, WechatError) {
+  o
+  |> dynamic
+  |> dynamic.float
   |> result.map_error(WechatDecodeError(_))
 }
 
-pub fn bool(o: Dynamic) -> Result(Bool, WechatError) {
-  dynamic.bool(o)
+pub fn bool(o: JsObject) -> Result(Bool, WechatError) {
+  o
+  |> dynamic
+  |> dynamic.bool
   |> result.map_error(WechatDecodeError(_))
 }
 
-pub fn string(o: Dynamic) -> Result(String, WechatError) {
-  dynamic.string(o)
+pub fn string(o: JsObject) -> Result(String, WechatError) {
+  o
+  |> dynamic
+  |> dynamic.string
   |> result.map_error(WechatDecodeError(_))
 }
 
-pub fn field(o: Dynamic, name a: name, of b: Decoder(t)) -> Result(t, WechatError) {
-  dynamic.field(a, b)(o)
+pub fn field(o: JsObject, name a: name, of b: Decoder(t)) -> Result(t, WechatError) {
+  o
+  |> dynamic
+  |> dynamic.field(a, b)
   |> result.map_error(WechatDecodeError(_))
 }
 
-pub fn list(o: Dynamic, of f: fn(Dynamic) -> Result(t, DecodeErrors)) -> Result(List(t), WechatError) {
-  dynamic.list(f)(o)
+pub fn list(o: JsObject, of f: fn(Dynamic) -> Result(t, DecodeErrors)) -> Result(List(t), WechatError) {
+  o
+  |> dynamic
+  |> dynamic.list(f)
   |> result.map_error(WechatDecodeError(_))
 }

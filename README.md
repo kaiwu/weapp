@@ -1,6 +1,8 @@
-# wechat
+# weapp
 
-Bindings for wechat miniprogram, a project template and working demo which uses this package
+gleam bindings for wechat miniprogram, a.k.a weapp.
+
+a project template and working demo which uses this package
 can be found at [wechat_dev_tools](https://github.com/kaiwu/wechat_dev_tools)
 
 ## Installation

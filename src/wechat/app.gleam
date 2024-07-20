@@ -1,6 +1,6 @@
 //// app module provides miniprogram `app` bindings
 //// it also includes a few global utility functions
-//// details in [wechat document](https://developer.weixin.qq.com) 
+//// details in [wechat document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/)
 ////
 
 import wechat/object.{type JsObject}

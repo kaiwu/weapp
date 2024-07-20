@@ -1,5 +1,5 @@
 //// component module provides miniprogram `component` bindings
-//// details in [wechat document](https://developer.weixin.qq.com) 
+//// details in [wechat document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/)
 ////
 
 import wechat/object.{type JsObject}

@@ -1,13 +1,13 @@
-name = "wechat"
+name = "weapp"
 version = "1.0.0"
-description = "gleam bindings for wechat miniprogram"
+description = "gleam bindings for wechat miniprogram, a.k.a weapp"
 target = "javascript"
 
 # Fill out these fields if you intend to generate HTML documentation or publish
 # your project to the Hex package manager.
 #
 licences = ["Apache-2.0"]
-repository = { type = "github", user = "kaiwu", repo = "wechat" }
+repository = { type = "github", user = "kaiwu", repo = "weapp" }
 gleam = ">= 0.32.0"
 links = [{ title = "wechat miniprogram", href = "https://developers.weixin.qq.com/miniprogram/en/dev/framework/" }]
 #

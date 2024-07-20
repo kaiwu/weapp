@@ -4,9 +4,9 @@
 //// # Examples
 ////
 //// ```gleam
-//// > object.literal([#("s", "a string"), #("ss", "another string")])
-//// > |> object.set("i", 42)
-//// > |> object.set("f", fn(i) { i + 1 })
+//// object.literal([#("s", "a string"), #("ss", "another string")])
+//// |> object.set("i", 42)
+//// |> object.set("f", fn(i) { i + 1 })
 //// ```
 ////
 //// is exactly like
@@ -100,14 +100,12 @@ pub fn exist(o: JsObject, k: k) -> Bool {
 /// # Examples
 ///
 /// ```gleam
-///
 /// let f = fn(x) { x + 1 }
 /// let b = object.literal([#("a", f)])
 /// object.literal([#("b", b)])
 /// |> object.paths("b.a")
 /// |> result.map(type_of)
 /// |> should.equal(Ok(javascript.FunctionType))
-///
 /// ```
 ///
 pub fn paths(o: JsObject, path p: String) -> Result(JsObject, WechatError) {
@@ -135,13 +133,11 @@ pub fn get_kv(o: JsObject, key k: String) -> Result(JsObject, WechatError) {
 /// # Examples
 ///
 /// ```gleam
-///
 /// object.new()
 /// |> object.set("a", 1)
 /// |> object.get("a")
 /// |> result.try(object.int)
 /// |> should.equal(Ok(1))
-///
 /// ```
 ///
 @external(javascript, "../wechat_ffi.mjs", "obj_set")

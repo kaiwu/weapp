@@ -1,14 +1,14 @@
-import wechat/object.{WechatError}
 import gleam/javascript.{type_of}
-import gleeunit/should
 import gleam/result
+import gleeunit/should
+import wechat/object.{WechatError}
 
 pub fn new_test() {
   object.new()
   |> type_of
   |> should.equal(javascript.ObjectType)
 
-  let f = fn(x) {x + 1}
+  let f = fn(x) { x + 1 }
 
   object.literal([#("a", f)])
   |> object.path("a")
@@ -67,7 +67,7 @@ pub fn literal_test() {
 }
 
 pub fn call_test() {
-  let f = fn(x) {x + 1}
+  let f = fn(x) { x + 1 }
 
   object.literal([#("f", f)])
   |> object.path("f")
@@ -81,4 +81,3 @@ pub fn call_test() {
   |> result.try(object.int)
   |> should.equal(Error(WechatError("not a function")))
 }
-

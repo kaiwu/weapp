@@ -19,13 +19,17 @@ pub fn current_page() -> JsObject {
 pub fn get_data(index: Int) -> WechatResult {
   let ps = get_current_pages()
   case array.get(ps, array.size(ps) - index - 1) {
-      Ok(p) -> object.path(p, "data")
-      Error(_) -> Error(object.WechatError("no such page"))
+    Ok(p) -> object.path(p, "data")
+    Error(_) -> Error(object.WechatError("no such page"))
   }
 }
 
 @external(javascript, "../wechat_ffi.mjs", "set_data")
-pub fn set_data(page p: JsObject, data d: JsObject, callback f: fn() -> Nil) -> Promise(WechatResult)
+pub fn set_data(
+  page p: JsObject,
+  data d: JsObject,
+  callback f: fn() -> Nil,
+) -> Promise(WechatResult)
 
 @external(javascript, "../wechat_ffi.mjs", "select_component")
 pub fn select_component(page p: JsObject, component c: String) -> JsObject

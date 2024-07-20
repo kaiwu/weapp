@@ -1,9 +1,9 @@
-import gleam/dynamic.{type Dynamic, type DecodeErrors, type Decoder}
+import gleam/dict.{type Dict}
+import gleam/dynamic.{type DecodeErrors, type Decoder, type Dynamic}
+import gleam/json.{type Json}
 import gleam/list
 import gleam/result
 import gleam/string
-import gleam/json.{type Json}
-import gleam/dict.{type Dict}
 
 pub type JsObject {
   JsObject
@@ -15,8 +15,11 @@ pub type WechatError {
   WechatDecodeError(es: DecodeErrors)
 }
 
-pub type WechatResult = Result(JsObject, WechatError)
-pub type WechatCallback = fn() -> Nil
+pub type WechatResult =
+  Result(JsObject, WechatError)
+
+pub type WechatCallback =
+  fn() -> Nil
 
 @external(javascript, "../wechat_ffi.mjs", "obj_new")
 pub fn new() -> JsObject
@@ -45,18 +48,18 @@ pub fn exist(o: JsObject, k: k) -> Bool {
 }
 
 pub fn paths(o: JsObject, path p: String) -> Result(JsObject, WechatError) {
-    string.split(p, ".")
-    |> list.try_fold(o, fn(xo, xp) { path(xo, xp) })
+  string.split(p, ".")
+  |> list.try_fold(o, fn(xo, xp) { path(xo, xp) })
 }
 
 pub fn get(o: JsObject, k: k) -> Result(JsObject, WechatError) {
-    path(o, k)
+  path(o, k)
 }
 
 pub fn get_kv(o: JsObject, key k: String) -> Result(JsObject, WechatError) {
-    dict(o)
-    |> dict.get(k)
-    |> result.map_error(NilError(_))
+  dict(o)
+  |> dict.get(k)
+  |> result.map_error(NilError(_))
 }
 
 @external(javascript, "../wechat_ffi.mjs", "obj_set")
@@ -66,7 +69,7 @@ pub fn set(o: JsObject, k: k, v: v) -> JsObject
 pub fn merge(o: JsObject, n: JsObject) -> JsObject
 
 pub fn literal(ls: List(#(k, v))) -> JsObject {
-  list.fold(ls, new(), fn(o, p) {set(o, p.0, p.1)}) 
+  list.fold(ls, new(), fn(o, p) { set(o, p.0, p.1) })
 }
 
 pub fn int(o: JsObject) -> Result(Int, WechatError) {
@@ -97,14 +100,21 @@ pub fn string(o: JsObject) -> Result(String, WechatError) {
   |> result.map_error(WechatDecodeError(_))
 }
 
-pub fn field(o: JsObject, name a: name, of b: Decoder(t)) -> Result(t, WechatError) {
+pub fn field(
+  o: JsObject,
+  name a: name,
+  of b: Decoder(t),
+) -> Result(t, WechatError) {
   o
   |> dynamic
   |> dynamic.field(a, b)
   |> result.map_error(WechatDecodeError(_))
 }
 
-pub fn list(o: JsObject, of f: fn(Dynamic) -> Result(t, DecodeErrors)) -> Result(List(t), WechatError) {
+pub fn list(
+  o: JsObject,
+  of f: fn(Dynamic) -> Result(t, DecodeErrors),
+) -> Result(List(t), WechatError) {
   o
   |> dynamic
   |> dynamic.list(f)

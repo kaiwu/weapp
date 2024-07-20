@@ -1,17 +1,16 @@
 import gleam/io
-import gleam/result
 import gleam/javascript/promise
+import gleam/result
+import gleeunit/should
 import wechat/base
 import wechat/object
-import gleeunit/should
-
 
 pub fn payment_test() {
   base.to_payment("2.9")
   |> should.equal(290)
 
   base.to_payment("200.923")
-  |> should.equal(20092)
+  |> should.equal(20_092)
 
   base.to_payment("0.90")
   |> should.equal(90)

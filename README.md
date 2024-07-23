@@ -1,11 +1,11 @@
 # weapp
 
-gleam bindings for wechat miniprogram, a.k.a weapp.
+Gleam bindings for wechat miniprogram, a.k.a weapp.
 
 [![Package Version](https://img.shields.io/hexpm/v/weapp)](https://hex.pm/packages/weapp)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/weapp/)
 
-a project template and working demo which uses this package
+A project template and working demo which uses this package
 can be found at [wechat_dev_tools](https://github.com/kaiwu/wechat_dev_tools)
 
 ## Installation

@@ -22,7 +22,8 @@
 ////
 
 import gleam/dict.{type Dict}
-import gleam/dynamic.{type DecodeErrors, type Decoder, type Dynamic}
+import gleam/dynamic.{type Dynamic}
+import gleam/dynamic/decode.{type DecodeError, type Decoder}
 import gleam/json.{type Json}
 import gleam/list
 import gleam/result
@@ -33,6 +34,8 @@ import gleam/string
 pub type JsObject {
   JsObject
 }
+
+pub type DecodeErrors = List(DecodeError)
 
 /// error constructors
 ///
@@ -160,7 +163,7 @@ pub fn literal(ls: List(#(k, v))) -> JsObject {
 pub fn int(o: JsObject) -> Result(Int, WechatError) {
   o
   |> dynamic
-  |> dynamic.int
+  |> decode.run(decode.int)
   |> result.map_error(WechatDecodeError(_))
 }
 
@@ -169,7 +172,7 @@ pub fn int(o: JsObject) -> Result(Int, WechatError) {
 pub fn float(o: JsObject) -> Result(Float, WechatError) {
   o
   |> dynamic
-  |> dynamic.float
+  |> decode.run(decode.float)
   |> result.map_error(WechatDecodeError(_))
 }
 
@@ -178,7 +181,7 @@ pub fn float(o: JsObject) -> Result(Float, WechatError) {
 pub fn bool(o: JsObject) -> Result(Bool, WechatError) {
   o
   |> dynamic
-  |> dynamic.bool
+  |> decode.run(decode.bool)
   |> result.map_error(WechatDecodeError(_))
 }
 
@@ -187,7 +190,7 @@ pub fn bool(o: JsObject) -> Result(Bool, WechatError) {
 pub fn string(o: JsObject) -> Result(String, WechatError) {
   o
   |> dynamic
-  |> dynamic.string
+  |> decode.run(decode.string)
   |> result.map_error(WechatDecodeError(_))
 }
 
@@ -199,9 +202,13 @@ pub fn field(
   name a: name,
   of b: Decoder(t),
 ) -> Result(t, WechatError) {
+  let decoder = {
+    use value <- decode.field(a, b)
+    decode.success(value)
+  }
   o
   |> dynamic
-  |> dynamic.field(a, b)
+  |> decode.run(decoder)
   |> result.map_error(WechatDecodeError(_))
 }
 
@@ -209,10 +216,10 @@ pub fn field(
 ///
 pub fn list(
   o: JsObject,
-  of f: fn(Dynamic) -> Result(t, DecodeErrors),
+  of f: Decoder(t),
 ) -> Result(List(t), WechatError) {
   o
   |> dynamic
-  |> dynamic.list(f)
+  |> decode.run(decode.list(f))
   |> result.map_error(WechatDecodeError(_))
 }

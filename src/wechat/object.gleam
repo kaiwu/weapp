@@ -35,7 +35,8 @@ pub type JsObject {
   JsObject
 }
 
-pub type DecodeErrors = List(DecodeError)
+pub type DecodeErrors =
+  List(DecodeError)
 
 /// error constructors
 ///
@@ -214,10 +215,7 @@ pub fn field(
 
 /// convert to `list(t)` with `gleam/dynamic`
 ///
-pub fn list(
-  o: JsObject,
-  of f: Decoder(t),
-) -> Result(List(t), WechatError) {
+pub fn list(o: JsObject, of f: Decoder(t)) -> Result(List(t), WechatError) {
   o
   |> dynamic
   |> decode.run(decode.list(f))

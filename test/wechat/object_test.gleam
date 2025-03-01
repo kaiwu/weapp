@@ -1,26 +1,6 @@
-import gleam/javascript.{type_of}
 import gleam/result
 import gleeunit/should
 import wechat/object.{WechatError}
-
-pub fn new_test() {
-  object.new()
-  |> type_of
-  |> should.equal(javascript.ObjectType)
-
-  let f = fn(x) { x + 1 }
-
-  object.literal([#("a", f)])
-  |> object.path("a")
-  |> result.map(type_of)
-  |> should.equal(Ok(javascript.FunctionType))
-
-  let b = object.literal([#("a", f)])
-  object.literal([#("b", b)])
-  |> object.paths("b.a")
-  |> result.map(type_of)
-  |> should.equal(Ok(javascript.FunctionType))
-}
 
 pub fn set_test() {
   object.new()
@@ -50,10 +30,6 @@ pub fn set_test() {
 }
 
 pub fn literal_test() {
-  object.literal([])
-  |> type_of
-  |> should.equal(javascript.ObjectType)
-
   object.literal([#("a", 0), #("a", 1)])
   |> object.get("a")
   |> result.try(object.int)

@@ -129,7 +129,7 @@ pub fn get(o: JsObject, k: k) -> Result(JsObject, WechatError) {
 pub fn get_kv(o: JsObject, key k: String) -> Result(JsObject, WechatError) {
   dict(o)
   |> dict.get(k)
-  |> result.map_error(NilError(_))
+  |> result.map_error(NilError)
 }
 
 /// set a key `k` with value `v`
@@ -165,7 +165,7 @@ pub fn int(o: JsObject) -> Result(Int, WechatError) {
   o
   |> dynamic
   |> decode.run(decode.int)
-  |> result.map_error(WechatDecodeError(_))
+  |> result.map_error(WechatDecodeError)
 }
 
 /// convert to float with `gleam/dynamic`
@@ -174,7 +174,7 @@ pub fn float(o: JsObject) -> Result(Float, WechatError) {
   o
   |> dynamic
   |> decode.run(decode.float)
-  |> result.map_error(WechatDecodeError(_))
+  |> result.map_error(WechatDecodeError)
 }
 
 /// convert to bool with `gleam/dynamic`
@@ -183,7 +183,7 @@ pub fn bool(o: JsObject) -> Result(Bool, WechatError) {
   o
   |> dynamic
   |> decode.run(decode.bool)
-  |> result.map_error(WechatDecodeError(_))
+  |> result.map_error(WechatDecodeError)
 }
 
 /// convert to string with `gleam/dynamic`
@@ -192,7 +192,7 @@ pub fn string(o: JsObject) -> Result(String, WechatError) {
   o
   |> dynamic
   |> decode.run(decode.string)
-  |> result.map_error(WechatDecodeError(_))
+  |> result.map_error(WechatDecodeError)
 }
 
 /// retrieve and convert a sub object with key `a` of type `t`
@@ -210,7 +210,7 @@ pub fn field(
   o
   |> dynamic
   |> decode.run(decoder)
-  |> result.map_error(WechatDecodeError(_))
+  |> result.map_error(WechatDecodeError)
 }
 
 /// convert to `list(t)` with `gleam/dynamic`
@@ -219,5 +219,5 @@ pub fn list(o: JsObject, of f: Decoder(t)) -> Result(List(t), WechatError) {
   o
   |> dynamic
   |> decode.run(decode.list(f))
-  |> result.map_error(WechatDecodeError(_))
+  |> result.map_error(WechatDecodeError)
 }

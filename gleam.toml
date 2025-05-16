@@ -8,7 +8,7 @@ target = "javascript"
 #
 licences = ["Apache-2.0"]
 repository = { type = "github", user = "kaiwu", repo = "weapp" }
-gleam = ">= 0.32.0"
+gleam = ">= 1.9.0"
 links = [{ title = "wechat miniprogram", href = "https://developers.weixin.qq.com/miniprogram/en/dev/framework/" }]
 #
 # For a full reference of all the available options, you can have a look at

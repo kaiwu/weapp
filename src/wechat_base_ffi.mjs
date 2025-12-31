@@ -55,10 +55,63 @@ export function removeStorage(k, cb) {
   })
 }
 
+export function clearStorage(cb) {
+  return new Promise(resolve => {
+    wx.clearStorage({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getStorageInfo(cb) {
+  return new Promise(resolve => {
+    wx.getStorageInfo({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
 export function saveFile(p, cb) {
   return new Promise(resolve => {
     wx.saveFile({
       tempFilePath: p,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getFileInfo(p, a, cb) {
+  return new Promise(resolve => {
+    wx.getFileInfo({
+      filePath: p,
+      digestAlgorithm: a,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getSavedFileList(cb) {
+  return new Promise(resolve => {
+    wx.getSavedFileList({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function removeSavedFile(fp, cb) {
+  return new Promise(resolve => {
+    wx.removeSavedFile({
+      filePath: fp,
       complete: cb,
       success(res) { resolve(new Ok(res)) },
       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
@@ -125,6 +178,16 @@ export function setClipboardData(d, cb) {
   })
 }
 
+export function getClipboardData(cb) {
+  return new Promise(resolve => {
+    wx.getClipboardData({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
 export function setNavigationBarTitle(t, cb) {
   return new Promise(resolve => {
     wx.setNavigationBarTitle({
@@ -140,6 +203,16 @@ export function vibrateShort(t, cb) {
   return new Promise(resolve => {
     wx.vibrateShort({
       type: t,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function vibrateLong(cb) {
+  return new Promise(resolve => {
+    wx.vibrateLong({
       complete: cb,
       success(res) { resolve(new Ok(res)) },
       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
@@ -303,3 +376,565 @@ export function ymd(dt) {
     resolve(new Ok(`${y}-${month}-${day}`));
   })
 }
+
+export function scanCode(st, cb) {
+  return new Promise(resolve => {
+    wx.scanCode({
+      scanType: st,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getLocation(a, cb) {
+  return new Promise(resolve => {
+    wx.getLocation({
+      altitude: a,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function chooseLocation(lat, lon, cb) {
+  return new Promise(resolve => {
+    wx.chooseLocation({
+      latitude: lat,
+      longitude: lon,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function openLocation(lat, lon, s, n, a, cb) {
+  return new Promise(resolve => {
+    wx.openLocation({
+      latitude: lat,
+      longitude: lon,
+      scale: s,
+      name: n,
+      address: a,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function createGlobalPayment() {
+  return wx.createGlobalPayment();
+}
+
+export function requestCommonPayment(o, cb) {
+  return new Promise(resolve => {
+    wx.requestCommonPayment({
+      ...o,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function globalPaymentOpenMethodPicker(gp) {
+  gp.openMethodPicker();
+}
+
+export function globalPaymentRequestGlobalPayment(gp, o) {
+  gp.requestGlobalPayment(o);
+}
+
+export function globalPaymentAbort(gp) {
+  gp.abort();
+}
+
+export function chooseAddress(cb) {
+  return new Promise(resolve => {
+    wx.chooseAddress({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getUserProfile(d, cb) {
+  return new Promise(resolve => {
+    wx.getUserProfile({
+      desc: d,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getUserInfo(wc, l, cb) {
+  return new Promise(resolve => {
+    wx.getUserInfo({
+      withCredentials: wc,
+      lang: l,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function requestSubscribeMessage(t, cb) {
+  return new Promise(resolve => {
+    wx.requestSubscribeMessage({
+      tmplIds: t,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function authorize(s, cb) {
+  return new Promise(resolve => {
+    wx.authorize({
+      scope: s,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function openSetting(cb) {
+  return new Promise(resolve => {
+    wx.openSetting({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function makePhoneCall(pn, cb) {
+  return new Promise(resolve => {
+    wx.makePhoneCall({
+      phoneNumber: pn,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function navigateToMiniProgram(a, p, ed, cb) {
+  return new Promise(resolve => {
+    wx.navigateToMiniProgram({
+      appId: a,
+      path: p,
+      extraData: ed,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function navigateBackMiniProgram(ed, cb) {
+  return new Promise(resolve => {
+    wx.navigateBackMiniProgram({
+      extraData: ed,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function exitMiniProgram(cb) {
+  return new Promise(resolve => {
+    wx.exitMiniProgram({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function createCacheManager(options) {
+  return wx.createCacheManager(options);
+}
+
+export function getPerformance() {
+  return wx.getPerformance();
+}
+
+export function reportPerformance(name, duration, options) {
+  wx.reportPerformance(name, duration, options);
+}
+
+export function reportEvent(name, data, options) {
+  wx.reportEvent(name, data, options);
+}
+
+export function reportMonitor(name, value, options) {
+  wx.reportMonitor(name, value, options);
+}
+
+export function requestIdleCallback(callback, options) {
+  return wx.requestIdleCallback(callback, options);
+}
+
+export function cancelIdleCallback(handle) {
+  return wx.cancelIdleCallback(handle);
+}
+
+export function getUpdateManager() {
+  return wx.getUpdateManager();
+}
+
+export function updateManagerApplyUpdate(um) {
+  um.applyUpdate();
+}
+
+export function updateManagerOnCheckForUpdate(um, cb) {
+  um.onCheckForUpdate(cb);
+}
+
+export function updateManagerOnUpdateFailed(um, cb) {
+  um.onUpdateFailed(cb);
+}
+
+export function updateManagerOnUpdateReady(um, cb) {
+  um.onUpdateReady(cb);
+}
+
+export function createWorker(scriptPath) {
+  return wx.createWorker(scriptPath);
+}
+
+export function workerGetCameraFrameData(worker) {
+  return worker.getCameraFrameData();
+}
+
+export function workerOnError(worker, cb) {
+  worker.onError(cb);
+}
+
+export function workerOnMessage(worker, cb) {
+  worker.onMessage(cb);
+}
+
+export function workerOnProcessKilled(worker, cb) {
+  worker.onProcessKilled(cb);
+}
+
+export function workerPostMessage(worker, message, transferList) {
+  worker.postMessage(message, transferList);
+}
+
+export function workerTerminate(worker) {
+  worker.terminate();
+}
+
+export function workerTestOnProcessKilled(worker) {
+  worker.testOnProcessKilled();
+}
+
+// Calendar & Contact
+
+export function addPhoneRepeatCalendar(options, cb) {
+  return new Promise(resolve => {
+    wx.addPhoneRepeatCalendar({
+      ...options,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function addPhoneCalendar(options, cb) {
+  return new Promise(resolve => {
+    wx.addPhoneCalendar({
+      ...options,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function chooseContact(options, cb) {
+  return new Promise(resolve => {
+    wx.chooseContact({
+      ...options,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function addPhoneContact(options, cb) {
+  return new Promise(resolve => {
+    wx.addPhoneContact({
+      ...options,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// SMS
+
+export function sendSms(options, cb) {
+  return new Promise(resolve => {
+    wx.sendSms({
+      ...options,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// Encryption (Random)
+
+export function getRandomValues(length) {
+  wx.getRandomValues({ length });
+}
+
+// Advanced Storage (Batch)
+
+export function createBufferURL(buffer) {
+  return wx.createBufferURL(buffer);
+}
+
+export function revokeBufferURL(url) {
+  wx.revokeBufferURL(url);
+}
+
+export function batchSetStorage(items, cb) {
+  return new Promise(resolve => {
+    wx.batchSetStorage({
+      ...items,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function batchSetStorageSync(items) {
+  wx.batchSetStorageSync(items);
+}
+
+export function batchGetStorage(keys, cb) {
+  return new Promise(resolve => {
+    wx.batchGetStorage({
+      keyList: keys,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function batchGetStorageSync(keys) {
+  return wx.batchGetStorageSync(keys);
+}
+
+// Ad Components
+
+export function createInterstitialAd(options) {
+  return wx.createInterstitialAd(options);
+}
+
+export function createRewardedVideoAd(options) {
+  return wx.createRewardedVideoAd(options);
+}
+
+export function interstitialAdDestroy(ad) {
+  ad.destroy();
+}
+
+export function interstitialAdLoad(ad, cb) {
+  return new Promise(resolve => {
+    ad.load({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function interstitialAdOffClose(ad, cb) {
+  ad.offClose(cb);
+}
+
+export function interstitialAdOffError(ad, cb) {
+  ad.offError(cb);
+}
+
+export function interstitialAdOffLoad(ad, cb) {
+  ad.offLoad(cb);
+}
+
+export function interstitialAdOnClose(ad, cb) {
+  ad.onClose(cb);
+}
+
+export function interstitialAdOnError(ad, cb) {
+  ad.onError(cb);
+}
+
+export function interstitialAdOnLoad(ad, cb) {
+  ad.onLoad(cb);
+}
+
+export function interstitialAdShow(ad, cb) {
+  return new Promise(resolve => {
+    ad.show({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function rewardedVideoAdDestroy(ad) {
+  ad.destroy();
+}
+
+export function rewardedVideoAdLoad(ad, cb) {
+  return new Promise(resolve => {
+    ad.load({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function rewardedVideoAdOffClose(ad, cb) {
+  ad.offClose(cb);
+}
+
+export function rewardedVideoAdOffError(ad, cb) {
+  ad.offError(cb);
+}
+
+export function rewardedVideoAdOffLoad(ad, cb) {
+  ad.offLoad(cb);
+}
+
+export function rewardedVideoAdOnClose(ad, cb) {
+  ad.onClose(cb);
+}
+
+export function rewardedVideoAdOnError(ad, cb) {
+  ad.onError(cb);
+}
+
+export function rewardedVideoAdOnLoad(ad, cb) {
+  ad.onLoad(cb);
+}
+
+export function rewardedVideoAdShow(ad, cb) {
+  return new Promise(resolve => {
+    ad.show({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getShowSplashAdStatus(cb) {
+  return new Promise(resolve => {
+    wx.getShowSplashAdStatus({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// Background Fetch
+
+export function setBackgroundFetchToken(token) {
+  wx.setBackgroundFetchToken(token);
+}
+
+export function onBackgroundFetchData(cb) {
+  wx.onBackgroundFetchData(cb);
+}
+
+export function getBackgroundFetchToken(cb) {
+  return new Promise(resolve => {
+    wx.getBackgroundFetchToken({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getBackgroundFetchData(cb) {
+  return new Promise(resolve => {
+    wx.getBackgroundFetchData({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// Subpackage Pre-download
+
+export function preDownloadSubpackage(rootDir, name) {
+  return wx.preDownloadSubpackage({ rootDir, name });
+}
+
+// User Crypto Manager
+
+export function getUserCryptoManager() {
+  return wx.getUserCryptoManager();
+}
+
+export function userCryptoManagerGetLatestUserKey(manager, cb) {
+  return new Promise(resolve => {
+    manager.getLatestUserKey({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function userCryptoManagerGetRandomValues(manager, length) {
+  return manager.getRandomValues({ length });
+}
+
+// Custom Router
+
+export function getRouter() {
+  return wx.router;
+}
+
+export function routerAddRouteBuilder(router, name, builder) {
+  router.addRouteBuilder(name, builder);
+}
+
+export function routerGetRouteContext(router) {
+  return router.getRouteContext();
+}
+
+export function routerRemoveRouteBuilder(router, name) {
+  router.removeRouteBuilder(name);
+}
+

@@ -1,4 +1,4 @@
-import gleam/io
+// import gleam/io
 import gleam/javascript/promise
 import gleam/result
 import gleeunit/should
@@ -24,6 +24,6 @@ pub fn date_test() {
   use ymd <- promise.await(base.ymd(d))
   ymd
   |> result.try(object.string)
-  |> result.map(io.println)
+  //|> result.map(io.println)
   |> promise.resolve
 }

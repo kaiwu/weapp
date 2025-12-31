@@ -45,11 +45,43 @@ pub fn remove_storage(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
+/// `wx.clearStorage`
+///
+@external(javascript, "../wechat_base_ffi.mjs", "clearStorage")
+pub fn clear_storage(complete cb: WechatCallback) -> Promise(WechatResult)
+
+/// `wx.getStorageInfo`
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getStorageInfo")
+pub fn get_storage_info(complete cb: WechatCallback) -> Promise(WechatResult)
+
 /// `wx.saveFile`
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "saveFile")
 pub fn save_file(
   path p: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.getFileInfo`
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getFileInfo")
+pub fn get_file_info(
+  path p: String,
+  digest_algorithm a: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.getSavedFileList`
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getSavedFileList")
+pub fn get_saved_file_list(complete cb: WechatCallback) -> Promise(WechatResult)
+
+/// `wx.removeSavedFile`
+///
+@external(javascript, "../wechat_base_ffi.mjs", "removeSavedFile")
+pub fn remove_saved_file(
+  file_path fp: String,
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
@@ -94,6 +126,11 @@ pub fn set_clipboard(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
+/// `wx.getClipboardData`
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getClipboardData")
+pub fn get_clipboard(complete cb: WechatCallback) -> Promise(WechatResult)
+
 /// `wx.setNavigationBarTitle`
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "setNavigationBarTitle")
@@ -109,6 +146,11 @@ pub fn vibrate_short(
   of t: String,
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
+
+/// `wx.vibrateLong`
+///
+@external(javascript, "../wechat_base_ffi.mjs", "vibrateLong")
+pub fn vibrate_long(complete cb: WechatCallback) -> Promise(WechatResult)
 
 /// `wx.showTabbar`
 ///
@@ -291,3 +333,172 @@ pub fn now() -> Date
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "ymd")
 pub fn ymd(d: Date) -> Promise(WechatResult)
+
+/// `wx.chooseContact`
+/// Select a contact from the phone book
+///
+@external(javascript, "../wechat_base_ffi.mjs", "chooseContact")
+pub fn choose_contact(
+  phone_number p: Bool,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.addPhoneContact`
+/// Add a contact to the phone book
+///
+@external(javascript, "../wechat_base_ffi.mjs", "addPhoneContact")
+pub fn add_phone_contact(
+  first_name f: String,
+  mobile_phone_number mp: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.scanCode`
+/// Scan the QR code
+///
+@external(javascript, "../wechat_base_ffi.mjs", "scanCode")
+pub fn scan_code(
+  scan_type st: List(String),
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.getUpdateManager`
+/// Get update manager for app updates
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getUpdateManager")
+pub fn get_update_manager() -> JsObject
+
+/// `UpdateManager.applyUpdate`
+/// Apply the update and restart
+///
+@external(javascript, "../wechat_base_ffi.mjs", "updateManagerApplyUpdate")
+pub fn update_manager_apply_update(um: JsObject) -> Nil
+
+/// `UpdateManager.onCheckForUpdate`
+/// Listen for update check event
+///
+@external(javascript, "../wechat_base_ffi.mjs", "updateManagerOnCheckForUpdate")
+pub fn update_manager_on_check_for_update(
+  um: JsObject,
+  callback cb: fn(JsObject) -> Nil,
+) -> Nil
+
+/// `UpdateManager.onUpdateFailed`
+/// Listen for update failed event
+///
+@external(javascript, "../wechat_base_ffi.mjs", "updateManagerOnUpdateFailed")
+pub fn update_manager_on_update_failed(
+  um: JsObject,
+  callback cb: fn(JsObject) -> Nil,
+) -> Nil
+
+/// `UpdateManager.onUpdateReady`
+/// Listen for update ready event
+///
+@external(javascript, "../wechat_base_ffi.mjs", "updateManagerOnUpdateReady")
+pub fn update_manager_on_update_ready(
+  um: JsObject,
+  callback cb: fn(JsObject) -> Nil,
+) -> Nil
+
+/// Encryption (Random)
+///
+/// `wx.getRandomValues`
+/// Get cryptographically secure random numbers
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getRandomValues")
+pub fn get_random_values(length l: Int) -> JsObject
+
+/// Background Fetch
+///
+/// `wx.setBackgroundFetchToken`
+/// Set background fetch token
+///
+@external(javascript, "../wechat_base_ffi.mjs", "setBackgroundFetchToken")
+pub fn set_background_fetch_token(token t: String) -> Nil
+
+/// `wx.onBackgroundFetchData`
+/// Listen for background fetch data event
+///
+@external(javascript, "../wechat_base_ffi.mjs", "onBackgroundFetchData")
+pub fn on_background_fetch_data(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.getBackgroundFetchToken`
+/// Get background fetch token
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getBackgroundFetchToken")
+pub fn get_background_fetch_token(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.getBackgroundFetchData`
+/// Get background fetch data
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getBackgroundFetchData")
+pub fn get_background_fetch_data(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// Subpackage Pre-download
+///
+/// `wx.preDownloadSubpackage`
+/// Pre-download subpackage
+///
+@external(javascript, "../wechat_base_ffi.mjs", "preDownloadSubpackage")
+pub fn pre_download_subpackage(root_dir rd: String, name n: String) -> JsObject
+
+/// User Crypto Manager
+///
+/// `wx.getUserCryptoManager`
+/// Get user crypto manager
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getUserCryptoManager")
+pub fn get_user_crypto_manager() -> JsObject
+
+/// UserCryptoManager.getLatestUserKey
+/// Get latest user key
+///
+@external(javascript, "../wechat_base_ffi.mjs", "userCryptoManagerGetLatestUserKey")
+pub fn user_crypto_manager_get_latest_user_key(
+  manager m: JsObject,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// UserCryptoManager.getRandomValues
+/// Get random values from crypto manager
+///
+@external(javascript, "../wechat_base_ffi.mjs", "userCryptoManagerGetRandomValues")
+pub fn user_crypto_manager_get_random_values(
+  manager m: JsObject,
+  length l: Int,
+) -> JsObject
+
+/// Custom Router
+///
+/// `wx.router`
+/// Get custom router
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getRouter")
+pub fn get_router() -> JsObject
+
+/// Router.addRouteBuilder
+/// Add route builder
+///
+@external(javascript, "../wechat_base_ffi.mjs", "routerAddRouteBuilder")
+pub fn router_add_route_builder(
+  router r: JsObject,
+  name n: String,
+  builder b: JsObject,
+) -> Nil
+
+/// Router.getRouteContext
+/// Get route context
+///
+@external(javascript, "../wechat_base_ffi.mjs", "routerGetRouteContext")
+pub fn router_get_route_context(router r: JsObject) -> JsObject
+
+/// Router.removeRouteBuilder
+/// Remove route builder
+///
+@external(javascript, "../wechat_base_ffi.mjs", "routerRemoveRouteBuilder")
+pub fn router_remove_route_builder(router r: JsObject, name n: String) -> Nil

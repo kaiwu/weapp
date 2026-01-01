@@ -536,8 +536,6 @@ super easy to extend as many as one needs
 - **Filesystem** (1 function): File system manager
 - **Map** (1 function): Map context
 
-**Note**: Some WeChat APIs like storage sync methods, app/page lifecycle event handlers, and window resize events are not yet implemented. See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs.
-
-All wx functions used by [weui-miniprogram](https://github.com/Tencent/weui-miniprogram) are covered by this library.
+**Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs.
 
 

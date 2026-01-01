@@ -2,7 +2,8 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/media/camera/)
 ////
 
-import wechat/object.{type JsObject}
+import gleam/javascript/promise.{type Promise}
+import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
 
 /// CameraContext type
 ///
@@ -26,8 +27,8 @@ pub fn camera_start_record(
   ctx cc: CameraContext,
   timeout t: Int,
   selfie_mirror sm: Bool,
-  success cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `CameraContext.stopRecord`
 /// Stop recording video
@@ -35,8 +36,8 @@ pub fn camera_start_record(
 @external(javascript, "../wechat_media_ffi.mjs", "cameraContextStopRecord")
 pub fn camera_stop_record(
   ctx cc: CameraContext,
-  success cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `CameraContext.takePhoto`
 /// Take a photo
@@ -45,8 +46,8 @@ pub fn camera_stop_record(
 pub fn camera_take_photo(
   ctx cc: CameraContext,
   quality q: String,
-  success cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `CameraContext.setZoom`
 /// Set camera zoom level

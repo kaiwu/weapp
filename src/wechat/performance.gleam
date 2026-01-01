@@ -2,7 +2,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/performance/)
 ////
 
-import wechat/object.{type JsObject}
+import wechat/object.{type WechatResultCallback, type JsObject}
 
 /// `wx.getPerformance`
 /// Get the performance object
@@ -79,7 +79,7 @@ pub fn clear_measures(perf: JsObject, name n: String) -> Nil
 @external(javascript, "../wechat_performance_ffi.mjs", "performanceCreateObserver")
 pub fn create_observer(
   perf: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> JsObject
 
 /// `PerformanceObserver.disconnect`
@@ -105,7 +105,7 @@ pub fn set_buffer_size(perf: JsObject, size s: Int) -> Nil
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "requestIdleCallback")
 pub fn request_idle_callback(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
   options o: JsObject,
 ) -> Int
 

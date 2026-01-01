@@ -6,38 +6,58 @@ export function createMapContext(mapId) {
 }
 
 export function mapContextGetCenterLocation(mc, cb) {
-  mc.getCenterLocation({
-    complete: cb
-  });
+  return new Promise(resolve => {
+    mc.getCenterLocation({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function mapContextMoveToLocation(mc, cb) {
-  mc.moveToLocation({
-    complete: cb
-  });
+  return new Promise(resolve => {
+    mc.moveToLocation({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function mapContextTranslateMarker(mc, markerId, destination, autoRotate, cb) {
-  mc.translateMarker({
-    markerId: markerId,
-    destination: destination,
-    autoRotate: autoRotate,
-    complete: cb
-  });
+  return new Promise(resolve => {
+    mc.translateMarker({
+      markerId: markerId,
+      destination: destination,
+      autoRotate: autoRotate,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function mapContextIncludePoints(mc, points, padding, cb) {
-  mc.includePoints({
-    points: points,
-    padding: padding,
-    complete: cb
-  });
+  return new Promise(resolve => {
+    mc.includePoints({
+      points: points,
+      padding: padding,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function mapContextGetRegion(mc, cb) {
-  mc.getRegion({
-    complete: cb
-  });
+  return new Promise(resolve => {
+    mc.getRegion({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function mapContextGetScale(mc) {

@@ -2,7 +2,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/media/recorder/)
 ////
 
-import wechat/object.{type JsObject}
+import wechat/object.{type WechatResultCallback, type JsObject}
 
 /// RecorderManager type
 ///
@@ -44,7 +44,7 @@ pub fn recorder_stop(rm: RecorderManager) -> Nil
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnStart")
 pub fn recorder_on_start(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil
 
 /// `RecorderManager.onStop`
@@ -53,7 +53,7 @@ pub fn recorder_on_start(
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnStop")
 pub fn recorder_on_stop(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil
 
 /// `RecorderManager.onPause`
@@ -62,7 +62,7 @@ pub fn recorder_on_stop(
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnPause")
 pub fn recorder_on_pause(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil
 
 /// `RecorderManager.onResume`
@@ -71,7 +71,7 @@ pub fn recorder_on_pause(
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnResume")
 pub fn recorder_on_resume(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil
 
 /// `RecorderManager.onError`
@@ -80,7 +80,7 @@ pub fn recorder_on_resume(
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnError")
 pub fn recorder_on_error(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil
 
 /// `RecorderManager.onFrameRecorded`
@@ -89,7 +89,7 @@ pub fn recorder_on_error(
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnFrameRecorded")
 pub fn recorder_on_frame_recorded(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil
 
 /// `RecorderManager.onInterruptionBegin`
@@ -98,7 +98,7 @@ pub fn recorder_on_frame_recorded(
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnInterruptionBegin")
 pub fn recorder_on_interruption_begin(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil
 
 /// `RecorderManager.onInterruptionEnd`
@@ -107,5 +107,5 @@ pub fn recorder_on_interruption_begin(
 @external(javascript, "../wechat_media_ffi.mjs", "recorderManagerOnInterruptionEnd")
 pub fn recorder_on_interruption_end(
   rm: RecorderManager,
-  callback: fn(JsObject) -> Nil,
+  callback: WechatResultCallback,
 ) -> Nil

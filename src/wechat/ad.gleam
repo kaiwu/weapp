@@ -3,7 +3,9 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{
+  type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult,
+}
 
 /// InterstitialAd type
 ///
@@ -46,7 +48,7 @@ pub fn interstitial_ad_load(
 @external(javascript, "../wechat_base_ffi.mjs", "interstitialAdOffClose")
 pub fn interstitial_ad_off_close(
   ad: InterstitialAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// InterstitialAd.offError
@@ -55,7 +57,7 @@ pub fn interstitial_ad_off_close(
 @external(javascript, "../wechat_base_ffi.mjs", "interstitialAdOffError")
 pub fn interstitial_ad_off_error(
   ad: InterstitialAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// InterstitialAd.offLoad
@@ -64,7 +66,7 @@ pub fn interstitial_ad_off_error(
 @external(javascript, "../wechat_base_ffi.mjs", "interstitialAdOffLoad")
 pub fn interstitial_ad_off_load(
   ad: InterstitialAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// InterstitialAd.onClose
@@ -73,7 +75,7 @@ pub fn interstitial_ad_off_load(
 @external(javascript, "../wechat_base_ffi.mjs", "interstitialAdOnClose")
 pub fn interstitial_ad_on_close(
   ad: InterstitialAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// InterstitialAd.onError
@@ -82,7 +84,7 @@ pub fn interstitial_ad_on_close(
 @external(javascript, "../wechat_base_ffi.mjs", "interstitialAdOnError")
 pub fn interstitial_ad_on_error(
   ad: InterstitialAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// InterstitialAd.onLoad
@@ -91,7 +93,7 @@ pub fn interstitial_ad_on_error(
 @external(javascript, "../wechat_base_ffi.mjs", "interstitialAdOnLoad")
 pub fn interstitial_ad_on_load(
   ad: InterstitialAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// InterstitialAd.show
@@ -124,7 +126,7 @@ pub fn rewarded_video_ad_load(
 @external(javascript, "../wechat_base_ffi.mjs", "rewardedVideoAdOffClose")
 pub fn rewarded_video_ad_off_close(
   ad: RewardedVideoAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// RewardedVideoAd.offError
@@ -133,7 +135,7 @@ pub fn rewarded_video_ad_off_close(
 @external(javascript, "../wechat_base_ffi.mjs", "rewardedVideoAdOffError")
 pub fn rewarded_video_ad_off_error(
   ad: RewardedVideoAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// RewardedVideoAd.offLoad
@@ -142,7 +144,7 @@ pub fn rewarded_video_ad_off_error(
 @external(javascript, "../wechat_base_ffi.mjs", "rewardedVideoAdOffLoad")
 pub fn rewarded_video_ad_off_load(
   ad: RewardedVideoAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// RewardedVideoAd.onClose
@@ -151,7 +153,7 @@ pub fn rewarded_video_ad_off_load(
 @external(javascript, "../wechat_base_ffi.mjs", "rewardedVideoAdOnClose")
 pub fn rewarded_video_ad_on_close(
   ad: RewardedVideoAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// RewardedVideoAd.onError
@@ -160,7 +162,7 @@ pub fn rewarded_video_ad_on_close(
 @external(javascript, "../wechat_base_ffi.mjs", "rewardedVideoAdOnError")
 pub fn rewarded_video_ad_on_error(
   ad: RewardedVideoAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// RewardedVideoAd.onLoad
@@ -169,7 +171,7 @@ pub fn rewarded_video_ad_on_error(
 @external(javascript, "../wechat_base_ffi.mjs", "rewardedVideoAdOnLoad")
 pub fn rewarded_video_ad_on_load(
   ad: RewardedVideoAd,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// RewardedVideoAd.show

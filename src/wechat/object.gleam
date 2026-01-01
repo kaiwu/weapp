@@ -53,9 +53,15 @@ pub type WechatResult =
   Result(JsObject, WechatError)
 
 /// most simple callbacks are of this type
+/// used for complete callbacks in async functions
 ///
 pub type WechatCallback =
   fn() -> Nil
+
+/// callback that receives result/event data
+///
+pub type WechatResultCallback =
+  fn(JsObject) -> Nil
 
 /// constructor of an empty javascript object
 ///

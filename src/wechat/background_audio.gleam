@@ -2,7 +2,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/)
 ////
 
-import wechat/object.{type JsObject}
+import wechat/object.{type WechatResultCallback, type JsObject}
 
 /// `wx.getBackgroundAudioManager`
 /// Get global unique background audio manager
@@ -40,7 +40,7 @@ pub fn background_audio_manager_seek(bam: JsObject, position p: Float) -> Nil
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnCanplay")
 pub fn background_audio_manager_on_canplay(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onEnded`
@@ -49,7 +49,7 @@ pub fn background_audio_manager_on_canplay(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnEnded")
 pub fn background_audio_manager_on_ended(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onError`
@@ -58,7 +58,7 @@ pub fn background_audio_manager_on_ended(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnError")
 pub fn background_audio_manager_on_error(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onNext`
@@ -67,7 +67,7 @@ pub fn background_audio_manager_on_error(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnNext")
 pub fn background_audio_manager_on_next(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onPause`
@@ -76,7 +76,7 @@ pub fn background_audio_manager_on_next(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnPause")
 pub fn background_audio_manager_on_pause(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onPlay`
@@ -85,7 +85,7 @@ pub fn background_audio_manager_on_pause(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnPlay")
 pub fn background_audio_manager_on_play(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onPrev`
@@ -94,7 +94,7 @@ pub fn background_audio_manager_on_play(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnPrev")
 pub fn background_audio_manager_on_prev(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onSeeked`
@@ -103,7 +103,7 @@ pub fn background_audio_manager_on_prev(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnSeeked")
 pub fn background_audio_manager_on_seeked(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onSeeking`
@@ -112,7 +112,7 @@ pub fn background_audio_manager_on_seeked(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnSeeking")
 pub fn background_audio_manager_on_seeking(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onStop`
@@ -121,7 +121,7 @@ pub fn background_audio_manager_on_seeking(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnStop")
 pub fn background_audio_manager_on_stop(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onTimeUpdate`
@@ -130,7 +130,7 @@ pub fn background_audio_manager_on_stop(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnTimeUpdate")
 pub fn background_audio_manager_on_time_update(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.onWaiting`
@@ -139,7 +139,7 @@ pub fn background_audio_manager_on_time_update(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOnWaiting")
 pub fn background_audio_manager_on_waiting(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offCanplay`
@@ -148,7 +148,7 @@ pub fn background_audio_manager_on_waiting(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffCanplay")
 pub fn background_audio_manager_off_canplay(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offEnded`
@@ -157,7 +157,7 @@ pub fn background_audio_manager_off_canplay(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffEnded")
 pub fn background_audio_manager_off_ended(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offError`
@@ -166,7 +166,7 @@ pub fn background_audio_manager_off_ended(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffError")
 pub fn background_audio_manager_off_error(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offNext`
@@ -175,7 +175,7 @@ pub fn background_audio_manager_off_error(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffNext")
 pub fn background_audio_manager_off_next(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offPause`
@@ -184,7 +184,7 @@ pub fn background_audio_manager_off_next(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffPause")
 pub fn background_audio_manager_off_pause(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offPlay`
@@ -193,7 +193,7 @@ pub fn background_audio_manager_off_pause(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffPlay")
 pub fn background_audio_manager_off_play(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offPrev`
@@ -202,7 +202,7 @@ pub fn background_audio_manager_off_play(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffPrev")
 pub fn background_audio_manager_off_prev(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offSeeked`
@@ -211,7 +211,7 @@ pub fn background_audio_manager_off_prev(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffSeeked")
 pub fn background_audio_manager_off_seeked(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offSeeking`
@@ -220,7 +220,7 @@ pub fn background_audio_manager_off_seeked(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffSeeking")
 pub fn background_audio_manager_off_seeking(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offStop`
@@ -229,7 +229,7 @@ pub fn background_audio_manager_off_seeking(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffStop")
 pub fn background_audio_manager_off_stop(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offTimeUpdate`
@@ -238,7 +238,7 @@ pub fn background_audio_manager_off_stop(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffTimeUpdate")
 pub fn background_audio_manager_off_time_update(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `BackgroundAudioManager.offWaiting`
@@ -247,5 +247,5 @@ pub fn background_audio_manager_off_time_update(
 @external(javascript, "../wechat_media_ffi.mjs", "backgroundAudioManagerOffWaiting")
 pub fn background_audio_manager_off_waiting(
   bam: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil

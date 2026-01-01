@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{type WechatResultCallback, type WechatCallback, type WechatResult}
 
 /// `wx.updateShareMenu`
 /// Update share menu
@@ -47,16 +47,16 @@ pub fn share_app_message(
   title t: String,
   path p: String,
   complete cb: WechatCallback,
-) -> Nil
+) -> Promise(WechatResult)
 
 /// `wx.onShareAppMessage`
 /// Listen for share app message
 ///
 @external(javascript, "../wechat_ui_ffi.mjs", "onShareAppMessage")
-pub fn on_share_app_message(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_share_app_message(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offShareAppMessage`
 /// Remove share app message listener
 ///
 @external(javascript, "../wechat_ui_ffi.mjs", "offShareAppMessage")
-pub fn off_share_app_message(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_share_app_message(callback cb: WechatResultCallback) -> Nil

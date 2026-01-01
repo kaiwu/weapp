@@ -3,7 +3,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/)
 ////
 
-import wechat/object.{type JsObject}
+import wechat/object.{type WechatResultCallback, type JsObject}
 
 /// global function `getApp()`
 ///
@@ -20,7 +20,7 @@ pub fn run_app(o: JsObject) -> Nil
 ///
 @external(javascript, "../wechat_ffi.mjs", "set_timeout")
 pub fn set_timeout(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
   delay d: Int,
   with o: JsObject,
 ) -> Int
@@ -34,7 +34,7 @@ pub fn clear_timeout(id id: Int) -> Nil
 ///
 @external(javascript, "../wechat_ffi.mjs", "set_interval")
 pub fn set_interval(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
   delay d: Int,
   with o: JsObject,
 ) -> Int

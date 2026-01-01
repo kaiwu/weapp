@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult}
 
 /// `wx.createCacheManager`
 /// Create a cache manager instance
@@ -107,7 +107,7 @@ pub fn match(
 pub fn on(
   cm: JsObject,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `CacheManager.off`
@@ -117,7 +117,7 @@ pub fn on(
 pub fn off(
   cm: JsObject,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `CacheManager.start`

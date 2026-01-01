@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult}
 
 /// MediaRecorder type for screen recording
 ///
@@ -135,7 +135,7 @@ pub fn media_recorder_request_frame(recorder: MediaRecorder) -> JsObject
 pub fn media_recorder_on(
   recorder: MediaRecorder,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `MediaRecorder.off`
@@ -145,7 +145,7 @@ pub fn media_recorder_on(
 pub fn media_recorder_off(
   recorder: MediaRecorder,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// LivePlayer - Live Streaming Playback
@@ -205,7 +205,7 @@ pub fn live_player_snapshot(
 pub fn live_player_on(
   player: LivePlayer,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `LivePlayer.off`
@@ -215,7 +215,7 @@ pub fn live_player_on(
 pub fn live_player_off(
   player: LivePlayer,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// LivePlayer.exitBackgroundPlayback
@@ -314,7 +314,7 @@ pub fn live_pusher_snapshot(
 pub fn live_pusher_on(
   pusher: LivePusher,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `LivePusher.off`
@@ -324,7 +324,7 @@ pub fn live_pusher_on(
 pub fn live_pusher_off(
   pusher: LivePusher,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// LivePusher.pauseBGM
@@ -471,7 +471,7 @@ pub fn live_pusher_exit_picture_in_picture(pusher: LivePusher) -> Nil
 @external(javascript, "../wechat_media_ffi.mjs", "livePusherOnCustomRendererEvent")
 pub fn live_pusher_on_custom_renderer_event(
   pusher: LivePusher,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// LivePusher.sendMessage
@@ -587,7 +587,7 @@ pub fn video_decoder_get_frame_data(
 pub fn video_decoder_off(
   decoder: VideoDecoder,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// VideoDecoder.on
@@ -597,7 +597,7 @@ pub fn video_decoder_off(
 pub fn video_decoder_on(
   decoder: VideoDecoder,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// VideoDecoder.remove

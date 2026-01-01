@@ -286,11 +286,15 @@ export function getShareInfo(st, timeout, cb) {
 }
 
 export function shareAppMessage(title, path, cb) {
-  wx.shareAppMessage({
-    title: title,
-    path: path,
-    complete: cb,
-  });
+  return new Promise(resolve => {
+    wx.shareAppMessage({
+      title: title,
+      path: path,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function onShareAppMessage(cb) {

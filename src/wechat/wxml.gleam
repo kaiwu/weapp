@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatResult}
+import wechat/object.{type WechatResultCallback, type JsObject, type WechatResult}
 
 /// SelectorQuery type for querying node information
 ///
@@ -190,7 +190,7 @@ pub fn intersection_observer_disconnect(io: IntersectionObserver) -> Nil
 pub fn intersection_observer_observe(
   io: IntersectionObserver,
   target t: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// IntersectionObserver.relativeTo

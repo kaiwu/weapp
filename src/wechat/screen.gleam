@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{type WechatResultCallback, type WechatCallback, type WechatResult}
 
 /// `wx.setScreenBrightness`
 /// Set screen brightness
@@ -35,10 +35,10 @@ pub fn set_keep_screen_on(
 /// Listen for user capture screen event
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onUserCaptureScreen")
-pub fn on_user_capture_screen(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_user_capture_screen(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offUserCaptureScreen`
 /// Remove user capture screen listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offUserCaptureScreen")
-pub fn off_user_capture_screen(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_user_capture_screen(callback cb: WechatResultCallback) -> Nil

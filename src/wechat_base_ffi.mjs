@@ -938,3 +938,41 @@ export function routerRemoveRouteBuilder(router, name) {
   router.removeRouteBuilder(name);
 }
 
+// App Event Listeners
+
+export function onAppShow(cb) {
+  wx.onAppShow(cb);
+}
+
+export function onAppHide(cb) {
+  wx.onAppHide(cb);
+}
+
+export function onError(cb) {
+  wx.onError(cb);
+}
+
+export function onAudioInterruptionBegin(cb) {
+  wx.onAudioInterruptionBegin(cb);
+}
+
+export function onAudioInterruptionEnd(cb) {
+  wx.onAudioInterruptionEnd(cb);
+}
+
+export function onThemeChange(cb) {
+  wx.onThemeChange(cb);
+}
+
+export function onPageNotFound(cb) {
+  wx.onPageNotFound(cb);
+}
+
+export function onUnhandledRejection(cb) {
+  wx.onUnhandledRejection(cb);
+}
+
+export function onLazyLoadError(cb) {
+  wx.onLazyLoadError(cb);
+}
+

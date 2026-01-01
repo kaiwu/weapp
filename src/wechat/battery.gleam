@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{type WechatResultCallback, type WechatCallback, type WechatResult}
 
 /// `wx.getBatteryInfo`
 /// Get battery info
@@ -15,4 +15,4 @@ pub fn get_battery_info(complete cb: WechatCallback) -> Promise(WechatResult)
 /// Listen for battery changes
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBatteryInfoChange")
-pub fn on_battery_info_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_battery_info_change(callback cb: WechatResultCallback) -> Nil

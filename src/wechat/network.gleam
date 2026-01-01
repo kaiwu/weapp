@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult}
 
 /// `wx.downloadFile`
 /// Download a file from the network
@@ -30,25 +30,25 @@ pub fn connect_socket(
 /// Listen for WebSocket connection opening events
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onSocketOpen")
-pub fn on_socket_open(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_socket_open(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onSocketError`
 /// Listen for WebSocket error events
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onSocketError")
-pub fn on_socket_error(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_socket_error(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onSocketMessage`
 /// Listen for WebSocket message events
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onSocketMessage")
-pub fn on_socket_message(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_socket_message(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onSocketClose`
 /// Listen for WebSocket connection closing events
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onSocketClose")
-pub fn on_socket_close(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_socket_close(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.sendSocketMessage`
 /// Send data through WebSocket connection
@@ -73,13 +73,13 @@ pub fn close_socket(
 /// Listen for network status change events
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onNetworkStatusChange")
-pub fn on_network_status_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_network_status_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offNetworkStatusChange`
 /// Cancel listening for network status change events
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offNetworkStatusChange")
-pub fn off_network_status_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_network_status_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.request`
 /// Initiate an HTTP request
@@ -106,7 +106,7 @@ pub fn request_task_abort(task: JsObject) -> Nil
 @external(javascript, "../wechat_network_ffi.mjs", "requestTaskOffHeadersReceived")
 pub fn request_task_off_headers_received(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `RequestTask.onChunkReceived`
@@ -115,7 +115,7 @@ pub fn request_task_off_headers_received(
 @external(javascript, "../wechat_network_ffi.mjs", "requestTaskOnChunkReceived")
 pub fn request_task_on_chunk_received(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `RequestTask.onHeadersReceived`
@@ -124,7 +124,7 @@ pub fn request_task_on_chunk_received(
 @external(javascript, "../wechat_network_ffi.mjs", "requestTaskOnHeadersReceived")
 pub fn request_task_on_headers_received(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `DownloadTask.abort`
@@ -139,7 +139,7 @@ pub fn download_task_abort(task: JsObject) -> Nil
 @external(javascript, "../wechat_network_ffi.mjs", "downloadTaskOffHeadersReceived")
 pub fn download_task_off_headers_received(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `DownloadTask.offProgressUpdate`
@@ -148,7 +148,7 @@ pub fn download_task_off_headers_received(
 @external(javascript, "../wechat_network_ffi.mjs", "downloadTaskOffProgressUpdate")
 pub fn download_task_off_progress_update(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `DownloadTask.onHeadersReceived`
@@ -157,7 +157,7 @@ pub fn download_task_off_progress_update(
 @external(javascript, "../wechat_network_ffi.mjs", "downloadTaskOnHeadersReceived")
 pub fn download_task_on_headers_received(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `DownloadTask.onProgressUpdate`
@@ -166,7 +166,7 @@ pub fn download_task_on_headers_received(
 @external(javascript, "../wechat_network_ffi.mjs", "downloadTaskOnProgressUpdate")
 pub fn download_task_on_progress_update(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `UploadTask.abort`
@@ -181,7 +181,7 @@ pub fn upload_task_abort(task: JsObject) -> Nil
 @external(javascript, "../wechat_network_ffi.mjs", "uploadTaskOffHeadersReceived")
 pub fn upload_task_off_headers_received(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `UploadTask.offProgressUpdate`
@@ -190,7 +190,7 @@ pub fn upload_task_off_headers_received(
 @external(javascript, "../wechat_network_ffi.mjs", "uploadTaskOffProgressUpdate")
 pub fn upload_task_off_progress_update(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `UploadTask.onHeadersReceived`
@@ -199,7 +199,7 @@ pub fn upload_task_off_progress_update(
 @external(javascript, "../wechat_network_ffi.mjs", "uploadTaskOnHeadersReceived")
 pub fn upload_task_on_headers_received(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `UploadTask.onProgressUpdate`
@@ -208,7 +208,7 @@ pub fn upload_task_on_headers_received(
 @external(javascript, "../wechat_network_ffi.mjs", "uploadTaskOnProgressUpdate")
 pub fn upload_task_on_progress_update(
   task: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// Socket APIs
@@ -261,7 +261,7 @@ pub fn tcp_socket_write(socket: TCPSocket, data d: JsObject) -> Nil
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOffBindWifi")
 pub fn tcp_socket_off_bind_wifi(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.offClose
@@ -270,7 +270,7 @@ pub fn tcp_socket_off_bind_wifi(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOffClose")
 pub fn tcp_socket_off_close(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.offConnect
@@ -279,7 +279,7 @@ pub fn tcp_socket_off_close(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOffConnect")
 pub fn tcp_socket_off_connect(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.offError
@@ -288,7 +288,7 @@ pub fn tcp_socket_off_connect(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOffError")
 pub fn tcp_socket_off_error(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.offMessage
@@ -297,7 +297,7 @@ pub fn tcp_socket_off_error(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOffMessage")
 pub fn tcp_socket_off_message(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.onBindWifi
@@ -306,7 +306,7 @@ pub fn tcp_socket_off_message(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOnBindWifi")
 pub fn tcp_socket_on_bind_wifi(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.onClose
@@ -315,7 +315,7 @@ pub fn tcp_socket_on_bind_wifi(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOnClose")
 pub fn tcp_socket_on_close(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.onConnect
@@ -324,7 +324,7 @@ pub fn tcp_socket_on_close(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOnConnect")
 pub fn tcp_socket_on_connect(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.onError
@@ -333,7 +333,7 @@ pub fn tcp_socket_on_connect(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOnError")
 pub fn tcp_socket_on_error(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// TCPSocket.onMessage
@@ -342,7 +342,7 @@ pub fn tcp_socket_on_error(
 @external(javascript, "../wechat_network_ffi.mjs", "tcpSocketOnMessage")
 pub fn tcp_socket_on_message(
   socket: TCPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `wx.createUDPSocket`
@@ -402,7 +402,7 @@ pub fn udp_socket_write(socket: UDPSocket, data d: JsObject) -> Nil
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOffClose")
 pub fn udp_socket_off_close(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// UDPSocket.offError
@@ -411,7 +411,7 @@ pub fn udp_socket_off_close(
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOffError")
 pub fn udp_socket_off_error(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// UDPSocket.offListening
@@ -420,7 +420,7 @@ pub fn udp_socket_off_error(
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOffListened")
 pub fn udp_socket_off_listened(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// UDPSocket.offMessage
@@ -429,7 +429,7 @@ pub fn udp_socket_off_listened(
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOffMessage")
 pub fn udp_socket_off_message(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// UDPSocket.onClose
@@ -438,7 +438,7 @@ pub fn udp_socket_off_message(
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOnClose")
 pub fn udp_socket_on_close(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// UDPSocket.onError
@@ -447,7 +447,7 @@ pub fn udp_socket_on_close(
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOnError")
 pub fn udp_socket_on_error(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// UDPSocket.onListening
@@ -456,7 +456,7 @@ pub fn udp_socket_on_error(
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOnListening")
 pub fn udp_socket_on_listening(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// UDPSocket.onMessage
@@ -465,7 +465,7 @@ pub fn udp_socket_on_listening(
 @external(javascript, "../wechat_network_ffi.mjs", "udpSocketOnMessage")
 pub fn udp_socket_on_message(
   socket: UDPSocket,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// mDNS Service Discovery
@@ -486,49 +486,49 @@ pub fn stop_local_service_discovery() -> Nil
 /// Listen for mDNS service resolve fail event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onLocalServiceResolveFail")
-pub fn on_local_service_resolve_fail(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_local_service_resolve_fail(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onLocalServiceLost`
 /// Listen for mDNS service lost event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onLocalServiceLost")
-pub fn on_local_service_lost(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_local_service_lost(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onLocalServiceFound`
 /// Listen for mDNS service found event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onLocalServiceFound")
-pub fn on_local_service_found(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_local_service_found(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onLocalServiceDiscoveryStop`
 /// Listen for mDNS service discovery stop event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onLocalServiceDiscoveryStop")
-pub fn on_local_service_discovery_stop(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_local_service_discovery_stop(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offLocalServiceResolveFail`
 /// Remove mDNS service resolve fail event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offLocalServiceResolveFail")
-pub fn off_local_service_resolve_fail(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_local_service_resolve_fail(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offLocalServiceLost`
 /// Remove mDNS service lost event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offLocalServiceLost")
-pub fn off_local_service_lost(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_local_service_lost(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offLocalServiceFound`
 /// Remove mDNS service found event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offLocalServiceFound")
-pub fn off_local_service_found(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_local_service_found(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offLocalServiceDiscoveryStop`
 /// Remove mDNS service discovery stop event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offLocalServiceDiscoveryStop")
-pub fn off_local_service_discovery_stop(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_local_service_discovery_stop(callback cb: WechatResultCallback) -> Nil
 
 /// VoIP Real-time Voice
 ///
@@ -554,61 +554,61 @@ pub fn set_enable_1v1_chat(config c: JsObject) -> Nil
 /// Listen for VoIP video members changed event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onVoIPVideoMembersChanged")
-pub fn on_voip_video_members_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_voip_video_members_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onVoIPChatStateChanged`
 /// Listen for VoIP chat state changed event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onVoIPChatStateChanged")
-pub fn on_voip_chat_state_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_voip_chat_state_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onVoIPChatSpeakersChanged`
 /// Listen for VoIP chat speakers changed event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onVoIPChatSpeakersChanged")
-pub fn on_voip_chat_speakers_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_voip_chat_speakers_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onVoIPChatMembersChanged`
 /// Listen for VoIP chat members changed event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onVoIPChatMembersChanged")
-pub fn on_voip_chat_members_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_voip_chat_members_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onVoIPChatInterrupted`
 /// Listen for VoIP chat interrupted event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onVoIPChatInterrupted")
-pub fn on_voip_chat_interrupted(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_voip_chat_interrupted(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offVoIPVideoMembersChanged`
 /// Remove VoIP video members changed event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offVoIPVideoMembersChanged")
-pub fn off_voip_video_members_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_voip_video_members_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offVoIPChatStateChanged`
 /// Remove VoIP chat state changed event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offVoIPChatStateChanged")
-pub fn off_voip_chat_state_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_voip_chat_state_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offVoIPChatSpeakersChanged`
 /// Remove VoIP chat speakers changed event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offVoIPChatSpeakersChanged")
-pub fn off_voip_chat_speakers_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_voip_chat_speakers_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offVoIPChatMembersChanged`
 /// Remove VoIP chat members changed event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offVoIPChatMembersChanged")
-pub fn off_voip_chat_members_changed(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_voip_chat_members_changed(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offVoIPChatInterrupted`
 /// Remove VoIP chat interrupted event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offVoIPChatInterrupted")
-pub fn off_voip_chat_interrupted(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_voip_chat_interrupted(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.joinVoIPChat`
 /// Join VoIP chat room
@@ -658,10 +658,10 @@ pub fn get_local_ip_address(
 /// Listen for network weak change event
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "onNetworkWeakChange")
-pub fn on_network_weak_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_network_weak_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offNetworkWeakChange`
 /// Remove network weak change event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offNetworkWeakChange")
-pub fn off_network_weak_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_network_weak_change(callback cb: WechatResultCallback) -> Nil

@@ -77,7 +77,7 @@ export function createInnerAudioContext() {
   return wx.createInnerAudioContext();
 }
 
-export function playVoiceAync(fp, d, cb) {
+export function playVoiceAsync(fp, d, cb) {
   return new Promise(resolve => {
     wx.playVoice({
       filePath: fp,
@@ -89,7 +89,7 @@ export function playVoiceAync(fp, d, cb) {
   })
 }
 
-export function pauseVoiceAync(cb) {
+export function pauseVoiceAsync(cb) {
   return new Promise(resolve => {
     wx.pauseVoice({
       complete: cb,
@@ -173,42 +173,6 @@ export function onInnerAudioTimeUpdate(ctx, cb) {
   ctx.onTimeUpdate(cb);
 }
 
-// export function chooseVideo(c, source, maxDuration, camera, compressed, success, fail) {
-//   return new Promise(resolve => {
-//     wx.chooseVideo({
-//       count: c,
-//       source: source,
-//       maxDuration: maxDuration,
-//       camera: camera,
-//       compressed: compressed,
-//       success,
-//       fail
-//     })
-//   });
-// }
-
-// export function compressVideo(src, bitrate, fps, success, fail) {
-//   return new Promise(resolve => {
-//     wx.compressVideo({
-//       filePath: src,
-//       bitrate,
-//       fps,
-//       success,
-//       fail
-//     })
-//   })
-// }
-
-//export function getVideoInfo(src, success, fail) {
-//  return new Promise(resolve => {
-//    wx.getVideoInfo({
-//      src: src,
-//      success,
-//      fail
-//    })
-//  });
-//}
-
 export function createVideoContext(id) {
   return wx.createVideoContext(id);
 }
@@ -268,24 +232,36 @@ export function createCameraContext() {
 }
 
 export function cameraContextStartRecord(cc, timeout, selfieMirror, cb) {
-  cc.startRecord({
-    timeout: timeout,
-    selfieMirror: selfieMirror,
-    success: cb
-  });
+  return new Promise(resolve => {
+    cc.startRecord({
+      timeout: timeout,
+      selfieMirror: selfieMirror,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function cameraContextStopRecord(cc, cb) {
-  cc.stopRecord({
-    success: cb
-  });
+  return new Promise(resolve => {
+    cc.stopRecord({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function cameraContextTakePhoto(cc, quality, cb) {
-  cc.takePhoto({
-    quality: quality,
-    success: cb
-  });
+  return new Promise(resolve => {
+    cc.takePhoto({
+      quality: quality,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
 }
 
 export function cameraContextSetZoom(cc, zoom) {
@@ -548,8 +524,20 @@ export function webAudioCreateWaveShaper(wac, curve) {
   return wac.createWaveShaper(curve);
 }
 
-export function webAudioDecodeAudioData(wac, arrayBuffer, successCb, errorCb) {
-  wac.decodeAudioData(arrayBuffer, successCb, errorCb);
+export function webAudioDecodeAudioData(wac, arrayBuffer, cb) {
+  return new Promise(resolve => {
+    wac.decodeAudioData(
+      arrayBuffer,
+      (res) => {
+        if (cb) cb();
+        resolve(new Ok(res))
+      },
+      (err) => {
+        if (cb) cb();
+        resolve(new Error(new WechatError(err.errMsg || 'Decode audio data failed')))
+      }
+    )
+  })
 }
 
 export function webAudioClose(wac) {
@@ -977,40 +965,6 @@ export function videoDecoderStart(decoder) {
 export function videoDecoderStop(decoder) {
   decoder.stop();
 }
-
-// Voice (旧音频API)
-
-// export function playVoice(fp, d, cb) {
-//   return new Promise(resolve => {
-//     wx.playVoice({
-//       filePath: fp,
-//       duration: d,
-//       complete: cb,
-//       success(res) { resolve(new Ok(res)) },
-//       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
-//     })
-//   })
-// }
-// 
-// export function pauseVoice(cb) {
-//   return new Promise(resolve => {
-//     wx.pauseVoice({
-//       complete: cb,
-//       success(res) { resolve(new Ok(res)) },
-//       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
-//     })
-//   })
-// }
-// 
-// export function stopVoice(cb) {
-//   return new Promise(resolve => {
-//     wx.stopVoice({
-//       complete: cb,
-//       success(res) { resolve(new Ok(res)) },
-//       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
-//     })
-//   })
-// }
 
 export function audioContextPause(ctx) {
   ctx.pause();

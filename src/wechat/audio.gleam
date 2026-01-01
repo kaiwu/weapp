@@ -3,7 +3,9 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{
+  type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult,
+}
 
 /// InnerAudioContext type
 ///
@@ -18,7 +20,7 @@ pub fn create_inner_audio_context() -> InnerAudioContext
 /// `wx.playVoice`
 /// Play voice
 ///
-@external(javascript, "../wechat_media_ffi.mjs", "playVoice")
+@external(javascript, "../wechat_media_ffi.mjs", "playVoiceAsync")
 pub fn play_voice(
   file_path fp: String,
   duration d: Int,
@@ -28,13 +30,13 @@ pub fn play_voice(
 /// `wx.pauseVoice`
 /// Pause voice
 ///
-@external(javascript, "../wechat_media_ffi.mjs", "pauseVoice")
+@external(javascript, "../wechat_media_ffi.mjs", "pauseVoiceAsync")
 pub fn pause_voice(complete cb: WechatCallback) -> Promise(WechatResult)
 
 /// `wx.stopVoice`
 /// Stop voice
 ///
-@external(javascript, "../wechat_media_ffi.mjs", "stopVoice")
+@external(javascript, "../wechat_media_ffi.mjs", "stopVoiceAsync")
 pub fn stop_voice(complete cb: WechatCallback) -> Promise(WechatResult)
 
 /// AudioContext type
@@ -100,37 +102,34 @@ pub fn audio_seek(ctx: AudioContext, position p: Float) -> Nil
 /// InnerAudioContext.onPlay
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioPlay")
-pub fn on_inner_audio_play(ctx: InnerAudioContext, cb: fn() -> Nil) -> Nil
+pub fn on_inner_audio_play(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
 
 /// InnerAudioContext.onPause
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioPause")
-pub fn on_inner_audio_pause(ctx: InnerAudioContext, cb: fn() -> Nil) -> Nil
+pub fn on_inner_audio_pause(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
 
 /// InnerAudioContext.onStop
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioStop")
-pub fn on_inner_audio_stop(ctx: InnerAudioContext, cb: fn() -> Nil) -> Nil
+pub fn on_inner_audio_stop(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
 
 /// InnerAudioContext.onEnded
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioEnded")
-pub fn on_inner_audio_ended(ctx: InnerAudioContext, cb: fn() -> Nil) -> Nil
+pub fn on_inner_audio_ended(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
 
 /// InnerAudioContext.onError
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioError")
-pub fn on_inner_audio_error(
-  ctx: InnerAudioContext,
-  cb: fn(JsObject) -> Nil,
-) -> Nil
+pub fn on_inner_audio_error(ctx: InnerAudioContext, cb: WechatResultCallback) -> Nil
 
 /// InnerAudioContext.onTimeUpdate
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioTimeUpdate")
 pub fn on_inner_audio_time_update(
   ctx: InnerAudioContext,
-  cb: fn(JsObject) -> Nil,
+  cb: WechatResultCallback,
 ) -> Nil
 
 /// WebAudioContext type
@@ -275,9 +274,8 @@ pub fn web_audio_create_wave_shaper(
 pub fn web_audio_decode_audio_data(
   wac: WebAudioContext,
   array_buffer ab: JsObject,
-  success cb: fn(JsObject) -> Nil,
-  error ecb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `WebAudioContext.close`
 /// Close WebAudio context

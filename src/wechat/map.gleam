@@ -2,7 +2,8 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/media/map/)
 ////
 
-import wechat/object.{type JsObject}
+import gleam/javascript/promise.{type Promise}
+import wechat/object.{type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult}
 
 /// MapContext type
 ///
@@ -20,8 +21,8 @@ pub fn create_map_context(map_id m: String) -> MapContext
 @external(javascript, "../wechat_map_ffi.mjs", "mapContextGetCenterLocation")
 pub fn map_context_get_center_location(
   ctx mc: MapContext,
-  complete cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `MapContext.moveToLocation`
 /// Move to location
@@ -29,8 +30,8 @@ pub fn map_context_get_center_location(
 @external(javascript, "../wechat_map_ffi.mjs", "mapContextMoveToLocation")
 pub fn map_context_move_to_location(
   ctx mc: MapContext,
-  complete cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `MapContext.translateMarker`
 /// Translate marker
@@ -41,8 +42,8 @@ pub fn map_context_translate_marker(
   marker_id m_id: String,
   destination d: JsObject,
   auto_rotate a: Bool,
-  complete cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `MapContext.includePoints`
 /// Include points
@@ -52,8 +53,8 @@ pub fn map_context_include_points(
   ctx mc: MapContext,
   points p: JsObject,
   padding pad: JsObject,
-  complete cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `MapContext.getRegion`
 /// Get region
@@ -61,8 +62,8 @@ pub fn map_context_include_points(
 @external(javascript, "../wechat_map_ffi.mjs", "mapContextGetRegion")
 pub fn map_context_get_region(
   ctx mc: MapContext,
-  complete cb: fn(JsObject) -> Nil,
-) -> Nil
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
 
 /// `MapContext.getScale`
 /// Get scale
@@ -115,7 +116,7 @@ pub fn map_context_open_map_app(ctx mc: MapContext) -> Nil
 pub fn map_context_on(
   ctx mc: MapContext,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `MapContext.off`
@@ -125,7 +126,7 @@ pub fn map_context_on(
 pub fn map_context_off(
   ctx mc: MapContext,
   event e: String,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `MapContext.addMarkers`

@@ -3,7 +3,7 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult}
 
 /// Accelerometer
 ///
@@ -26,13 +26,13 @@ pub fn stop_accelerometer(complete cb: WechatCallback) -> Promise(WechatResult)
 /// Listen for accelerometer changes
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onAccelerometerChange")
-pub fn on_accelerometer_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_accelerometer_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offAccelerometerChange`
 /// Remove accelerometer change listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offAccelerometerChange")
-pub fn off_accelerometer_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_accelerometer_change(callback cb: WechatResultCallback) -> Nil
 
 /// Compass
 ///
@@ -52,13 +52,13 @@ pub fn stop_compass(complete cb: WechatCallback) -> Promise(WechatResult)
 /// Listen for compass changes
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onCompassChange")
-pub fn on_compass_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_compass_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offCompassChange`
 /// Remove compass change listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offCompassChange")
-pub fn off_compass_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_compass_change(callback cb: WechatResultCallback) -> Nil
 
 /// Gyroscope
 ///
@@ -81,13 +81,13 @@ pub fn stop_gyroscope(complete cb: WechatCallback) -> Promise(WechatResult)
 /// Listen for gyroscope changes
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onGyroscopeChange")
-pub fn on_gyroscope_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_gyroscope_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offGyroscopeChange`
 /// Remove gyroscope change listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offGyroscopeChange")
-pub fn off_gyroscope_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_gyroscope_change(callback cb: WechatResultCallback) -> Nil
 
 /// Device Motion
 ///
@@ -113,13 +113,13 @@ pub fn stop_device_motion_listening(
 /// Listen for device motion changes
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onDeviceMotionChange")
-pub fn on_device_motion_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_device_motion_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offDeviceMotionChange`
 /// Remove device motion change listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offDeviceMotionChange")
-pub fn off_device_motion_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_device_motion_change(callback cb: WechatResultCallback) -> Nil
 
 /// Bluetooth Low Energy (BLE)
 ///
@@ -186,20 +186,20 @@ pub fn get_connected_bluetooth_devices(
 /// Listen for newly discovered devices
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBluetoothDeviceFound")
-pub fn on_bluetooth_device_found(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_bluetooth_device_found(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offBluetoothDeviceFound`
 /// Cancel listening for newly discovered devices
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offBluetoothDeviceFound")
-pub fn off_bluetooth_device_found(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_bluetooth_device_found(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onBluetoothAdapterStateChange`
 /// Listen for Bluetooth adapter state change
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBluetoothAdapterStateChange")
 pub fn on_bluetooth_adapter_state_change(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `wx.offBluetoothAdapterStateChange`
@@ -207,7 +207,7 @@ pub fn on_bluetooth_adapter_state_change(
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offBluetoothAdapterStateChange")
 pub fn off_bluetooth_adapter_state_change(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `wx.createBLEConnection`
@@ -286,20 +286,20 @@ pub fn notify_ble_characteristic_value_change(
 /// Listen for BLE connection state change
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBLEConnectionStateChange")
-pub fn on_ble_connection_state_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_ble_connection_state_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offBLEConnectionStateChange`
 /// Cancel listening for BLE connection state change
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offBLEConnectionStateChange")
-pub fn off_ble_connection_state_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_ble_connection_state_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onBLECharacteristicValueChange`
 /// Listen for characteristic value change
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBLECharacteristicValueChange")
 pub fn on_ble_characteristic_value_change(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `wx.offBLECharacteristicValueChange`
@@ -307,7 +307,7 @@ pub fn on_ble_characteristic_value_change(
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offBLECharacteristicValueChange")
 pub fn off_ble_characteristic_value_change(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// Near Field Communication (NFC)
@@ -343,7 +343,7 @@ pub fn nfc_adapter_stop_discovery(
 @external(javascript, "../wechat_device_ffi.mjs", "nfcAdapterOnDiscovered")
 pub fn nfc_adapter_on_discovered(
   adapter: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `NfcAdapter.offDiscovered`
@@ -352,7 +352,7 @@ pub fn nfc_adapter_on_discovered(
 @external(javascript, "../wechat_device_ffi.mjs", "nfcAdapterOffDiscovered")
 pub fn nfc_adapter_off_discovered(
   adapter: JsObject,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// Beacon (蓝牙信标)
@@ -376,25 +376,25 @@ pub fn stop_beacon_discovery() -> Nil
 /// Listen for Beacon device update event
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBeaconUpdate")
-pub fn on_beacon_update(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_beacon_update(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.onBeaconServiceChange`
 /// Listen for Beacon service state change event
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBeaconServiceChange")
-pub fn on_beacon_service_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_beacon_service_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offBeaconUpdate`
 /// Remove Beacon device update event listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offBeaconUpdate")
-pub fn off_beacon_update(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_beacon_update(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offBeaconServiceChange`
 /// Remove Beacon service state change event listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offBeaconServiceChange")
-pub fn off_beacon_service_change(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_beacon_service_change(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.getBeacons`
 /// Get all discovered Beacon devices
@@ -419,7 +419,7 @@ pub fn create_ble_peripheral_server(options o: JsObject) -> BLEPeripheralServer
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onBLEPeripheralConnectionStateChanged")
 pub fn on_ble_peripheral_connection_state_changed(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// `wx.offBLEPeripheralConnectionStateChanged`
@@ -427,7 +427,7 @@ pub fn on_ble_peripheral_connection_state_changed(
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offBLEPeripheralConnectionStateChanged")
 pub fn off_ble_peripheral_connection_state_changed(
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.addService
@@ -451,7 +451,7 @@ pub fn ble_peripheral_server_close(server: BLEPeripheralServer) -> Nil
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOffCharacteristicReadRequest")
 pub fn ble_peripheral_server_off_characteristic_read_request(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.offCharacteristicSubscribed
@@ -460,7 +460,7 @@ pub fn ble_peripheral_server_off_characteristic_read_request(
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOffCharacteristicSubscribed")
 pub fn ble_peripheral_server_off_characteristic_subscribed(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.offCharacteristicUnsubscribed
@@ -469,7 +469,7 @@ pub fn ble_peripheral_server_off_characteristic_subscribed(
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOffCharacteristicUnsubscribed")
 pub fn ble_peripheral_server_off_characteristic_unsubscribed(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.offCharacteristicWriteRequest
@@ -478,7 +478,7 @@ pub fn ble_peripheral_server_off_characteristic_unsubscribed(
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOffCharacteristicWriteRequest")
 pub fn ble_peripheral_server_off_characteristic_write_request(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.onCharacteristicReadRequest
@@ -487,7 +487,7 @@ pub fn ble_peripheral_server_off_characteristic_write_request(
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOnCharacteristicReadRequest")
 pub fn ble_peripheral_server_on_characteristic_read_request(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.onCharacteristicSubscribed
@@ -496,7 +496,7 @@ pub fn ble_peripheral_server_on_characteristic_read_request(
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOnCharacteristicSubscribed")
 pub fn ble_peripheral_server_on_characteristic_subscribed(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.onCharacteristicUnsubscribed
@@ -505,7 +505,7 @@ pub fn ble_peripheral_server_on_characteristic_subscribed(
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOnCharacteristicUnsubscribed")
 pub fn ble_peripheral_server_on_characteristic_unsubscribed(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.onCharacteristicWriteRequest
@@ -514,7 +514,7 @@ pub fn ble_peripheral_server_on_characteristic_unsubscribed(
 @external(javascript, "../wechat_device_ffi.mjs", "blePeripheralServerOnCharacteristicWriteRequest")
 pub fn ble_peripheral_server_on_characteristic_write_request(
   server: BLEPeripheralServer,
-  callback cb: fn(JsObject) -> Nil,
+  callback cb: WechatResultCallback,
 ) -> Nil
 
 /// BLEPeripheralServer.removeService
@@ -557,10 +557,10 @@ pub fn ble_peripheral_server_write_characteristic_value(
 /// Listen for memory warning event
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "onMemoryWarning")
-pub fn on_memory_warning(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn on_memory_warning(callback cb: WechatResultCallback) -> Nil
 
 /// `wx.offMemoryWarning`
 /// Remove memory warning event listener
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offMemoryWarning")
-pub fn off_memory_warning(callback cb: fn(JsObject) -> Nil) -> Nil
+pub fn off_memory_warning(callback cb: WechatResultCallback) -> Nil

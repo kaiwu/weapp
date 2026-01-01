@@ -4,7 +4,8 @@
 
 import gleam/javascript/promise.{type Promise}
 import wechat/object.{
-  type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult,
+  type JsObject, type WechatCallback, type WechatResult,
+  type WechatResultCallback,
 }
 
 /// InterstitialAd type

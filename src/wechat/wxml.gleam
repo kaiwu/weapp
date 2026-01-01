@@ -3,7 +3,9 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type WechatResultCallback, type JsObject, type WechatResult}
+import wechat/object.{
+  type JsObject, type WechatResult, type WechatResultCallback,
+}
 
 /// SelectorQuery type for querying node information
 ///

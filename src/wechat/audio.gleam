@@ -4,7 +4,8 @@
 
 import gleam/javascript/promise.{type Promise}
 import wechat/object.{
-  type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult,
+  type JsObject, type WechatCallback, type WechatResult,
+  type WechatResultCallback,
 }
 
 /// InnerAudioContext type
@@ -122,7 +123,10 @@ pub fn on_inner_audio_ended(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
 /// InnerAudioContext.onError
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioError")
-pub fn on_inner_audio_error(ctx: InnerAudioContext, cb: WechatResultCallback) -> Nil
+pub fn on_inner_audio_error(
+  ctx: InnerAudioContext,
+  cb: WechatResultCallback,
+) -> Nil
 
 /// InnerAudioContext.onTimeUpdate
 ///

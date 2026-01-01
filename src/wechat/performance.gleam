@@ -2,7 +2,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/performance/)
 ////
 
-import wechat/object.{type WechatResultCallback, type JsObject}
+import wechat/object.{type JsObject, type WechatResultCallback}
 
 /// `wx.getPerformance`
 /// Get the performance object

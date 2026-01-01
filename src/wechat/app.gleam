@@ -3,7 +3,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/)
 ////
 
-import wechat/object.{type WechatResultCallback, type JsObject}
+import wechat/object.{type JsObject, type WechatResultCallback}
 
 /// global function `getApp()`
 ///

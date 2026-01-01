@@ -2,7 +2,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/)
 ////
 
-import wechat/object.{type WechatResultCallback, type JsObject}
+import wechat/object.{type JsObject, type WechatResultCallback}
 
 /// `wx.getBackgroundAudioManager`
 /// Get global unique background audio manager

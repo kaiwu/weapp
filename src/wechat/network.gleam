@@ -3,7 +3,10 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{
+  type JsObject, type WechatCallback, type WechatResult,
+  type WechatResultCallback,
+}
 
 /// `wx.downloadFile`
 /// Download a file from the network
@@ -528,7 +531,9 @@ pub fn off_local_service_found(callback cb: WechatResultCallback) -> Nil
 /// Remove mDNS service discovery stop event listener
 ///
 @external(javascript, "../wechat_network_ffi.mjs", "offLocalServiceDiscoveryStop")
-pub fn off_local_service_discovery_stop(callback cb: WechatResultCallback) -> Nil
+pub fn off_local_service_discovery_stop(
+  callback cb: WechatResultCallback,
+) -> Nil
 
 /// VoIP Real-time Voice
 ///

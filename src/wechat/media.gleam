@@ -3,7 +3,10 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type WechatResultCallback, type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{
+  type JsObject, type WechatCallback, type WechatResult,
+  type WechatResultCallback,
+}
 
 /// MediaRecorder type for screen recording
 ///

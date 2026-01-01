@@ -3,7 +3,9 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type WechatResultCallback, type WechatCallback, type WechatResult}
+import wechat/object.{
+  type WechatCallback, type WechatResult, type WechatResultCallback,
+}
 
 /// `wx.updateShareMenu`
 /// Update share menu

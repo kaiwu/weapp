@@ -2,7 +2,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/media/recorder/)
 ////
 
-import wechat/object.{type WechatResultCallback, type JsObject}
+import wechat/object.{type JsObject, type WechatResultCallback}
 
 /// RecorderManager type
 ///

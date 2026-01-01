@@ -3,7 +3,17 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/)
 ////
 
-import wechat/object.{type JsObject, type WechatResultCallback}
+import gleam/javascript/promise.{type Promise}
+import wechat/object.{
+  type JsObject, type WechatCallback, type WechatResult,
+  type WechatResultCallback,
+}
+
+/// `wx.getAppBaseInfo`
+/// Get app base info
+///
+@external(javascript, "../wechat_ffi.mjs", "getAppBaseInfo")
+pub fn get_app_base_info(complete cb: WechatCallback) -> Promise(WechatResult)
 
 /// global function `getApp()`
 ///

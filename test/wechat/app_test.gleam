@@ -6,4 +6,5 @@ pub fn app_lifecycle_test() {
   let _ = app.run_app
   let _ = app.set_timeout
   let _ = app.clear_timeout
+  let _ = app.get_app_base_info
 }

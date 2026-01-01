@@ -524,25 +524,20 @@ super easy to extend as many as one needs
 
 ## Total Functions Count
 
-**Over 700 WeChat API functions** bound across 32 Gleam modules, organized into these categories:
+**271 wx API functions** bound across 12 FFI modules, organized into these categories:
 
-- **Network**: Request, WebSocket, TCP/UDP, mDNS, VoIP, advanced network (85+ functions)
-- **Media**: Image, Video, Audio, Recorder, Live Streaming, Video editing (115+ functions)
-- **Device**: Sensors, Battery, Screen, Bluetooth, NFC, WiFi, Beacon (80+ functions)
-- **Filesystem**: File operations (40+ functions)
-- **UI**: Interaction, feedback, animation, navigation bar, tabbar, background (35+ functions)
-- **WXML**: Node query, component contexts, IntersectionObserver (40+ functions)
-- **Storage**: Data storage, batch operations (10+ functions)
-- **Base**: Routing, payment, system utilities, background fetch, crypto, router (60+ functions)
-- **Ads**: Interstitial ads, rewarded video ads (15+ functions)
-- **And more**: Worker, Editor, Analytics, Map, Share, Location, Page, App, Cache, Performance
-
-**Recent Additions (Phases 1-4)**: +231 new API bindings
-- Phase 1: 64 functions (Sockets, mDNS, VoIP, MediaContainer, VideoDecoder)
-- Phase 2: 96 functions (Voice, Beacon, BLE Peripheral, Extended Live, MediaAudioPlayer)
-- Phase 3: 39 functions (System, Calendar, Encryption, Storage, Video Editing, IntersectionObserver)
-- Phase 4: 32 functions (Ads, Advanced Network, Background Fetch, Crypto, Router)
+- **Base** (88 functions): Login, storage, payment, navigation, system utilities, background fetch, crypto, router, calendar, contact, phone, scan, clipboard, vibrate, app base info
+- **Device** (76 functions): Sensors (accelerometer, compass, gyroscope), battery, screen, Bluetooth, NFC, WiFi, Beacon, keyboard
+- **Network** (41 functions): Request, WebSocket, TCP/UDP, mDNS, VoIP
+- **Media** (32 functions): Image, Video, Audio, Recorder, Live Streaming, Video editing, Camera, MediaContainer, VideoDecoder, MediaAudioPlayer
+- **UI** (29 functions): Interaction, feedback, animation, navigation bar, tabbar, background, loading, toast
+- **WXML** (2 functions): Node query, IntersectionObserver
+- **Canvas** (1 function): Canvas context operations
+- **Filesystem** (1 function): File system manager
+- **Map** (1 function): Map context
 
 **Note**: Some WeChat APIs like storage sync methods, app/page lifecycle event handlers, and window resize events are not yet implemented. See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs.
+
+All wx functions used by [weui-miniprogram](https://github.com/Tencent/weui-miniprogram) are covered by this library.
 
 

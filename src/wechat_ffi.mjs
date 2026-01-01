@@ -52,6 +52,16 @@ export function clear_interval(id) {
   return clearInverval(id)
 }
 
+export function getAppBaseInfo(cb) {
+  return new Promise(resolve => {
+    wx.getAppBaseInfo({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
 export function page_route(p) {
   return p.route(); 
 }

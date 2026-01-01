@@ -976,3 +976,31 @@ export function onLazyLoadError(cb) {
   wx.onLazyLoadError(cb);
 }
 
+export function offAppShow(cb) {
+  wx.offAppShow(cb);
+}
+
+export function offAppHide(cb) {
+  wx.offAppHide(cb);
+}
+
+export function offError(cb) {
+  wx.offError(cb);
+}
+
+export function offThemeChange(cb) {
+  wx.offThemeChange(cb);
+}
+
+export function offPageNotFound(cb) {
+  wx.offPageNotFound(cb);
+}
+
+export function offUnhandledRejection(cb) {
+  wx.offUnhandledRejection(cb);
+}
+
+export function offLazyLoadError(cb) {
+  wx.offLazyLoadError(cb);
+}
+

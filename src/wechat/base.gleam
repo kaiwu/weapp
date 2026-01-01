@@ -502,3 +502,47 @@ pub fn router_get_route_context(router r: JsObject) -> JsObject
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "routerRemoveRouteBuilder")
 pub fn router_remove_route_builder(router r: JsObject, name n: String) -> Nil
+
+/// App Event Off Listeners
+///
+/// `wx.offAppShow`
+/// Remove app show listener
+///
+@external(javascript, "../wechat_base_ffi.mjs", "offAppShow")
+pub fn off_app_show(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offAppHide`
+/// Remove app hide listener
+///
+@external(javascript, "../wechat_base_ffi.mjs", "offAppHide")
+pub fn off_app_hide(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offError`
+/// Remove error listener
+///
+@external(javascript, "../wechat_base_ffi.mjs", "offError")
+pub fn off_error(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offThemeChange`
+/// Remove theme change listener
+///
+@external(javascript, "../wechat_base_ffi.mjs", "offThemeChange")
+pub fn off_theme_change(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offPageNotFound`
+/// Remove page not found listener
+///
+@external(javascript, "../wechat_base_ffi.mjs", "offPageNotFound")
+pub fn off_page_not_found(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offUnhandledRejection`
+/// Remove unhandled rejection listener
+///
+@external(javascript, "../wechat_base_ffi.mjs", "offUnhandledRejection")
+pub fn off_unhandled_rejection(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offLazyLoadError`
+/// Remove lazy load error listener
+///
+@external(javascript, "../wechat_base_ffi.mjs", "offLazyLoadError")
+pub fn off_lazy_load_error(callback cb: fn(JsObject) -> Nil) -> Nil

@@ -52,14 +52,74 @@ export function clear_interval(id) {
   return clearInverval(id)
 }
 
-export function getAppBaseInfo(cb) {
+// System Info APIs
+export function getAppBaseInfo() {
+  return wx.getAppBaseInfo()
+}
+
+export function getSystemInfo(cb) {
   return new Promise(resolve => {
-    wx.getAppBaseInfo({
+    wx.getSystemInfo({
       complete: cb,
       success(res) { resolve(new Ok(res)) },
       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
     })
   })
+}
+
+export function getSystemInfoSync() {
+  return wx.getSystemInfoSync()
+}
+
+export function getSystemInfoAsync(cb) {
+  return new Promise(resolve => {
+    wx.getSystemInfoAsync({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getSystemSetting() {
+  return wx.getSystemSetting()
+}
+
+export function getDeviceInfo() {
+  return wx.getDeviceInfo()
+}
+
+export function getWindowInfo() {
+  return wx.getWindowInfo()
+}
+
+export function getAppAuthorizeSetting() {
+  return wx.getAppAuthorizeSetting()
+}
+
+export function getAccountInfoSync() {
+  return wx.getAccountInfoSync()
+}
+
+export function getLaunchOptionsSync() {
+  return wx.getLaunchOptionsSync()
+}
+
+export function getEnterOptionsSync() {
+  return wx.getEnterOptionsSync()
+}
+
+// Utility APIs
+export function canIUse(schema) {
+  return wx.canIUse(schema)
+}
+
+export function base64ToArrayBuffer(base64) {
+  return wx.base64ToArrayBuffer(base64)
+}
+
+export function arrayBufferToBase64(buffer) {
+  return wx.arrayBufferToBase64(buffer)
 }
 
 export function page_route(p) {

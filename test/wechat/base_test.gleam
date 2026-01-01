@@ -27,3 +27,14 @@ pub fn date_test() {
   //|> result.map(io.println)
   |> promise.resolve
 }
+
+pub fn event_off_test() {
+  // Placeholder for event off handlers tests
+  let _ = base.off_app_show
+  let _ = base.off_app_hide
+  let _ = base.off_error
+  let _ = base.off_theme_change
+  let _ = base.off_page_not_found
+  let _ = base.off_unhandled_rejection
+  let _ = base.off_lazy_load_error
+}

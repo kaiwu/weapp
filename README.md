@@ -525,10 +525,10 @@ super easy to extend as many as one needs
 
 ## Total Functions Count
 
-**271 wx API functions** bound across 32 Gleam modules using 12 FFI modules:
+**288 wx API functions** bound across 32 Gleam modules using 12 FFI modules:
 
 ### By FFI Module (wx functions):
-- **wechat_base_ffi.mjs** (88 functions): Login, storage, payment, navigation, system utilities, background fetch, crypto, router, calendar, contact, phone, scan, clipboard, vibrate, app events, lifecycle, performance
+- **wechat_base_ffi.mjs** (95 functions): Login, storage, payment, navigation, system utilities, background fetch, crypto, router, calendar, contact, phone, scan, clipboard, vibrate, app events (on/off), lifecycle, performance
 - **wechat_device_ffi.mjs** (76 functions): Sensors (accelerometer, compass, gyroscope), battery, screen, Bluetooth (general, BLE, peripheral), NFC, WiFi, Beacon, keyboard, memory
 - **wechat_network_ffi.mjs** (41 functions): Request, WebSocket, TCP/UDP, mDNS, VoIP, network events
 - **wechat_media_ffi.mjs** (32 functions): Image, Video, Audio (inner, voice, web, background, media audio), Recorder, Live streaming, Camera, MediaContainer, VideoDecoder
@@ -537,7 +537,7 @@ super easy to extend as many as one needs
 - **wechat_canvas_ffi.mjs** (1 function): createCanvasContext
 - **wechat_filesystem_ffi.mjs** (1 function): getFileSystemManager
 - **wechat_map_ffi.mjs** (1 function): createMapContext
-- **wechat_ffi.mjs** (1 function): getAppBaseInfo
+- **wechat_ffi.mjs** (11 functions): System info (getAppBaseInfo, getSystemInfo, getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, getAppAuthorizeSetting, getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync), utilities (canIUse, base64ToArrayBuffer, arrayBufferToBase64)
 
 ### By Gleam Module (public API coverage):
 - **wechat/base** - System, routing, payment, clipboard, vibrate, scan, update, background fetch, crypto, router
@@ -549,7 +549,7 @@ super easy to extend as many as one needs
 - **wechat/canvas** - Canvas context creation
 - **wechat/filesystem** - File system manager
 - **wechat/map** - Map context and location
-- **wechat/app** - App constructor and base info
+- **wechat/app** - App constructor, system info (getAppBaseInfo, getSystemInfo sync/async, getDeviceInfo, getWindowInfo, etc.), utilities (canIUse, base64 conversion)
 - **wechat/page** - Page constructor and data management
 - **wechat/storage** - Storage operations
 - **wechat/cache** - Cache manager
@@ -572,6 +572,8 @@ super easy to extend as many as one needs
 - **wechat/analytics** - Analytics and monitoring
 - **wechat/app_event** - App lifecycle events
 
-**Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs (~330+ wx functions not yet bound).
+**Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs (~360+ wx functions not yet bound).
+
+**Recent additions**: 17 new system/base wx functions - getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, getAppAuthorizeSetting, getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync, canIUse, base64ToArrayBuffer, arrayBufferToBase64, offAppShow, offAppHide, offError, offThemeChange, offPageNotFound, offUnhandledRejection, offLazyLoadError
 
 

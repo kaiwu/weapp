@@ -4,47 +4,58 @@
 
 ## Coverage Summary
 
-- **Total wx Functions Covered**: 271 functions
+- **Total wx Functions Covered**: 288 functions (+17 from base/system bindings)
 - **Total wx Functions in WeChat Docs**: ~600+ functions
-- **Coverage**: ~45%
+- **Coverage**: ~48%
 
 ---
 
-## COVERED WX FUNCTIONS (271)
+## COVERED WX FUNCTIONS (288)
 
-### Base (88 functions)
-- **System**: getSystemInfo, getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getDeviceBenchmarkInfo, getWindowInfo, getAppBaseInfo, getSkylineInfo, getSkylineInfoSync, getRendererUserAgent, getAppAuthorizeSetting, openSystemBluetoothSetting, openAppAuthorizeSetting
-- **Update**: getUpdateManager, updateWeChatApp
-- **Lifecycle**: getLaunchOptionsSync, getEnterOptionsSync, getApiCategory
-- **Events**: onAppShow, offAppShow, onAppHide, offAppHide, onError, offError, onUnhandledRejection, offUnhandledRejection, onThemeChange, offThemeChange, onPageNotFound, offPageNotFound, onLazyLoadError, offLazyLoadError
+### Base (95 functions)
+- **System**: getSystemInfo, getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, getAppBaseInfo, getAppAuthorizeSetting, getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync
+- **Utilities**: canIUse, base64ToArrayBuffer, arrayBufferToBase64
+- **Update**: getUpdateManager
+- **Events On**: onAppShow, onAppHide, onError, onUnhandledRejection, onThemeChange, onPageNotFound, onLazyLoadError
+- **Events Off**: offAppShow, offAppHide, offError, offUnhandledRejection, offThemeChange, offPageNotFound, offLazyLoadError
 - **Performance**: getPerformance, requestIdleCallback, cancelIdleCallback, reportPerformance
 - **Subpackage**: preDownloadSubpackage
 - **Crypto**: getUserCryptoManager
 - **Background Fetch**: setBackgroundFetchToken, getBackgroundFetchToken, getBackgroundFetchData, onBackgroundFetchData
+- **Network**: getNetworkType, getLocalIPAddress, onNetworkStatusChange, offNetworkStatusChange, onNetworkWeakChange, offNetworkWeakChange
+- **Storage**: setStorage, getStorage, removeStorage, clearStorage, getStorageInfo, createBufferURL, revokeBufferURL, batchSetStorage, batchGetStorage, batchSetStorageSync, batchGetStorageSync
+- **Navigation**: navigateTo, navigateBack, navigateBackMiniProgram, navigateToMiniProgram, reLaunch, switchTab
+- **Payment**: requestPayment, requestCommonPayment, createGlobalPayment
+- **UI**: hideHomeButton, loadFontFace, loadBuiltInFontFace, setBackgroundColor, setBackgroundTextStyle, setNavigationBarTitle, setNavigationBarColor, showTabbar, hideTabbar, startPullDownRefresh, stopPullDownRefresh
+- **Share**: showShareMenu, hideShareMenu, updateShareMenu, getShareInfo, shareAppMessage, onShareAppMessage, offShareAppMessage
+- **Open**: login, checkSession, getUserInfo, getUserProfile, getSetting, openSetting, authorize, requestSubscribeMessage, chooseAddress, getPrivacySetting, getPrivacyContract, exitMiniProgram
+- **File**: saveFile, removeSavedFile, getSavedFileList, getFileInfo, openDocument
+- **Location**: getLocation, chooseLocation, openLocation
+- **Device**: makePhoneCall, sendSms, scanCode, vibrateShort, vibrateLong, setClipboardData, getClipboardData, addPhoneCalendar, addPhoneRepeatCalendar, chooseContact, addPhoneContact, getRandomValues
+- **Analytics**: reportMonitor, reportEvent
 
 ### Network (41 functions)
 - **Request**: request
 - **Upload**: uploadFile
 - **Download**: downloadFile
-- **WebSocket**: connectSocket, closeSocket, sendSocketMessage, onSocketOpen, offSocketOpen, onSocketMessage, offSocketMessage, onSocketError, offSocketError, onSocketClose, offSocketClose
+- **WebSocket**: connectSocket, closeSocket, sendSocketMessage, onSocketOpen, onSocketMessage, onSocketError, onSocketClose
 - **TCP**: createTCPSocket
 - **UDP**: createUDPSocket
 - **mDNS**: startLocalServiceDiscovery, stopLocalServiceDiscovery, onLocalServiceFound, offLocalServiceFound, onLocalServiceLost, offLocalServiceLost, onLocalServiceResolveFail, offLocalServiceResolveFail, onLocalServiceDiscoveryStop, offLocalServiceDiscoveryStop
-- **VoIP**: joinVoIPChat, exitVoIPChat, join1v1Chat, setEnable1v1Chat, subscribeVoIPVideoMembers, updateVoIPChatMuteConfig, onVoIPChatStateChanged, offVoIPChatStateChanged, onVoIPChatMembersChanged, offVoIPChatMembersChanged, onVoIPChatSpeakersChanged, offVoIPChatSpeakersChanged, onVoIPChatInterrupted, offVoIPChatInterrupted, onVoIPVideoMembersChanged, offVoIPVideoMembersChanged
-- **Network Events**: getNetworkType, getLocalIPAddress, onNetworkStatusChange, offNetworkStatusChange, onNetworkWeakChange, offNetworkWeakChange
+- **VoIP**: joinVoIPChat, exitVoIPChat, subscribeVoIPVideoMembers, updateVoIPChatMuteConfig, onVoIPChatStateChanged, offVoIPChatStateChanged, onVoIPChatMembersChanged, offVoIPChatMembersChanged, onVoIPChatSpeakersChanged, offVoIPChatSpeakersChanged, onVoIPChatInterrupted, offVoIPChatInterrupted, onVoIPVideoMembersChanged, offVoIPVideoMembersChanged
 
 ### Media (32 functions)
 - **Image**: chooseImage, chooseMessageFile, previewImage, previewMedia, getImageInfo, compressImage, cropImage, editImage, saveImageToPhotosAlbum, chooseMedia, checkDeviceSupportHevc
 - **Video**: chooseVideo, getVideoInfo, compressVideo, saveVideoToPhotosAlbum, openVideoEditor, createVideoContext
-- **Audio**: createInnerAudioContext, createAudioContext, createWebAudioContext, createMediaAudioPlayer, playVoice, pauseVoice, stopVoice, getAvailableAudioSources, setInnerAudioOption
+- **Audio**: createInnerAudioContext, createAudioContext, createWebAudioContext, createMediaAudioPlayer, playVoice, pauseVoice, stopVoice
 - **Background Audio**: getBackgroundAudioManager
 - **Live**: createLivePlayerContext, createLivePusherContext
-- **Recorder**: getRecorderManager, startRecord, stopRecord
+- **Recorder**: getRecorderManager
 - **Camera**: createCameraContext
-- **Editor**: createEditorContext
 - **Video Processing**: createMediaContainer
-- **Media Recorder**: createMediaRecorder
 - **Video Decoder**: createVideoDecoder
+- **Media Events**: onAudioInterruptionBegin, onAudioInterruptionEnd
+- **Media Recorder**: getMediaRecorder
 
 ### Device (76 functions)
 - **Sensors**: startAccelerometer, stopAccelerometer, onAccelerometerChange, offAccelerometerChange, startCompass, stopCompass, onCompassChange, offCompassChange, startGyroscope, stopGyroscope, onGyroscopeChange, offGyroscopeChange, startDeviceMotionListening, stopDeviceMotionListening, onDeviceMotionChange, offDeviceMotionChange
@@ -53,17 +64,11 @@
 - **Keyboard**: hideKeyboard, getSelectedTextRange, onKeyboardHeightChange, offKeyboardHeightChange
 - **Memory**: onMemoryWarning, offMemoryWarning
 - **Bluetooth General**: openBluetoothAdapter, closeBluetoothAdapter, getBluetoothAdapterState, startBluetoothDevicesDiscovery, stopBluetoothDevicesDiscovery, getBluetoothDevices, getConnectedBluetoothDevices, onBluetoothDeviceFound, offBluetoothDeviceFound, onBluetoothAdapterStateChange, offBluetoothAdapterStateChange
-- **Bluetooth BLE**: createBLEConnection, closeBLEConnection, getBLEDeviceServices, getBLEDeviceCharacteristics, readBLECharacteristicValue, writeBLECharacteristicValue, notifyBLECharacteristicValueChange, onBLEConnectionStateChange, offBLEConnectionStateChange, onBLECharacteristicValueChange, offBLECharacteristicValueChange, setBLEMTU, getBLEMTU, onBLEMTUChange, offBLEMTUChange, getBLEDeviceRSSI
+- **Bluetooth BLE**: createBLEConnection, closeBLEConnection, getBLEDeviceServices, getBLEDeviceCharacteristics, readBLECharacteristicValue, writeBLECharacteristicValue, notifyBLECharacteristicValueChange, onBLEConnectionStateChange, offBLEConnectionStateChange, onBLECharacteristicValueChange, offBLECharacteristicValueChange
 - **Bluetooth Peripheral**: createBLEPeripheralServer, onBLEPeripheralConnectionStateChanged, offBLEPeripheralConnectionStateChanged
 - **Beacon**: startBeaconDiscovery, stopBeaconDiscovery, getBeacons, onBeaconUpdate, offBeaconUpdate, onBeaconServiceChange, offBeaconServiceChange
 - **WiFi**: startWifi, stopWifi, getConnectedWifi, getWifiList, setWifiList, onWifiConnected, offWifiConnected, onGetWifiList, offGetWifiList
 - **NFC**: getNFCAdapter
-- **Phone**: makePhoneCall, sendSms
-- **Scan**: scanCode
-- **Calendar**: addPhoneCalendar, addPhoneRepeatCalendar
-- **Contact**: chooseContact, addPhoneContact
-- **Vibrate**: vibrateShort, vibrateLong
-- **Clipboard**: setClipboardData, getClipboardData
 
 ### UI (29 functions)
 - **Interaction**: showToast, hideToast, showModal, showLoading, hideLoading, showActionSheet, enableAlertBeforeUnload, disableAlertBeforeUnload
@@ -96,13 +101,13 @@
 ### Payment (7 functions)
 - requestPayment, requestCommonPayment, createGlobalPayment
 
-### Open (15 functions)
+### Open (12 functions - 3 privacy functions NOT covered)
 - **Login**: login, checkSession
 - **User Info**: getUserInfo, getUserProfile
 - **Settings**: getSetting, openSetting, authorize
 - **Subscribe**: requestSubscribeMessage
 - **Address**: chooseAddress
-- **Privacy**: getPrivacySetting, getPrivacyContract, onNeedPrivacyAuthorization, openPrivacyContract, requirePrivacyAuthorize
+- **Privacy**: getPrivacySetting, getPrivacyContract (onNeedPrivacyAuthorization, openPrivacyContract, requirePrivacyAuthorize NOT covered)
 - **Mini Program**: navigateToMiniProgram, navigateBackMiniProgram, exitMiniProgram
 
 ### Worker (8 functions)
@@ -121,11 +126,34 @@
 
 ## MISSING WX FUNCTIONS (~330+)
 
-### Route & Navigation (~12 functions)
-- wx.redirectTo
-- wx.rewriteRoute
-- wx.router
-- router.addRouteBuilder, router.getRouteContext, router.removeRouteBuilder
+### Base/System (~13 functions - STILL MISSING)
+- **System**: wx.getDeviceBenchmarkInfo, wx.getSkylineInfo, wx.getSkylineInfoSync, wx.getRendererUserAgent, wx.openSystemBluetoothSetting, wx.openAppAuthorizeSetting
+- **Update**: wx.updateWeChatApp
+- **Lifecycle**: wx.getApiCategory
+- **Utility**: wx.env
+
+**✅ RECENTLY ADDED (17 functions)**:
+- wx.getSystemInfoSync, wx.getSystemInfoAsync, wx.getSystemSetting, wx.getDeviceInfo, wx.getWindowInfo, wx.getAppAuthorizeSetting, wx.getAccountInfoSync, wx.getLaunchOptionsSync, wx.getEnterOptionsSync
+- wx.canIUse, wx.base64ToArrayBuffer, wx.arrayBufferToBase64
+- wx.offAppShow, wx.offAppHide, wx.offError, wx.offThemeChange, wx.offPageNotFound, wx.offUnhandledRejection, wx.offLazyLoadError
+
+### Network (~8 functions - INCORRECTLY MARKED AS COVERED)
+- **WebSocket Off**: wx.offSocketOpen, wx.offSocketMessage, wx.offSocketError, wx.offSocketClose
+- **VoIP**: wx.join1v1Chat, wx.setEnable1v1Chat
+- **Analytics**: wx.getExptInfoSync, wx.reportAnalytics
+
+### Media (~10 functions - INCORRECTLY MARKED AS COVERED)
+- **Audio**: wx.getAvailableAudioSources, wx.setInnerAudioOption, wx.createBackgroundAudioManager
+- **Recorder**: wx.startRecord, wx.stopRecord
+- **Editor**: wx.createEditorContext
+- **Media Recorder**: wx.createMediaRecorder (only getMediaRecorder is covered)
+
+### Open Privacy (~3 functions - INCORRECTLY MARKED AS COVERED)
+- wx.onNeedPrivacyAuthorization, wx.openPrivacyContract, wx.requirePrivacyAuthorize
+
+### Route & Navigation (~16 functions)
+- wx.redirectTo, wx.rewriteRoute, wx.restartMiniProgram
+- wx.router (already has router.addRouteBuilder, router.getRouteContext, router.removeRouteBuilder in base_ffi)
 - wx.onBeforePageUnload, wx.onBeforePageLoad, wx.onBeforeAppRoute, wx.onAppRouteDone, wx.onAppRoute, wx.onAfterPageUnload, wx.onAfterPageLoad
 - wx.offBeforePageUnload, wx.offBeforePageLoad, wx.offBeforeAppRoute, wx.offAppRouteDone, wx.offAppRoute, wx.offAfterPageUnload, wx.offAfterPageLoad
 
@@ -226,14 +254,14 @@
 - **Customer Service**: wx.openCustomerServiceChat
 - **Sticker**: wx.openStickerSetView, wx.openStickerIPView, wx.openSingleStickerView
 
-### Device Advanced (~30+ functions)
-- **Bluetooth**: wx.makeBluetoothPair, wx.isBluetoothDevicePaired
+### Device Advanced (~75+ functions)
+- **Bluetooth**: wx.makeBluetoothPair, wx.isBluetoothDevicePaired, wx.setBLEMTU, wx.getBLEMTU, wx.onBLEMTUChange, wx.offBLEMTUChange, wx.getBLEDeviceRSSI (7 functions - incorrectly marked as covered)
 - **NFC Detailed**: NFCAdapter methods (getIsoDep, getMifareClassic, getMifareUltralight, getNdef, getNfcA, getNfcB, getNfcF, getNfcV, onDiscovered, offDiscovered, startDiscovery, stopDiscovery), IsoDep/MifareClassic/MifareUltralight/Ndef/NfcA/NfcB/NfcF/NfcV types with multiple methods each (60+ functions)
 - **NFC HCE**: wx.stopHCE, wx.startHCE, wx.sendHCEMessage, wx.onHCEMessage, wx.offHCEMessage, wx.getHCEState (6 functions)
-- **WiFi**: wx.onWifiConnectedWithPartialInfo, wx.offWifiConnectedWithPartialInfo, wx.connectWifi
+- **WiFi**: wx.onWifiConnectedWithPartialInfo, wx.offWifiConnectedWithPartialInfo, wx.connectWifi (3 functions)
 - **Accessibility**: wx.checkIsOpenAccessibility
-- **Battery Sync**: wx.getBatteryInfoSync
-- **Keyboard Events**: wx.onKeyUp, wx.onKeyDown, wx.offKeyUp, wx.offKeyDown
+- **Battery**: wx.getBatteryInfoSync
+- **Keyboard Events**: wx.onKeyUp, wx.onKeyDown, wx.offKeyUp, wx.offKeyDown (4 functions)
 - **Screen**: wx.setVisualEffectOnCapture
 
 ### Debug (~20+ functions)
@@ -244,7 +272,7 @@
 - wx.setEnableDebug, wx.getRealtimeLogManager, wx.getLogManager
 
 ### Base Utility (~5 functions)
-- wx.env, wx.canIUse, wx.base64ToArrayBuffer, wx.arrayBufferToBase64
+- wx.env
 
 ### WXML Advanced (~12 functions)
 - **MediaQueryObserver**: wx.createMediaQueryObserver, MediaQueryObserver.disconnect, MediaQueryObserver.observe (3 functions)
@@ -295,4 +323,25 @@
 3. Worklet Animation (12 functions)
 4. Chat Tools (9 functions)
 
-**Total Missing**: ~330+ functions
+**Total Missing**: ~363+ wx functions
+
+---
+
+## UPDATED COVERAGE SUMMARY (2026-01-01)
+
+Based on actual FFI files:
+- **Currently Covered**: 288 unique wx.* functions
+- **Recently Added**: 17 base/system functions (system info sync, event off handlers, utilities)
+- **Actually Missing**: ~363+ wx functions
+
+**Recent Improvements:**
+1. ✅ System info sync methods NOW COVERED (getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, etc.)
+2. ✅ Event "off" handlers NOW COVERED (offAppShow, offAppHide, offError, offThemeChange, offPageNotFound, offUnhandledRejection, offLazyLoadError)
+3. ✅ Utility functions NOW COVERED (canIUse, base64ToArrayBuffer, arrayBufferToBase64)
+4. ✅ Account/Launch info NOW COVERED (getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync)
+
+**Still Missing:**
+1. VoIP join1v1Chat, setEnable1v1Chat NOT covered
+2. Media functions NOT covered: getAvailableAudioSources, setInnerAudioOption, createBackgroundAudioManager, startRecord, stopRecord, createEditorContext, createMediaRecorder
+3. Privacy functions NOT covered: onNeedPrivacyAuthorization, openPrivacyContract, requirePrivacyAuthorize
+4. BLE MTU functions NOT covered: setBLEMTU, getBLEMTU, onBLEMTUChange, offBLEMTUChange, getBLEDeviceRSSI

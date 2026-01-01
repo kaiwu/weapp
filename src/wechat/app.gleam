@@ -10,10 +10,72 @@ import wechat/object.{
 }
 
 /// `wx.getAppBaseInfo`
-/// Get app base info
+/// Get app base info (sync)
 ///
 @external(javascript, "../wechat_ffi.mjs", "getAppBaseInfo")
-pub fn get_app_base_info(complete cb: WechatCallback) -> Promise(WechatResult)
+pub fn get_app_base_info() -> JsObject
+
+/// `wx.getSystemInfo`
+/// Get system information (async)
+///
+@external(javascript, "../wechat_ffi.mjs", "getSystemInfo")
+pub fn get_system_info(complete cb: WechatCallback) -> Promise(WechatResult)
+
+/// `wx.getSystemInfoSync`
+/// Get system information (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getSystemInfoSync")
+pub fn get_system_info_sync() -> JsObject
+
+/// `wx.getSystemInfoAsync`
+/// Get system information (async without callback)
+///
+@external(javascript, "../wechat_ffi.mjs", "getSystemInfoAsync")
+pub fn get_system_info_async(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.getSystemSetting`
+/// Get system settings (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getSystemSetting")
+pub fn get_system_setting() -> JsObject
+
+/// `wx.getDeviceInfo`
+/// Get device info (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getDeviceInfo")
+pub fn get_device_info() -> JsObject
+
+/// `wx.getWindowInfo`
+/// Get window info (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getWindowInfo")
+pub fn get_window_info() -> JsObject
+
+/// `wx.getAppAuthorizeSetting`
+/// Get app authorize setting (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getAppAuthorizeSetting")
+pub fn get_app_authorize_setting() -> JsObject
+
+/// `wx.getAccountInfoSync`
+/// Get account info (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getAccountInfoSync")
+pub fn get_account_info_sync() -> JsObject
+
+/// `wx.getLaunchOptionsSync`
+/// Get launch options (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getLaunchOptionsSync")
+pub fn get_launch_options_sync() -> JsObject
+
+/// `wx.getEnterOptionsSync`
+/// Get enter options (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getEnterOptionsSync")
+pub fn get_enter_options_sync() -> JsObject
 
 /// global function `getApp()`
 ///
@@ -58,3 +120,21 @@ pub fn clear_interval(id id: Int) -> Nil
 ///
 @external(javascript, "../wechat_ffi.mjs", "decode_uri_component")
 pub fn decode_uri_component(uri: String) -> JsObject
+
+/// `wx.canIUse`
+/// Check if API is available
+///
+@external(javascript, "../wechat_ffi.mjs", "canIUse")
+pub fn can_i_use(schema: String) -> Bool
+
+/// `wx.base64ToArrayBuffer`
+/// Convert base64 string to ArrayBuffer
+///
+@external(javascript, "../wechat_ffi.mjs", "base64ToArrayBuffer")
+pub fn base64_to_array_buffer(base64: String) -> JsObject
+
+/// `wx.arrayBufferToBase64`
+/// Convert ArrayBuffer to base64 string
+///
+@external(javascript, "../wechat_ffi.mjs", "arrayBufferToBase64")
+pub fn array_buffer_to_base64(buffer: JsObject) -> String

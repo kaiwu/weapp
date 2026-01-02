@@ -1,5 +1,5 @@
 name = "weapp"
-version = "1.0.4"
+version = "1.0.5"
 description = "Gleam bindings for wechat miniprogram, a.k.a weapp"
 target = "javascript"
 

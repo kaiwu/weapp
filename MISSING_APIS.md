@@ -31,22 +31,9 @@
 ### Map Advanced (~28 functions)
 - MapContext: addArc, addCustomLayer, addGroundOverlay, addMarkers, addVisualLayer, eraseLines, executeVisualLayerCommand, fromScreenLocation, getCenterLocation, getRegion, getRotate, getScale, getSkew, includePoints, initMarkerCluster, moveAlong, moveToLocation, on, openMapApp, removeArc, removeCustomLayer, removeGroundOverlay, removeMarkers, removeVisualLayer, setBoundary, setCenterOffset, setLocMarkerIcon, toScreenLocation, translateMarker, updateGroundOverlay
 
-### Media Context Methods (~130+ functions)
-- **VideoContext**: exitBackgroundPlayback, exitCasting, exitFullScreen, exitPictureInPicture, hideStatusBar, pause, play, playbackRate, reconnectCasting, requestBackgroundPlayback, requestFullScreen, seek, sendDanmu, showStatusBar, startCasting, stop, switchCasting (15 functions) - IMPLEMENTED
-- **InnerAudioContext**: destroy, on/off for Canplay, Ended, Error, Pause, Play, Seeked, Seeking, Stop, TimeUpdate, Waiting, plus play/pause/seek/stop (20+ functions) - IMPLEMENTED
-- **AudioContext**: pause, play, seek, setSrc (4 functions) - IMPLEMENTED
+### Media Context Methods (~24 functions)
 - **BufferSourceNode**: connect, disconnect, start, stop (4 functions)
-- **MediaAudioPlayer**: addAudioSource, destroy, removeAudioSource, start, stop (5 functions) - IMPLEMENTED
-- **WebAudioContext**: close, createAnalyser, createBiquadFilter, createBuffer, createBufferSource, createChannelMerger, createChannelSplitter, createConstantSource, createDelay, createDynamicsCompressor, createGain, createIIRFilter, createOscillator, createPanner, createPeriodicWave, createScriptProcessor, createWaveShaper, decodeAudioData, resume, suspend (20+ functions) - IMPLEMENTED
-- **BackgroundAudioManager**: on/off for Canplay, Ended, Error, Next, Pause, Play, Prev, Seeked, Seeking, Stop, TimeUpdate, Waiting, plus play/pause/seek/stop (20+ functions) - IMPLEMENTED
-- **LivePlayerContext**: exitBackgroundPlayback, exitCasting, exitFullScreen, exitPictureInPicture, mute, pause, play, reconnectCasting, requestBackgroundPlayback, requestFullScreen, resume, snapshot, startCasting, stop, switchCasting (14 functions) - IMPLEMENTED
-- **LivePusherContext**: 35+ methods (BGM, camera, filters, makeup, stickers, preview, zoom, torch, etc.) - IMPLEMENTED
-- **RecorderManager**: on/off for Error, FrameRecorded, InterruptionBegin, InterruptionEnd, Pause, Resume, Start, Stop, plus pause/resume/start/stop (11 functions) - IMPLEMENTED
-- **CameraContext**: onCameraFrame, setZoom, startRecord, stopRecord, takePhoto (5 functions) - IMPLEMENTED
 - **EditorContext**: blur, clear, deleteText, format, getBounds, getContents, getHistoryState, getSelection, getSelectionText, insertCustomBlock, insertDivider, insertImage, insertText, redo, removeFormat, scrollIntoView, setContents, setSelection, undo (20+ functions)
-- **MediaContainer**: addTrack, destroy, export, extractDataSource, removeTrack (5 functions) - IMPLEMENTED
-- **MediaRecorder**: destroy, off, on, pause, requestFrame, resume, start, stop (7 functions) - IMPLEMENTED
-- **VideoDecoder**: getFrameData, off, on, remove, seek, start, stop (6 functions) - IMPLEMENTED
 
 ### Storage Advanced (~13 functions)
 - CacheManager: addRule, addRules, clearCaches, clearRules, deleteCache, deleteCaches, deleteRule, deleteRules, match, off, on, start, stop
@@ -156,3 +143,5 @@ The priority should be on binding the remaining top-level wx.* functions and the
 - BackgroundAudioManager: play, pause, stop, seek
 - BackgroundAudioManager: onCanplay, onPlay, onPause, onStop, onEnded, onError, onNext, onPrev, onSeeked, onSeeking, onTimeUpdate, onWaiting
 - BackgroundAudioManager: offCanplay, offPlay, offPause, offStop, offEnded, offError, offNext, offPrev, offSeeked, offSeeking, offTimeUpdate, offWaiting
+
+

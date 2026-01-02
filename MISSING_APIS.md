@@ -4,67 +4,40 @@
 
 ## Coverage Summary
 
-- **Total wx Functions Covered**: 363 functions (+75 from WX_APIS.md phases 1-5, 10-16)
+- **Total wx Functions Covered**: 363 functions
 - **Total wx Functions in WeChat Docs**: ~600+ functions
 - **Coverage**: ~60%
 
-## MISSING WX FUNCTIONS (~330+)
+## MISSING WX FUNCTIONS (~237+)
 
-### Base/System (~7 functions - STILL MISSING)
-- **System**:  wx.getDeviceBenchmarkInfo,  wx.getSkylineInfo,  wx.getSkylineInfoSync,  wx.getRendererUserAgent,  wx.openSystemBluetoothSetting,  wx.openAppAuthorizeSetting
+### Base/System (~3 functions)
 - **Update**: wx.updateWeChatApp
 - **Lifecycle**: wx.getApiCategory
 - **Utility**: wx.env
 
-### Network (~2 functions - STILL MISSING)
-- **WebSocket Off**:  wx.offSocketOpen,  wx.offSocketMessage,  wx.offSocketError,  wx.offSocketClose
-- **VoIP**: wx.join1v1Chat (already covered), wx.setEnable1v1Chat (already covered)
-- **Analytics**:  wx.getExptInfoSync,  wx.reportAnalytics
-
-### Media (~3 functions - STILL MISSING)
-- **Audio**:  wx.getAvailableAudioSources,  wx.setInnerAudioOption, wx.createBackgroundAudioManager (already covered)
-- **Recorder**:  wx.startRecord,  wx.stopRecord
-- **Editor**: wx.createEditorContext (already covered)
-- **Media Recorder**:  wx.createMediaRecorder
-
-### Open Privacy (NOW COVERED)
--  wx.onNeedPrivacyAuthorization,  wx.openPrivacyContract,  wx.requirePrivacyAuthorize
-
-### Route & Navigation (~14 functions - 2 NOW COVERED)
--  wx.redirectTo,  wx.rewriteRoute, wx.restartMiniProgram
-- wx.router (already has router.addRouteBuilder, router.getRouteContext, router.removeRouteBuilder in base_ffi)
-- wx.onBeforePageUnload, wx.onBeforePageLoad, wx.onBeforeAppRoute, wx.onAppRouteDone, wx.onAppRoute, wx.onAfterPageUnload, wx.onAfterPageLoad
-- wx.offBeforePageUnload, wx.offBeforePageLoad, wx.offBeforeAppRoute, wx.offAppRouteDone, wx.offAppRoute, wx.offAfterPageUnload, wx.offAfterPageLoad
-
-### EventChannel (~4 functions)
+### EventChannel (~5 functions)
 - wx.EventChannel
 - EventChannel.emit, EventChannel.off, EventChannel.on, EventChannel.once
 
-### Jump & Navigate (~10 functions)
+### Jump & Navigate (~8 functions)
 - wx.restartMiniProgram
 - wx.openOfficialAccountProfile, wx.openOfficialAccountChat, wx.openOfficialAccountArticle, wx.openInquiriesTopic
 - wx.openEmbeddedMiniProgram
 - wx.onEmbeddedMiniProgramHeightChange, wx.offEmbeddedMiniProgramHeightChange
 
-### Share Advanced (~6 functions)
-- wx.showShareImageMenu, wx.shareVideoMessage, wx.shareToOfficialAccount, wx.shareFileMessage
-- wx.onCopyUrl, wx.offCopyUrl
-- wx.authPrivateMessage
+### Route & Navigation Hooks (~14 functions)
+- wx.onBeforePageUnload, wx.onBeforePageLoad, wx.onBeforeAppRoute, wx.onAppRouteDone, wx.onAppRoute, wx.onAfterPageUnload, wx.onAfterPageLoad
+- wx.offBeforePageUnload, wx.offBeforePageLoad, wx.offBeforeAppRoute, wx.offAppRouteDone, wx.offAppRoute, wx.offAfterPageUnload, wx.offAfterPageLoad
 
 ### Chat Tool (~9 functions)
 - wx.shareVideoToGroup, wx.shareImageToGroup, wx.shareFileToGroup, wx.shareEmojiToGroup, wx.shareAppMessageToGroup
 - wx.selectGroupMembers, wx.openChatTool, wx.notifyGroupMembers, wx.getChatToolInfo
 
-### UI Advanced (~20 functions)
-- **Scroll**: wx.pageScrollTo, ScrollViewContext methods (6 functions)
-- **Custom Component**: wx.nextTick
-- **Menu**: wx.onOnUserTriggerTranslation, wx.onMenuButtonBoundingClientRectWeightChange, wx.offOnUserTriggerTranslation, wx.offMenuButtonBoundingClientRectWeightChange, wx.getMenuButtonBoundingClientRect
-- **Window**: wx.setWindowSize, wx.onWindowStateChange, wx.onWindowResize, wx.onOnParallelStateChange, wx.offWindowStateChange, wx.offWindowResize, wx.offOnParallelStateChange, wx.checkIsPictureInPictureActive
-- **Sticky**: wx.setTopBarText
+### UI Advanced (~6 functions)
+- **Scroll**: ScrollViewContext methods (6 functions)
 
 ### Canvas Advanced (~50+ functions)
-- **Canvas**: wx.createOffscreenCanvas, wx.canvasToTempFilePath, wx.canvasPutImageData, wx.canvasGetImageData (4 functions)
-- **Canvas Methods**: cancelAnimationFrame, createImage, createImageData, createPath2D, getContext, requestAnimationFrame, toDataURL (7 functions)
+- **Canvas Methods**: createPath2D, getContext, toDataURL (3 functions)
 - **CanvasContext**: arc, arcTo, beginPath, bezierCurveTo, clearRect, clip, closePath, createCircularGradient, createLinearGradient, createPattern, draw, drawImage, fill, fillRect, fillText, lineTo, measureText, moveTo, quadraticCurveTo, rect, restore, rotate, save, scale, setFillStyle, setFontSize, setGlobalAlpha, setLineCap, setLineDash, setLineJoin, setLineWidth, setMiterLimit, setShadow, setStrokeStyle, setTextAlign, setTextBaseline, setTransform, stroke, strokeRect, strokeText, transform, translate (40+ functions)
 - **CanvasGradient**: addColorStop (1 function)
 - **OffscreenCanvas**: createImage, getContext (2 functions)
@@ -73,7 +46,7 @@
 ### Map Advanced (~28 functions)
 - MapContext: addArc, addCustomLayer, addGroundOverlay, addMarkers, addVisualLayer, eraseLines, executeVisualLayerCommand, fromScreenLocation, getCenterLocation, getRegion, getRotate, getScale, getSkew, includePoints, initMarkerCluster, moveAlong, moveToLocation, on, openMapApp, removeArc, removeCustomLayer, removeGroundOverlay, removeMarkers, removeVisualLayer, setBoundary, setCenterOffset, setLocMarkerIcon, toScreenLocation, translateMarker, updateGroundOverlay
 
-### Media Context Methods (~150+ functions)
+### Media Context Methods (~130+ functions)
 - **VideoContext**: exitBackgroundPlayback, exitCasting, exitFullScreen, exitPictureInPicture, hideStatusBar, pause, play, playbackRate, reconnectCasting, requestBackgroundPlayback, requestFullScreen, seek, sendDanmu, showStatusBar, startCasting, stop, switchCasting (15 functions)
 - **InnerAudioContext**: destroy, on/off for Canplay, Ended, Error, Pause, Play, Seeked, Seeking, Stop, TimeUpdate, Waiting, plus play/pause/seek/stop (20+ functions)
 - **AudioContext**: pause, play, seek, setSrc (4 functions)
@@ -90,31 +63,26 @@
 - **MediaRecorder**: destroy, off, on, pause, requestFrame, resume, start, stop (7 functions)
 - **VideoDecoder**: getFrameData, off, on, remove, seek, start, stop (6 functions)
 
-### Location Advanced (~7 functions)
+### Location Advanced (~9 functions)
 - wx.stopLocationUpdate, wx.startLocationUpdateBackground, wx.startLocationUpdate
 - wx.onLocationChangeError, wx.onLocationChange
 - wx.offLocationChangeError, wx.offLocationChange
 - wx.getFuzzyLocation, wx.choosePoi
 
-### Storage Sync (~4 functions)
-- wx.setStorageSync, wx.getStorageSync, wx.removeStorageSync, wx.clearStorageSync
-
-### Storage Advanced (~11 functions)
+### Storage Advanced (~13 functions)
 - CacheManager: addRule, addRules, clearCaches, clearRules, deleteCache, deleteCaches, deleteRule, deleteRules, match, off, on, start, stop
 
 ### Payment Advanced (~6 functions)
 - wx.requestVirtualPayment, wx.requestPluginPayment, wx.requestMerchantTransfer, wx.openHKOfflinePayView
 - GlobalPayment: abort, openMethodPicker, requestGlobalPayment
 
-### Data Analysis Advanced (~3 functions)
-- wx.reportAnalytics, wx.getExptInfoSync, wx.getCommonConfig
+### Data Analysis Advanced (~1 function)
+- wx.getCommonConfig
 
-### File Advanced (~5 functions)
-- wx.saveFileToDisk
+### File Advanced (~50+ functions)
 - FileSystemManager: access, accessSync, appendFile, appendFileSync, close, closeSync, copyFile, copyFileSync, fstat, fstatSync, ftruncate, ftruncateSync, getFileInfo, getSavedFileList, mkdir, mkdirSync, open, openSync, read, readCompressedFile, readCompressedFileSync, readdir, readdirSync, readFile, readFileSync, readSync, readZipEntry, removeSavedFile, rename, renameSync, rmdir, rmdirSync, saveFile, saveFileSync, stat, statSync, truncate, truncateSync, unlink, unlinkSync, unzip, write, writeFile, writeFileSync, writeSync (50+ methods)
 
-### Open Advanced (~40+ functions)
-- **Account**: wx.getAccountInfoSync
+### Open Advanced (~35+ functions)
 - **Authorize**: wx.authorizeForMiniProgram
 - **Card**: wx.openCard, wx.addCard
 - **Invoice**: wx.chooseInvoiceTitle, wx.chooseInvoice
@@ -133,15 +101,9 @@
 - **Customer Service**: wx.openCustomerServiceChat
 - **Sticker**: wx.openStickerSetView, wx.openStickerIPView, wx.openSingleStickerView
 
-### Device Advanced (~75+ functions)
-- **Bluetooth**: wx.makeBluetoothPair, wx.isBluetoothDevicePaired, wx.setBLEMTU, wx.getBLEMTU, wx.onBLEMTUChange, wx.offBLEMTUChange, wx.getBLEDeviceRSSI (7 functions - incorrectly marked as covered)
+### Device Advanced (~60+ functions)
 - **NFC Detailed**: NFCAdapter methods (getIsoDep, getMifareClassic, getMifareUltralight, getNdef, getNfcA, getNfcB, getNfcF, getNfcV, onDiscovered, offDiscovered, startDiscovery, stopDiscovery), IsoDep/MifareClassic/MifareUltralight/Ndef/NfcA/NfcB/NfcF/NfcV types with multiple methods each (60+ functions)
 - **NFC HCE**: wx.stopHCE, wx.startHCE, wx.sendHCEMessage, wx.onHCEMessage, wx.offHCEMessage, wx.getHCEState (6 functions)
-- **WiFi**: wx.onWifiConnectedWithPartialInfo, wx.offWifiConnectedWithPartialInfo, wx.connectWifi (3 functions)
-- **Accessibility**: wx.checkIsOpenAccessibility
-- **Battery**: wx.getBatteryInfoSync
-- **Keyboard Events**: wx.onKeyUp, wx.onKeyDown, wx.offKeyUp, wx.offKeyDown (4 functions)
-- **Screen**: wx.setVisualEffectOnCapture
 
 ### Debug (~20+ functions)
 - **Console**: console.debug, console.error, console.group, console.groupEnd, console.info, console.log, console.warn (7 functions)
@@ -149,9 +111,6 @@
 - **RealtimeLogManager**: addFilterMsg, error, getCurrentState, in, info, setFilterMsg, tag, warn (8 functions)
 - **RealtimeTagLogManager**: addFilterMsg, error, info, setFilterMsg, warn (5 functions)
 - wx.setEnableDebug, wx.getRealtimeLogManager, wx.getLogManager
-
-### Base Utility (~5 functions)
-- wx.env
 
 ### WXML Advanced (~12 functions)
 - **MediaQueryObserver**: wx.createMediaQueryObserver, MediaQueryObserver.disconnect, MediaQueryObserver.observe (3 functions)
@@ -176,25 +135,15 @@
 
 ---
 
-**Total Missing**: ~363+ wx functions
+**Total Missing**: ~237+ wx functions (instance methods not counted separately)
 
 ---
 
-## UPDATED COVERAGE SUMMARY (2026-01-01)
+## Notes
 
-Based on actual FFI files:
-- **Currently Covered**: 288 unique wx.* functions
-- **Recently Added**: 17 base/system functions (system info sync, event off handlers, utilities)
-- **Actually Missing**: ~363+ wx functions
+Many of the "missing" APIs are instance methods on objects returned by covered wx functions. For example:
+- `wx.createMapContext` is covered, but MapContext instance methods need to be bound
+- `wx.getFileSystemManager` is covered, but FileSystemManager instance methods need to be bound
+- `wx.createVideoContext` is covered, but VideoContext instance methods need to be bound
 
-**Recent Improvements:**
-1.  System info sync methods NOW COVERED (getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, etc.)
-2.  Event "off" handlers NOW COVERED (offAppShow, offAppHide, offError, offThemeChange, offPageNotFound, offUnhandledRejection, offLazyLoadError)
-3.  Utility functions NOW COVERED (canIUse, base64ToArrayBuffer, arrayBufferToBase64)
-4.  Account/Launch info NOW COVERED (getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync)
-
-**Still Missing:**
-1. VoIP join1v1Chat, setEnable1v1Chat NOT covered
-2. Media functions NOT covered: getAvailableAudioSources, setInnerAudioOption, createBackgroundAudioManager, startRecord, stopRecord, createEditorContext, createMediaRecorder
-3. Privacy functions NOT covered: onNeedPrivacyAuthorization, openPrivacyContract, requirePrivacyAuthorize
-4. BLE MTU functions NOT covered: setBLEMTU, getBLEMTU, onBLEMTUChange, offBLEMTUChange, getBLEDeviceRSSI
+The priority should be on binding the remaining top-level wx.* functions and the most commonly used instance methods.

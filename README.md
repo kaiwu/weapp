@@ -25,7 +25,7 @@ Generate an up-to-date coverage report:
 ```
 
 This will scan all FFI files and generate a detailed `COVERAGE_REPORT.md` showing:
-- Total wx functions covered (currently **288 functions, ~48% coverage**)
+- Total wx functions covered (currently **363 functions, ~60% coverage**)
 - Breakdown by FFI module
 - List of all covered functions
 - Detection of duplicate implementations
@@ -540,19 +540,21 @@ super easy to extend as many as one needs
 
 ## Total Functions Count
 
-**288 wx API functions** bound across 32 Gleam modules using 12 FFI modules:
+**363 wx API functions** bound across 32 Gleam modules using 12 FFI modules:
 
 ### By FFI Module (wx functions):
-- **wechat_base_ffi.mjs** (95 functions): Login, storage, payment, navigation, system utilities, background fetch, crypto, router, calendar, contact, phone, scan, clipboard, vibrate, app events (on/off), lifecycle, performance
-- **wechat_device_ffi.mjs** (76 functions): Sensors (accelerometer, compass, gyroscope), battery, screen, Bluetooth (general, BLE, peripheral), NFC, WiFi, Beacon, keyboard, memory
-- **wechat_network_ffi.mjs** (41 functions): Request, WebSocket, TCP/UDP, mDNS, VoIP, network events
-- **wechat_media_ffi.mjs** (32 functions): Image, Video, Audio (inner, voice, web, background, media audio), Recorder, Live streaming, Camera, MediaContainer, VideoDecoder
-- **wechat_ui_ffi.mjs** (29 functions): Interaction (toast, modal, loading, action sheet), navigation bar, tabbar, background, animation, pull down refresh, share menu
+- **wechat_base_ffi.mjs** (104 functions): Login, storage, payment, navigation, system utilities, background fetch, crypto, router, calendar, contact, phone, scan, clipboard, vibrate, app events (on/off), lifecycle, performance, privacy
+- **wechat_device_ffi.mjs** (93 functions): Sensors (accelerometer, compass, gyroscope), battery, screen, Bluetooth (general, BLE, peripheral), NFC, WiFi, Beacon, keyboard, memory, accessibility
+- **wechat_network_ffi.mjs** (45 functions): Request, WebSocket, TCP/UDP, mDNS, VoIP, network events
+- **wechat_media_ffi.mjs** (37 functions): Image, Video, Audio (inner, voice, web, background, media audio), Recorder, Live streaming, Camera, MediaContainer, VideoDecoder
+- **wechat_ui_ffi.mjs** (52 functions): Interaction (toast, modal, loading, action sheet), navigation bar, tabbar, background, animation, pull down refresh, share menu, window, scroll
+- **wechat_canvas_ffi.mjs** (9 functions): createCanvasContext, canvasGetImageData, canvasPutImageData, canvasToTempFilePath, createOffscreenCanvas, requestAnimationFrame, cancelAnimationFrame, createImage, createImageData
 - **wechat_wxml_ffi.mjs** (2 functions): createSelectorQuery, createIntersectionObserver
-- **wechat_canvas_ffi.mjs** (1 function): createCanvasContext
-- **wechat_filesystem_ffi.mjs** (1 function): getFileSystemManager
+- **wechat_filesystem_ffi.mjs** (2 functions): getFileSystemManager, saveFileToDisk
 - **wechat_map_ffi.mjs** (1 function): createMapContext
-- **wechat_ffi.mjs** (11 functions): System info (getAppBaseInfo, getSystemInfo, getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, getAppAuthorizeSetting, getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync), utilities (canIUse, base64ToArrayBuffer, arrayBufferToBase64)
+- **wechat_cache_ffi.mjs** (1 function): createCacheManager
+- **wechat_performance_ffi.mjs** (varies): getPerformance and related functions
+- **wechat_ffi.mjs** (18 functions): System info (getAppBaseInfo, getSystemInfo, getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, getAppAuthorizeSetting, getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync, getDeviceBenchmarkInfo, getSkylineInfo, getSkylineInfoSync, getRendererUserAgent), utilities (canIUse, base64ToArrayBuffer, arrayBufferToBase64)
 
 ### By Gleam Module (public API coverage):
 - **wechat/base** - System, routing, payment, clipboard, vibrate, scan, update, background fetch, crypto, router
@@ -587,4 +589,4 @@ super easy to extend as many as one needs
 - **wechat/analytics** - Analytics and monitoring
 - **wechat/app_event** - App lifecycle events
 
-**Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs (~360+ wx functions not yet bound).
+**Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs (~237+ wx functions not yet bound).

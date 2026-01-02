@@ -2,6 +2,7 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/)
 ////
 
+import gleam/javascript/promise.{type Promise}
 import wechat/object.{type JsObject}
 
 /// CanvasContext type
@@ -237,3 +238,82 @@ pub fn canvas_set_shadow(
   offset_x: Float,
   offset_y: Float,
 ) -> Nil
+
+/// Phase 16: Canvas Advanced
+///
+/// Canvas Creation
+///
+/// `wx.createOffscreenCanvas`
+/// Create an offscreen canvas
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "createOffscreenCanvas")
+pub fn create_offscreen_canvas(options o: JsObject) -> JsObject
+
+/// `wx.canvasToTempFilePath`
+/// Export canvas to temporary file path
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "canvasToTempFilePath")
+pub fn canvas_to_temp_file_path(
+  canvas_id c: String,
+  file_type ft: String,
+  quality q: Float,
+  complete cb: fn(JsObject) -> Nil,
+) -> Promise(JsObject)
+
+/// `wx.canvasPutImageData`
+/// Put image data onto canvas
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "canvasPutImageData")
+pub fn canvas_put_image_data(
+  canvas_id c: String,
+  data d: JsObject,
+  x x: Float,
+  y y: Float,
+  width w: Float,
+  height h: Float,
+) -> Nil
+
+/// `wx.canvasGetImageData`
+/// Get image data from canvas
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "canvasGetImageData")
+pub fn canvas_get_image_data(
+  canvas_id c: String,
+  x x: Float,
+  y y: Float,
+  width w: Float,
+  height h: Float,
+  complete cb: fn(JsObject) -> Nil,
+) -> Promise(JsObject)
+
+/// Canvas Utility Methods
+///
+/// `wx.createImage`
+/// Create an image object
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "createImage")
+pub fn create_image() -> JsObject
+
+/// `wx.createImageData`
+/// Create an ImageData object
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "createImageData")
+pub fn create_image_data(width w: Float, height h: Float) -> JsObject
+
+/// `wx.createPath2D`
+/// Create a Path2D object
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "createPath2D")
+pub fn create_path_2d() -> JsObject
+
+/// `wx.requestAnimationFrame`
+/// Request animation frame
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "requestAnimationFrame")
+pub fn request_animation_frame(callback cb: fn(JsObject) -> Nil) -> Int
+
+/// `wx.cancelAnimationFrame`
+/// Cancel animation frame
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "cancelAnimationFrame")
+pub fn cancel_animation_frame(request_id i: Int) -> Nil

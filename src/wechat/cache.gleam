@@ -11,7 +11,7 @@ import wechat/object.{
 /// `wx.createCacheManager`
 /// Create a cache manager instance
 ///
-@external(javascript, "../wechat_base_ffi.mjs", "createCacheManager")
+@external(javascript, "../wechat_cache_ffi.mjs", "createCacheManager")
 pub fn create_cache_manager(options o: JsObject) -> JsObject
 
 /// `CacheManager.addRule`

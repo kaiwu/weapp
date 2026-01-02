@@ -53,6 +53,30 @@ pub fn on_socket_message(callback cb: WechatResultCallback) -> Nil
 @external(javascript, "../wechat_network_ffi.mjs", "onSocketClose")
 pub fn on_socket_close(callback cb: WechatResultCallback) -> Nil
 
+/// `wx.offSocketOpen`
+/// Remove WebSocket connection open event listener
+///
+@external(javascript, "../wechat_network_ffi.mjs", "offSocketOpen")
+pub fn off_socket_open(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.offSocketMessage`
+/// Remove WebSocket message event listener
+///
+@external(javascript, "../wechat_network_ffi.mjs", "offSocketMessage")
+pub fn off_socket_message(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.offSocketError`
+/// Remove WebSocket error event listener
+///
+@external(javascript, "../wechat_network_ffi.mjs", "offSocketError")
+pub fn off_socket_error(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.offSocketClose`
+/// Remove WebSocket close event listener
+///
+@external(javascript, "../wechat_network_ffi.mjs", "offSocketClose")
+pub fn off_socket_close(callback cb: WechatResultCallback) -> Nil
+
 /// `wx.sendSocketMessage`
 /// Send data through WebSocket connection
 ///

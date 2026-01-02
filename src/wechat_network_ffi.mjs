@@ -42,6 +42,22 @@ export function onSocketClose(cb) {
   wx.onSocketClose(cb);
 }
 
+export function offSocketOpen(cb) {
+  wx.offSocketOpen(cb);
+}
+
+export function offSocketMessage(cb) {
+  wx.offSocketMessage(cb);
+}
+
+export function offSocketError(cb) {
+  wx.offSocketError(cb);
+}
+
+export function offSocketClose(cb) {
+  wx.offSocketClose(cb);
+}
+
 export function sendSocketMessage(d, cb) {
   return new Promise(resolve => {
     wx.sendSocketMessage({

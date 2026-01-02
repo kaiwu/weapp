@@ -18,6 +18,24 @@ pub type InnerAudioContext
 @external(javascript, "../wechat_media_ffi.mjs", "createInnerAudioContext")
 pub fn create_inner_audio_context() -> InnerAudioContext
 
+/// `wx.getAvailableAudioSources`
+/// Get available audio input sources
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getAvailableAudioSources")
+pub fn get_available_audio_sources(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.setInnerAudioOption`
+/// Set InnerAudioContext options globally
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioOption")
+pub fn set_inner_audio_option(
+  mix_with_others mwo: Bool,
+  obey_mute_switch oms: Bool,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
 /// `wx.playVoice`
 /// Play voice
 ///

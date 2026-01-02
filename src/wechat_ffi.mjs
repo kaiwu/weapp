@@ -122,6 +122,61 @@ export function arrayBufferToBase64(buffer) {
   return wx.arrayBufferToBase64(buffer)
 }
 
+// Phase 1: Base/System APIs
+export function getDeviceBenchmarkInfo(cb) {
+  return new Promise(resolve => {
+    wx.getDeviceBenchmarkInfo({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getSkylineInfo(cb) {
+  return new Promise(resolve => {
+    wx.getSkylineInfo({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getSkylineInfoSync() {
+  return wx.getSkylineInfoSync()
+}
+
+export function getRendererUserAgent(cb) {
+  return new Promise(resolve => {
+    wx.getRendererUserAgent({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function openSystemBluetoothSetting(cb) {
+  return new Promise(resolve => {
+    wx.openSystemBluetoothSetting({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function openAppAuthorizeSetting(cb) {
+  return new Promise(resolve => {
+    wx.openAppAuthorizeSetting({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
 export function page_route(p) {
   return p.route(); 
 }

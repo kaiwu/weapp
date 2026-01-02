@@ -1122,3 +1122,49 @@ export function previewMedia(urls, current, showMenu, cb) {
   })
 }
 
+// Phase 3: Media APIs
+export function getAvailableAudioSources(cb) {
+  return new Promise(resolve => {
+    wx.getAvailableAudioSources({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function setInnerAudioOption(mixWithOthers, obeyMuteSwitch, cb) {
+  return new Promise(resolve => {
+    wx.setInnerAudioOption({
+      mixWithOthers,
+      obeyMuteSwitch,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function startRecord(cb) {
+  return new Promise(resolve => {
+    wx.startRecord({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function stopRecord(cb) {
+  return new Promise(resolve => {
+    wx.stopRecord({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function createMediaRecorder(component, options) {
+  return wx.createMediaRecorder(component, options)
+}

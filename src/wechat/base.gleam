@@ -105,9 +105,8 @@ pub fn upload_file(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
-/// `wx.getSystemInfo`
-///
-@external(javascript, "../wechat_base_ffi.mjs", "getSystemInfo")
+/// wx.getSystemInfo is duplicated to keep backward compatibility
+@external(javascript, "../wechat_ffi.mjs", "getSystemInfo")
 pub fn get_system_info(complete cb: WechatCallback) -> Promise(WechatResult)
 
 /// `wx.getSetting`
@@ -225,6 +224,24 @@ pub fn navigate_back(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
+/// `wx.redirectTo`
+/// Redirect to page in app, closing current page
+///
+@external(javascript, "../wechat_base_ffi.mjs", "redirectTo")
+pub fn redirect_to(
+  to url: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.rewriteRoute`
+/// Rewrite route with new parameters
+///
+@external(javascript, "../wechat_base_ffi.mjs", "rewriteRoute")
+pub fn rewrite_route(
+  options o: JsObject,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
 /// `wx.getPrivacySetting`
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "getPrivacySetting")
@@ -241,13 +258,15 @@ pub fn get_privacy_contract(
 fn wx_request(o: JsObject) -> Promise(WechatResult)
 
 /// `wx.request`
+/// Simplified request using object builder pattern
+/// For more control, use wechat/network.request() which accepts explicit parameters
 ///
 pub fn request(
   method m: String,
   url u: String,
   header h: JsObject,
   data d: JsObject,
-  complete cb: fn() -> Nil,
+  complete cb: WechatCallback,
 ) -> Promise(WechatResult) {
   object.literal([#("method", m), #("url", u)])
   |> object.merge(object.literal([#("header", h), #("data", d)]))
@@ -266,7 +285,7 @@ pub fn request_payment(
   pkg p: String,
   sign_type s: String,
   pay_sign ps: String,
-  complete cb: fn() -> Nil,
+  complete cb: WechatCallback,
 ) -> Promise(WechatResult) {
   object.literal([
     #("timeStamp", t),

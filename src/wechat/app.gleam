@@ -138,3 +138,47 @@ pub fn base64_to_array_buffer(base64: String) -> JsObject
 ///
 @external(javascript, "../wechat_ffi.mjs", "arrayBufferToBase64")
 pub fn array_buffer_to_base64(buffer: JsObject) -> String
+
+/// `wx.getDeviceBenchmarkInfo`
+/// Get device performance benchmark info
+///
+@external(javascript, "../wechat_ffi.mjs", "getDeviceBenchmarkInfo")
+pub fn get_device_benchmark_info(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.getSkylineInfo`
+/// Check if Skyline rendering engine is supported
+///
+@external(javascript, "../wechat_ffi.mjs", "getSkylineInfo")
+pub fn get_skyline_info(complete cb: WechatCallback) -> Promise(WechatResult)
+
+/// `wx.getSkylineInfoSync`
+/// Check if Skyline rendering engine is supported (sync)
+///
+@external(javascript, "../wechat_ffi.mjs", "getSkylineInfoSync")
+pub fn get_skyline_info_sync() -> JsObject
+
+/// `wx.getRendererUserAgent`
+/// Get Webview renderer UserAgent string
+///
+@external(javascript, "../wechat_ffi.mjs", "getRendererUserAgent")
+pub fn get_renderer_user_agent(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.openSystemBluetoothSetting`
+/// Open system Bluetooth settings page (Android only)
+///
+@external(javascript, "../wechat_ffi.mjs", "openSystemBluetoothSetting")
+pub fn open_system_bluetooth_setting(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.openAppAuthorizeSetting`
+/// Open app authorization settings page
+///
+@external(javascript, "../wechat_ffi.mjs", "openAppAuthorizeSetting")
+pub fn open_app_authorize_setting(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)

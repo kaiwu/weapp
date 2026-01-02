@@ -16,6 +16,21 @@ Add the package to your gleam project
 gleam add weapp
 ```
 
+## Coverage Report
+
+Generate an up-to-date coverage report:
+
+```sh
+./coverage.sh
+```
+
+This will scan all FFI files and generate a detailed `COVERAGE_REPORT.md` showing:
+- Total wx functions covered (currently **288 functions, ~48% coverage**)
+- Breakdown by FFI module
+- List of all covered functions
+- Detection of duplicate implementations
+- Recommendations for next steps
+
 ## Features
 
 This library contains bindings for many frequently used wechat APIs. Gleam makes it
@@ -573,7 +588,3 @@ super easy to extend as many as one needs
 - **wechat/app_event** - App lifecycle events
 
 **Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs (~360+ wx functions not yet bound).
-
-**Recent additions**: 17 new system/base wx functions - getSystemInfoSync, getSystemInfoAsync, getSystemSetting, getDeviceInfo, getWindowInfo, getAppAuthorizeSetting, getAccountInfoSync, getLaunchOptionsSync, getEnterOptionsSync, canIUse, base64ToArrayBuffer, arrayBufferToBase64, offAppShow, offAppHide, offError, offThemeChange, offPageNotFound, offUnhandledRejection, offLazyLoadError
-
-

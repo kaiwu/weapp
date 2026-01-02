@@ -11,6 +11,17 @@ import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
 @external(javascript, "../wechat_filesystem_ffi.mjs", "getFileSystemManager")
 pub fn get_file_system_manager() -> JsObject
 
+/// Phase 11: File Advanced
+///
+/// `wx.saveFileToDisk`
+/// Save a temporary file to local disk
+///
+@external(javascript, "../wechat_filesystem_ffi.mjs", "saveFileToDisk")
+pub fn save_file_to_disk(
+  temp_file_path t: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
 /// `FileSystemManager.access`
 /// Check if a file exists
 ///

@@ -15,3 +15,15 @@ pub fn report_event(name n: String, data d: JsObject, opts o: JsObject) -> Nil
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "reportMonitor")
 pub fn report_monitor(name n: String, value v: String, opts o: JsObject) -> Nil
+
+/// `wx.reportAnalytics`
+/// Report analytics data
+///
+@external(javascript, "../wechat_base_ffi.mjs", "reportAnalytics")
+pub fn report_analytics(event_id n: String, data d: JsObject) -> Nil
+
+/// `wx.getExptInfoSync`
+/// Get experimental information synchronously
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getExptInfoSync")
+pub fn get_expt_info_sync() -> JsObject

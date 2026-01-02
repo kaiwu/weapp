@@ -2,7 +2,11 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/dev/api/media/recorder/)
 ////
 
-import wechat/object.{type JsObject, type WechatResultCallback}
+import gleam/javascript/promise.{type Promise}
+import wechat/object.{
+  type JsObject, type WechatCallback, type WechatResult,
+  type WechatResultCallback,
+}
 
 /// RecorderManager type
 ///
@@ -109,3 +113,15 @@ pub fn recorder_on_interruption_end(
   rm: RecorderManager,
   callback: WechatResultCallback,
 ) -> Nil
+
+/// `wx.startRecord` (Deprecated - use getRecorderManager instead)
+/// Start recording audio
+///
+@external(javascript, "../wechat_media_ffi.mjs", "startRecord")
+pub fn start_record(complete cb: WechatCallback) -> Promise(WechatResult)
+
+/// `wx.stopRecord` (Deprecated - use getRecorderManager instead)
+/// Stop recording audio
+///
+@external(javascript, "../wechat_media_ffi.mjs", "stopRecord")
+pub fn stop_record(complete cb: WechatCallback) -> Promise(WechatResult)

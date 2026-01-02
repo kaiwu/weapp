@@ -10,9 +10,18 @@ pub fn request_test() {
 
 pub fn websocket_test() {
   // Placeholder for WebSocket API tests
+  let _cb: fn(object.WechatResultCallback) -> Nil = fn(_) { Nil }
   let _ = network.connect_socket
   let _ = network.send_socket_message
   let _ = network.close_socket
+  let _ = network.on_socket_open
+  let _ = network.on_socket_message
+  let _ = network.on_socket_error
+  let _ = network.on_socket_close
+  let _ = network.off_socket_open
+  let _ = network.off_socket_message
+  let _ = network.off_socket_error
+  let _ = network.off_socket_close
 }
 
 pub fn tcp_socket_test() {
@@ -31,6 +40,7 @@ pub fn udp_socket_test() {
 
 pub fn mdns_test() {
   // Placeholder for mDNS API tests
+  let _cb: fn(object.WechatResultCallback) -> Nil = fn(_) { Nil }
   let _ = network.start_local_service_discovery
   let _ = network.stop_local_service_discovery
   let _ = network.on_local_service_found
@@ -38,7 +48,9 @@ pub fn mdns_test() {
 
 pub fn voip_test() {
   // Placeholder for VoIP API tests
+  let _cb: fn(object.WechatCallback) -> Nil = fn(_) { Nil }
   let _ = network.join_voip_chat
+  let _ = network.join_1v1_chat
   let _ = network.exit_voip_chat
   let _ = network.on_voip_chat_state_changed
 }

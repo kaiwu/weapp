@@ -430,3 +430,126 @@ pub fn animation_step(anim: JsObject, options o: JsObject) -> JsObject
 ///
 @external(javascript, "../wechat_ui_ffi.mjs", "animationExport")
 pub fn animation_export(anim: JsObject) -> JsObject
+
+/// Phase 15: UI Advanced
+///
+/// Scroll APIs
+///
+/// `wx.pageScrollTo`
+/// Scroll page to specified position
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "pageScrollTo")
+pub fn page_scroll_to(
+  scroll_top st: Int,
+  selector s: String,
+  duration d: Int,
+) -> Nil
+
+/// Custom Component APIs
+///
+/// `wx.nextTick`
+/// Delay some execution until next time next tick
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "nextTick")
+pub fn next_tick(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// Menu APIs
+///
+/// `wx.onMenuButtonBoundingClientRectWeightChange`
+/// Listen for menu button bounding rectangle weight changes
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "onMenuButtonBoundingClientRectWeightChange")
+pub fn on_menu_button_bounding_rect_weight_change(
+  callback cb: fn(JsObject) -> Nil,
+) -> Nil
+
+/// `wx.offMenuButtonBoundingClientRectWeightChange`
+/// Remove menu button bounding rectangle weight change listener
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "offMenuButtonBoundingClientRectWeightChange")
+pub fn off_menu_button_bounding_rect_weight_change(
+  callback cb: fn(JsObject) -> Nil,
+) -> Nil
+
+/// `wx.getMenuButtonBoundingClientRect`
+/// Get menu button bounding rectangle
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "getMenuButtonBoundingClientRect")
+pub fn get_menu_button_bounding_rect() -> JsObject
+
+/// `wx.onOnUserTriggerTranslation`
+/// Listen for user trigger translation events
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "onOnUserTriggerTranslation")
+pub fn on_on_user_trigger_translation(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offOnUserTriggerTranslation`
+/// Remove user trigger translation listener
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "offOnUserTriggerTranslation")
+pub fn off_on_user_trigger_translation(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// Window APIs
+///
+/// `wx.setWindowSize`
+/// Set window size
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "setWindowSize")
+pub fn set_window_size(
+  width w: Int,
+  height h: Int,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.onWindowStateChange`
+/// Listen for window state change events
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "onWindowStateChange")
+pub fn on_window_state_change(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offWindowStateChange`
+/// Remove window state change listener
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "offWindowStateChange")
+pub fn off_window_state_change(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.onWindowResize`
+/// Listen for window resize events
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "onWindowResize")
+pub fn on_window_resize(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offWindowResize`
+/// Remove window resize listener
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "offWindowResize")
+pub fn off_window_resize(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.onOnParallelStateChange`
+/// Listen for parallel state change events
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "onOnParallelStateChange")
+pub fn on_on_parallel_state_change(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.offOnParallelStateChange`
+/// Remove parallel state change listener
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "offOnParallelStateChange")
+pub fn off_on_parallel_state_change(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// `wx.checkIsPictureInPictureActive`
+/// Check if picture-in-picture is active
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "checkIsPictureInPictureActive")
+pub fn check_is_picture_in_picture_active() -> Bool
+
+/// Sticky Bar APIs
+///
+/// `wx.setTopBarText`
+/// Set top bar text
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "setTopBarText")
+pub fn set_top_bar_text(
+  text t: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)

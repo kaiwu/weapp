@@ -88,6 +88,15 @@ pub fn choose_message_file(
 @external(javascript, "../wechat_media_ffi.mjs", "getMediaRecorder")
 pub fn get_media_recorder() -> MediaRecorder
 
+/// `wx.createMediaRecorder`
+/// Create a media recorder to record WebGL surfaces
+///
+@external(javascript, "../wechat_media_ffi.mjs", "createMediaRecorder")
+pub fn create_media_recorder(
+  component c: JsObject,
+  options o: JsObject,
+) -> MediaRecorder
+
 /// `MediaRecorder.start`
 /// Start recording
 ///

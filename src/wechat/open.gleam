@@ -3,7 +3,10 @@
 ////
 
 import gleam/javascript/promise.{type Promise}
-import wechat/object.{type JsObject, type WechatCallback, type WechatResult}
+import wechat/object.{
+  type JsObject, type WechatCallback, type WechatResult,
+  type WechatResultCallback,
+}
 
 /// `wx.chooseAddress`
 /// Choose address
@@ -133,5 +136,29 @@ pub fn add_phone_contact(
 @external(javascript, "../wechat_base_ffi.mjs", "sendSms")
 pub fn send_sms(
   options o: JsObject,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// Privacy APIs
+///
+/// `wx.onNeedPrivacyAuthorization`
+/// Listen for privacy authorization requirement event
+///
+@external(javascript, "../wechat_base_ffi.mjs", "onNeedPrivacyAuthorization")
+pub fn on_need_privacy_authorization(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.openPrivacyContract`
+/// Open privacy contract page
+///
+@external(javascript, "../wechat_base_ffi.mjs", "openPrivacyContract")
+pub fn open_privacy_contract(
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.requirePrivacyAuthorize`
+/// Trigger privacy authorization dialog
+///
+@external(javascript, "../wechat_base_ffi.mjs", "requirePrivacyAuthorize")
+pub fn require_privacy_authorize(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)

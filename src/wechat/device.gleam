@@ -567,3 +567,147 @@ pub fn on_memory_warning(callback cb: WechatResultCallback) -> Nil
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "offMemoryWarning")
 pub fn off_memory_warning(callback cb: WechatResultCallback) -> Nil
+
+/// Phase 12: Bluetooth Advanced
+///
+/// `wx.makeBluetoothPair`
+/// Initiate Bluetooth pairing with a device
+///
+@external(javascript, "../wechat_device_ffi.mjs", "makeBluetoothPair")
+pub fn make_bluetooth_pair(
+  device_id d: String,
+  pin p: String,
+  timeout t: Int,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.isBluetoothDevicePaired`
+/// Check if a Bluetooth device is paired
+///
+@external(javascript, "../wechat_device_ffi.mjs", "isBluetoothDevicePaired")
+pub fn is_bluetooth_device_paired(
+  device_id d: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.setBLEMTU`
+/// Set BLE MTU size for a connection
+///
+@external(javascript, "../wechat_device_ffi.mjs", "setBLEMTU")
+pub fn set_ble_mtu(
+  device_id d: String,
+  mtu m: Int,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.getBLEMTU`
+/// Get current BLE MTU size for a connection
+///
+@external(javascript, "../wechat_device_ffi.mjs", "getBLEMTU")
+pub fn get_ble_mtu(
+  device_id d: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.onBLEMTUChange`
+/// Listen for BLE MTU change events
+///
+@external(javascript, "../wechat_device_ffi.mjs", "onBLEMTUChange")
+pub fn on_ble_mtu_change(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.offBLEMTUChange`
+/// Remove BLE MTU change event listener
+///
+@external(javascript, "../wechat_device_ffi.mjs", "offBLEMTUChange")
+pub fn off_ble_mtu_change(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.getBLEDeviceRSSI`
+/// Get BLE device RSSI (signal strength)
+///
+@external(javascript, "../wechat_device_ffi.mjs", "getBLEDeviceRSSI")
+pub fn get_ble_device_rssi(
+  device_id d: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// Phase 13: Device Advanced - WiFi
+///
+/// `wx.connectWifi`
+/// Connect to a WiFi network
+///
+@external(javascript, "../wechat_device_ffi.mjs", "connectWifi")
+pub fn connect_wifi(
+  ssid s: String,
+  bssid b: String,
+  password p: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `wx.onWifiConnectedWithPartialInfo`
+/// Listen for WiFi connection events with partial information
+///
+@external(javascript, "../wechat_device_ffi.mjs", "onWifiConnectedWithPartialInfo")
+pub fn on_wifi_connected_with_partial_info(
+  callback cb: WechatResultCallback,
+) -> Nil
+
+/// `wx.offWifiConnectedWithPartialInfo`
+/// Remove WiFi connection event listener
+///
+@external(javascript, "../wechat_device_ffi.mjs", "offWifiConnectedWithPartialInfo")
+pub fn off_wifi_connected_with_partial_info(
+  callback cb: WechatResultCallback,
+) -> Nil
+
+/// Phase 13: Device Advanced - Battery
+///
+/// `wx.getBatteryInfoSync`
+/// Synchronously get battery information
+///
+@external(javascript, "../wechat_device_ffi.mjs", "getBatteryInfoSync")
+pub fn get_battery_info_sync() -> JsObject
+
+/// Phase 13: Device Advanced - Keyboard Events
+///
+/// `wx.onKeyDown`
+/// Listen for keyboard key down events
+///
+@external(javascript, "../wechat_device_ffi.mjs", "onKeyDown")
+pub fn on_key_down(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.onKeyUp`
+/// Listen for keyboard key up events
+///
+@external(javascript, "../wechat_device_ffi.mjs", "onKeyUp")
+pub fn on_key_up(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.offKeyDown`
+/// Remove keyboard key down event listener
+///
+@external(javascript, "../wechat_device_ffi.mjs", "offKeyDown")
+pub fn off_key_down(callback cb: WechatResultCallback) -> Nil
+
+/// `wx.offKeyUp`
+/// Remove keyboard key up event listener
+///
+@external(javascript, "../wechat_device_ffi.mjs", "offKeyUp")
+pub fn off_key_up(callback cb: WechatResultCallback) -> Nil
+
+/// Phase 13: Device Advanced - Screen
+///
+/// `wx.setVisualEffectOnCapture`
+/// Set visual effect when capturing screen
+///
+@external(javascript, "../wechat_device_ffi.mjs", "setVisualEffectOnCapture")
+pub fn set_visual_effect_on_capture(
+  visual_effect_enabled v: Bool,
+  visual_effect_type t: String,
+) -> Nil
+
+/// Phase 13: Device Advanced - Accessibility
+///
+/// `wx.checkIsOpenAccessibility`
+/// Check if accessibility is enabled on the device
+///
+@external(javascript, "../wechat_device_ffi.mjs", "checkIsOpenAccessibility")
+pub fn check_is_open_accessibility() -> Bool

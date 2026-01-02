@@ -24,4 +24,12 @@ pub fn app_lifecycle_test() {
   let _ = app.can_i_use
   let _ = app.base64_to_array_buffer
   let _ = app.array_buffer_to_base64
+
+  // Phase 1 new APIs
+  let _ = app.get_device_benchmark_info
+  let _ = app.get_skyline_info
+  let _ = app.get_skyline_info_sync
+  let _ = app.get_renderer_user_agent
+  let _ = app.open_system_bluetooth_setting
+  let _ = app.open_app_authorize_setting
 }

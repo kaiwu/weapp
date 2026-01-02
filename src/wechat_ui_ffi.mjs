@@ -427,3 +427,158 @@ export function animationExport(anim) {
   return anim.export();
 }
 
+
+// Phase 14: Share Advanced
+export function showShareImageMenu(path, typeName, cb) {
+  return new Promise(resolve => {
+    wx.showShareImageMenu({
+      path,
+      type: typeName,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function shareVideoMessage(src, filePath, cb) {
+  return new Promise(resolve => {
+    wx.shareVideoMessage({
+      src,
+      filePath,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function shareToOfficialAccount(articleUrl, cb) {
+  return new Promise(resolve => {
+    wx.shareToOfficialAccount({
+      articleUrl,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function shareFileMessage(filePath, cb) {
+  return new Promise(resolve => {
+    wx.shareFileMessage({
+      filePath,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function onCopyUrl(cb) {
+  wx.onCopyUrl(cb)
+}
+
+export function offCopyUrl(cb) {
+  wx.offCopyUrl(cb)
+}
+
+export function authPrivateMessage(shareTicket, cb) {
+  return new Promise(resolve => {
+    wx.authPrivateMessage({
+      shareTicket,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// Phase 15: UI Advanced
+// Scroll APIs
+export function pageScrollTo(scrollTop, selector, duration) {
+  wx.pageScrollTo({
+    scrollTop,
+    selector,
+    duration
+  })
+}
+
+// Custom Component APIs
+export function nextTick(cb) {
+  wx.nextTick(cb)
+}
+
+// Menu APIs
+export function onMenuButtonBoundingClientRectWeightChange(cb) {
+  wx.onMenuButtonBoundingClientRectWeightChange(cb)
+}
+
+export function offMenuButtonBoundingClientRectWeightChange(cb) {
+  wx.offMenuButtonBoundingClientRectWeightChange(cb)
+}
+
+export function getMenuButtonBoundingClientRect() {
+  return wx.getMenuButtonBoundingClientRect()
+}
+
+export function onOnUserTriggerTranslation(cb) {
+  wx.onOnUserTriggerTranslation(cb)
+}
+
+export function offOnUserTriggerTranslation(cb) {
+  wx.offOnUserTriggerTranslation(cb)
+}
+
+// Window APIs
+export function setWindowSize(width, height, cb) {
+  return new Promise(resolve => {
+    wx.setWindowSize({
+      width,
+      height,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function onWindowStateChange(cb) {
+  wx.onWindowStateChange(cb)
+}
+
+export function offWindowStateChange(cb) {
+  wx.offWindowStateChange(cb)
+}
+
+export function onWindowResize(cb) {
+  wx.onWindowResize(cb)
+}
+
+export function offWindowResize(cb) {
+  wx.offWindowResize(cb)
+}
+
+export function onOnParallelStateChange(cb) {
+  wx.onOnParallelStateChange(cb)
+}
+
+export function offOnParallelStateChange(cb) {
+  wx.offOnParallelStateChange(cb)
+}
+
+export function checkIsPictureInPictureActive() {
+  return wx.checkIsPictureInPictureActive()
+}
+
+// Sticky Bar APIs
+export function setTopBarText(text, cb) {
+  return new Promise(resolve => {
+    wx.setTopBarText({
+      text,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}

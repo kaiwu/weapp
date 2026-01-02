@@ -146,15 +146,7 @@ export function uploadFile(u, p, h, f, cb) {
   })
 }
 
-export function getSystemInfo(cb) {
-  return new Promise(resolve => {
-    wx.getSystemInfo({
-      complete: cb,
-      success(res) { resolve(new Ok(res)) },
-      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
-    })
-  })
-}
+// getSystemInfo moved to wechat_ffi.mjs to avoid duplication
 
 export function getSetting(s, cb) {
   return new Promise(resolve => {
@@ -563,9 +555,6 @@ export function exitMiniProgram(cb) {
   })
 }
 
-export function createCacheManager(options) {
-  return wx.createCacheManager(options);
-}
 
 export function getPerformance() {
   return wx.getPerformance();
@@ -581,6 +570,14 @@ export function reportEvent(name, data, options) {
 
 export function reportMonitor(name, value, options) {
   wx.reportMonitor(name, value, options);
+}
+
+export function reportAnalytics(eventId, data) {
+  wx.reportAnalytics(eventId, data);
+}
+
+export function getExptInfoSync() {
+  return wx.getExptInfoSync();
 }
 
 export function requestIdleCallback(callback, options) {
@@ -1004,3 +1001,68 @@ export function offLazyLoadError(cb) {
   wx.offLazyLoadError(cb);
 }
 
+
+// Phase 4: Privacy APIs
+export function onNeedPrivacyAuthorization(cb) {
+  wx.onNeedPrivacyAuthorization(cb)
+}
+
+export function openPrivacyContract(cb) {
+  return new Promise(resolve => {
+    wx.openPrivacyContract({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function requirePrivacyAuthorize(cb) {
+  return new Promise(resolve => {
+    wx.requirePrivacyAuthorize({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// Phase 5: Route APIs
+export function redirectTo(url, cb) {
+  return new Promise(resolve => {
+    wx.redirectTo({
+      url,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function rewriteRoute(options, cb) {
+  return new Promise(resolve => {
+    wx.rewriteRoute({
+      ...options,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// Phase 10: Storage Sync Functions
+export function setStorageSync(key, data) {
+  wx.setStorageSync(key, data)
+}
+
+export function getStorageSync(key) {
+  return wx.getStorageSync(key)
+}
+
+export function removeStorageSync(key) {
+  wx.removeStorageSync(key)
+}
+
+export function clearStorageSync() {
+  wx.clearStorageSync()
+}

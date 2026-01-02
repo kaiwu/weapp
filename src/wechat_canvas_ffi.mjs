@@ -119,3 +119,67 @@ export function setShadow(ctx, c, b, ox, oy) {
   ctx.shadowOffsetX = ox;
   ctx.shadowOffsetY = oy;
 }
+
+// Phase 16: Canvas Advanced
+export function createOffscreenCanvas(options) {
+  return wx.createOffscreenCanvas(options)
+}
+
+export function canvasToTempFilePath(canvasId, fileType, quality, cb) {
+  return new Promise(resolve => {
+    wx.canvasToTempFilePath({
+      canvasId,
+      fileType,
+      quality,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function canvasPutImageData(canvasId, data, x, y, width, height) {
+  wx.canvasPutImageData({
+    canvasId,
+    data,
+    x,
+    y,
+    width,
+    height
+  })
+}
+
+export function canvasGetImageData(canvasId, x, y, width, height, cb) {
+  return new Promise(resolve => {
+    wx.canvasGetImageData({
+      canvasId,
+      x,
+      y,
+      width,
+      height,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function createImage() {
+  return wx.createImage()
+}
+
+export function createImageData(width, height) {
+  return wx.createImageData(width, height)
+}
+
+export function createPath2D() {
+  return wx.createPath2D()
+}
+
+export function requestAnimationFrame(cb) {
+  return wx.requestAnimationFrame(cb)
+}
+
+export function cancelAnimationFrame(requestId) {
+  wx.cancelAnimationFrame(requestId)
+}

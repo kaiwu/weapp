@@ -352,3 +352,15 @@ export function fileSystemManagerWriteFile(fsm, path, data, encoding, cb) {
 export function fileSystemManagerWriteFileSync(fsm, path, data, encoding) {
   fsm.writeFileSync(path, data, encoding);
 }
+
+// Phase 11: File Advanced
+export function saveFileToDisk(tempFilePath, cb) {
+  return new Promise(resolve => {
+    wx.saveFileToDisk({
+      tempFilePath,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}

@@ -642,3 +642,127 @@ export function blePeripheralServerStopAdvertising(server) {
 export function blePeripheralServerWriteCharacteristicValue(server, data) {
   server.writeCharacteristicValue(data);
 }
+
+// Phase 12: Bluetooth Advanced
+export function makeBluetoothPair(deviceId, pin, timeout, cb) {
+  return new Promise(resolve => {
+    wx.makeBluetoothPair({
+      deviceId,
+      pin,
+      timeout,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function isBluetoothDevicePaired(deviceId, cb) {
+  return new Promise(resolve => {
+    wx.isBluetoothDevicePaired({
+      deviceId,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function setBLEMTU(deviceId, mtu, cb) {
+  return new Promise(resolve => {
+    wx.setBLEMTU({
+      deviceId,
+      mtu,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getBLEMTU(deviceId, cb) {
+  return new Promise(resolve => {
+    wx.getBLEMTU({
+      deviceId,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function onBLEMTUChange(cb) {
+  wx.onBLEMTUChange(cb)
+}
+
+export function offBLEMTUChange(cb) {
+  wx.offBLEMTUChange(cb)
+}
+
+export function getBLEDeviceRSSI(deviceId, cb) {
+  return new Promise(resolve => {
+    wx.getBLEDeviceRSSI({
+      deviceId,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+// Phase 13: Device Advanced - WiFi
+export function connectWifi(ssid, bssid, password, cb) {
+  return new Promise(resolve => {
+    wx.connectWifi({
+      SSID: ssid,
+      BSSID: bssid,
+      password,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function onWifiConnectedWithPartialInfo(cb) {
+  wx.onWifiConnectedWithPartialInfo(cb)
+}
+
+export function offWifiConnectedWithPartialInfo(cb) {
+  wx.offWifiConnectedWithPartialInfo(cb)
+}
+
+// Phase 13: Device Advanced - Battery
+export function getBatteryInfoSync() {
+  return wx.getBatteryInfoSync()
+}
+
+// Phase 13: Device Advanced - Keyboard Events
+export function onKeyDown(cb) {
+  wx.onKeyDown(cb)
+}
+
+export function onKeyUp(cb) {
+  wx.onKeyUp(cb)
+}
+
+export function offKeyDown(cb) {
+  wx.offKeyDown(cb)
+}
+
+export function offKeyUp(cb) {
+  wx.offKeyUp(cb)
+}
+
+// Phase 13: Device Advanced - Screen
+export function setVisualEffectOnCapture(visualEffectEnabled, visualEffectType) {
+  wx.setVisualEffectOnCapture({
+    visualEffectEnabled,
+    visualEffectType
+  })
+}
+
+// Phase 13: Device Advanced - Accessibility
+export function checkIsOpenAccessibility() {
+  return wx.checkIsOpenAccessibility()
+}

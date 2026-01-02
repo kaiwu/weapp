@@ -1066,3 +1066,96 @@ export function removeStorageSync(key) {
 export function clearStorageSync() {
   wx.clearStorageSync()
 }
+
+// Phase 17: Base/System (Remaining)
+
+export function updateWeChatApp(cb) {
+  return new Promise(resolve => {
+    wx.updateWeChatApp({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function getApiCategory() {
+  return wx.getApiCategory()
+}
+
+export function getEnvUserDataPath() {
+  return wx.env.USER_DATA_PATH
+}
+
+// Phase 20: Location Advanced
+
+export function startLocationUpdate(type, cb) {
+  return new Promise(resolve => {
+    wx.startLocationUpdate({
+      type,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function startLocationUpdateBackground(type, cb) {
+  return new Promise(resolve => {
+    wx.startLocationUpdateBackground({
+      type,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function stopLocationUpdate(cb) {
+  return new Promise(resolve => {
+    wx.stopLocationUpdate({
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function onLocationChange(cb) {
+  wx.onLocationChange(cb)
+}
+
+export function offLocationChange(cb) {
+  wx.offLocationChange(cb)
+}
+
+export function onLocationChangeError(cb) {
+  wx.onLocationChangeError(cb)
+}
+
+export function offLocationChangeError(cb) {
+  wx.offLocationChangeError(cb)
+}
+
+export function getFuzzyLocation(type, cb) {
+  return new Promise(resolve => {
+    wx.getFuzzyLocation({
+      type,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function choosePoi(latitude, longitude, cb) {
+  return new Promise(resolve => {
+    wx.choosePoi({
+      latitude,
+      longitude,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}

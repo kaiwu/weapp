@@ -221,3 +221,17 @@ export function intersectionObserverRelativeToViewport(io) {
   return io.relativeToViewport();
 }
 
+// Phase 19: WXML Advanced - MediaQueryObserver
+
+export function createMediaQueryObserver(component) {
+  return wx.createMediaQueryObserver(component)
+}
+
+export function mediaQueryObserverDisconnect(mq) {
+  mq.disconnect()
+}
+
+export function mediaQueryObserverObserve(mq, descriptor, cb) {
+  mq.observe(descriptor, cb)
+}
+

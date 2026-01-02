@@ -406,3 +406,50 @@ pub fn write_file_sync(
   data d: JsObject,
   encoding e: String,
 ) -> Nil
+
+/// Phase 21: File Advanced
+///
+/// `FileSystemManager.truncate`
+/// Truncate a file
+///
+@external(javascript, "../wechat_filesystem_ffi.mjs", "fileSystemManagerTruncate")
+pub fn truncate(
+  fsm: JsObject,
+  path p: String,
+  length l: Int,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// `FileSystemManager.truncateSync`
+/// Synchronously truncate a file
+///
+@external(javascript, "../wechat_filesystem_ffi.mjs", "fileSystemManagerTruncateSync")
+pub fn truncate_sync(fsm: JsObject, path p: String, length l: Int) -> Nil
+
+/// `FileSystemManager.readZipEntry`
+/// Read ZIP archive entry
+///
+@external(javascript, "../wechat_filesystem_ffi.mjs", "fileSystemManagerReadZipEntry")
+pub fn read_zip_entry(
+  fsm: JsObject,
+  file_path fp: String,
+  encoding e: String,
+  entries en: JsObject,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
+/// Stats type for file statistics
+///
+pub type Stats
+
+/// `Stats.isDirectory`
+/// Check if path is a directory
+///
+@external(javascript, "../wechat_filesystem_ffi.mjs", "statsIsDirectory")
+pub fn stats_is_directory(stats: Stats) -> Bool
+
+/// `Stats.isFile`
+/// Check if path is a file
+///
+@external(javascript, "../wechat_filesystem_ffi.mjs", "statsIsFile")
+pub fn stats_is_file(stats: Stats) -> Bool

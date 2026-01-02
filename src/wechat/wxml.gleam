@@ -211,3 +211,31 @@ pub fn intersection_observer_relative_to(
 pub fn intersection_observer_relative_to_viewport(
   io: IntersectionObserver,
 ) -> IntersectionObserver
+
+/// Phase 19: WXML Advanced - MediaQueryObserver
+///
+/// MediaQueryObserver type for responsive design
+///
+pub type MediaQueryObserver
+
+/// `wx.createMediaQueryObserver`
+/// Create a media query observer for responsive design
+///
+@external(javascript, "../wechat_wxml_ffi.mjs", "createMediaQueryObserver")
+pub fn create_media_query_observer(component c: JsObject) -> MediaQueryObserver
+
+/// `MediaQueryObserver.disconnect`
+/// Stop listening for media query changes
+///
+@external(javascript, "../wechat_wxml_ffi.mjs", "mediaQueryObserverDisconnect")
+pub fn media_query_observer_disconnect(mq: MediaQueryObserver) -> Nil
+
+/// `MediaQueryObserver.observe`
+/// Start observing media query changes
+///
+@external(javascript, "../wechat_wxml_ffi.mjs", "mediaQueryObserverObserve")
+pub fn media_query_observer_observe(
+  mq: MediaQueryObserver,
+  descriptor d: JsObject,
+  callback cb: fn(JsObject) -> Nil,
+) -> Nil

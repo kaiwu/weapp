@@ -25,7 +25,7 @@ Generate an up-to-date coverage report:
 ```
 
 This will scan all FFI files and generate a detailed `COVERAGE_REPORT.md` showing:
-- Total wx functions covered (currently **363 functions, ~60% coverage**)
+- Total wx functions covered (currently **375 functions, ~62% coverage**)
 - Breakdown by FFI module
 - List of all covered functions
 - Detection of duplicate implementations
@@ -540,7 +540,7 @@ super easy to extend as many as one needs
 
 ## Total Functions Count
 
-**363 wx API functions** bound across 32 Gleam modules using 12 FFI modules:
+**375 wx API functions** bound across 32 Gleam modules using 12 FFI modules:
 
 ### By FFI Module (wx functions):
 - **wechat_base_ffi.mjs** (104 functions): Login, storage, payment, navigation, system utilities, background fetch, crypto, router, calendar, contact, phone, scan, clipboard, vibrate, app events (on/off), lifecycle, performance, privacy
@@ -589,4 +589,4 @@ super easy to extend as many as one needs
 - **wechat/analytics** - Analytics and monitoring
 - **wechat/app_event** - App lifecycle events
 
-**Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs (~237+ wx functions not yet bound).
+**Note**: See [MISSING_APIS.md](./MISSING_APIS.md) for details on remaining APIs (~225+ wx functions not yet bound).

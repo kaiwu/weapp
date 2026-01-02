@@ -565,3 +565,23 @@ pub fn off_unhandled_rejection(callback cb: fn(JsObject) -> Nil) -> Nil
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "offLazyLoadError")
 pub fn off_lazy_load_error(callback cb: fn(JsObject) -> Nil) -> Nil
+
+/// Phase 17: Base/System (Remaining)
+///
+/// `wx.updateWeChatApp`
+/// Update client version. Jump to WeChat update page when client version is too low.
+///
+@external(javascript, "../wechat_base_ffi.mjs", "updateWeChatApp")
+pub fn update_wechat_app(complete cb: WechatCallback) -> Promise(WechatResult)
+
+/// `wx.getApiCategory`
+/// Get API category. Used to determine whether the current environment is a mini program, game, etc.
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getApiCategory")
+pub fn get_api_category() -> String
+
+/// `wx.env.USER_DATA_PATH`
+/// Get user data directory path
+///
+@external(javascript, "../wechat_base_ffi.mjs", "getEnvUserDataPath")
+pub fn get_env_user_data_path() -> String

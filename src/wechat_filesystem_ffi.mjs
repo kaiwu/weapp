@@ -364,3 +364,42 @@ export function saveFileToDisk(tempFilePath, cb) {
     })
   })
 }
+
+// Phase 21: File Advanced
+
+export function fileSystemManagerTruncate(fsm, path, length, cb) {
+  return new Promise(resolve => {
+    fsm.truncate({
+      filePath: path,
+      length,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function fileSystemManagerTruncateSync(fsm, path, length) {
+  fsm.truncateSync({ filePath: path, length })
+}
+
+export function fileSystemManagerReadZipEntry(fsm, filePath, encoding, entries, cb) {
+  return new Promise(resolve => {
+    fsm.readZipEntry({
+      filePath,
+      encoding,
+      entries,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
+export function statsIsDirectory(stats) {
+  return stats.isDirectory()
+}
+
+export function statsIsFile(stats) {
+  return stats.isFile()
+}

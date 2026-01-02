@@ -4,16 +4,11 @@
 
 ## Coverage Summary
 
-- **Total wx Functions Covered**: 363 functions
+- **Total wx Functions Covered**: 375 functions
 - **Total wx Functions in WeChat Docs**: ~600+ functions
-- **Coverage**: ~60%
+- **Coverage**: ~62%
 
-## MISSING WX FUNCTIONS (~237+)
-
-### Base/System (~3 functions)
-- **Update**: wx.updateWeChatApp
-- **Lifecycle**: wx.getApiCategory
-- **Utility**: wx.env
+## MISSING WX FUNCTIONS (~225+)
 
 ### EventChannel (~5 functions)
 - wx.EventChannel
@@ -32,16 +27,6 @@
 ### Chat Tool (~9 functions)
 - wx.shareVideoToGroup, wx.shareImageToGroup, wx.shareFileToGroup, wx.shareEmojiToGroup, wx.shareAppMessageToGroup
 - wx.selectGroupMembers, wx.openChatTool, wx.notifyGroupMembers, wx.getChatToolInfo
-
-### UI Advanced (~6 functions)
-- **Scroll**: ScrollViewContext methods (6 functions)
-
-### Canvas Advanced (~50+ functions)
-- **Canvas Methods**: createPath2D, getContext, toDataURL (3 functions)
-- **CanvasContext**: arc, arcTo, beginPath, bezierCurveTo, clearRect, clip, closePath, createCircularGradient, createLinearGradient, createPattern, draw, drawImage, fill, fillRect, fillText, lineTo, measureText, moveTo, quadraticCurveTo, rect, restore, rotate, save, scale, setFillStyle, setFontSize, setGlobalAlpha, setLineCap, setLineDash, setLineJoin, setLineWidth, setMiterLimit, setShadow, setStrokeStyle, setTextAlign, setTextBaseline, setTransform, stroke, strokeRect, strokeText, transform, translate (40+ functions)
-- **CanvasGradient**: addColorStop (1 function)
-- **OffscreenCanvas**: createImage, getContext (2 functions)
-- **Path2D**: addPath, arc, arcTo, bezierCurveTo, closePath, ellipse, lineTo, moveTo, quadraticCurveTo, rect (10+ functions)
 
 ### Map Advanced (~28 functions)
 - MapContext: addArc, addCustomLayer, addGroundOverlay, addMarkers, addVisualLayer, eraseLines, executeVisualLayerCommand, fromScreenLocation, getCenterLocation, getRegion, getRotate, getScale, getSkew, includePoints, initMarkerCluster, moveAlong, moveToLocation, on, openMapApp, removeArc, removeCustomLayer, removeGroundOverlay, removeMarkers, removeVisualLayer, setBoundary, setCenterOffset, setLocMarkerIcon, toScreenLocation, translateMarker, updateGroundOverlay
@@ -63,12 +48,6 @@
 - **MediaRecorder**: destroy, off, on, pause, requestFrame, resume, start, stop (7 functions)
 - **VideoDecoder**: getFrameData, off, on, remove, seek, start, stop (6 functions)
 
-### Location Advanced (~9 functions)
-- wx.stopLocationUpdate, wx.startLocationUpdateBackground, wx.startLocationUpdate
-- wx.onLocationChangeError, wx.onLocationChange
-- wx.offLocationChangeError, wx.offLocationChange
-- wx.getFuzzyLocation, wx.choosePoi
-
 ### Storage Advanced (~13 functions)
 - CacheManager: addRule, addRules, clearCaches, clearRules, deleteCache, deleteCaches, deleteRule, deleteRules, match, off, on, start, stop
 
@@ -78,9 +57,6 @@
 
 ### Data Analysis Advanced (~1 function)
 - wx.getCommonConfig
-
-### File Advanced (~50+ functions)
-- FileSystemManager: access, accessSync, appendFile, appendFileSync, close, closeSync, copyFile, copyFileSync, fstat, fstatSync, ftruncate, ftruncateSync, getFileInfo, getSavedFileList, mkdir, mkdirSync, open, openSync, read, readCompressedFile, readCompressedFileSync, readdir, readdirSync, readFile, readFileSync, readSync, readZipEntry, removeSavedFile, rename, renameSync, rmdir, rmdirSync, saveFile, saveFileSync, stat, statSync, truncate, truncateSync, unlink, unlinkSync, unzip, write, writeFile, writeFileSync, writeSync (50+ methods)
 
 ### Open Advanced (~35+ functions)
 - **Authorize**: wx.authorizeForMiniProgram
@@ -112,11 +88,6 @@
 - **RealtimeTagLogManager**: addFilterMsg, error, info, setFilterMsg, warn (5 functions)
 - wx.setEnableDebug, wx.getRealtimeLogManager, wx.getLogManager
 
-### WXML Advanced (~12 functions)
-- **MediaQueryObserver**: wx.createMediaQueryObserver, MediaQueryObserver.disconnect, MediaQueryObserver.observe (3 functions)
-- **NodesRef**: boundingClientRect, context, fields, node, ref, scrollOffset (6 functions)
-- **SelectorQuery**: exec, in, select, selectAll, selectViewport (5 functions)
-
 ### Third Party (~2 functions)
 - wx.getExtConfigSync, wx.getExtConfig
 
@@ -135,7 +106,7 @@
 
 ---
 
-**Total Missing**: ~237+ wx functions (instance methods not counted separately)
+**Total Missing**: ~225+ wx functions (instance methods not counted separately)
 
 ---
 
@@ -147,3 +118,27 @@ Many of the "missing" APIs are instance methods on objects returned by covered w
 - `wx.createVideoContext` is covered, but VideoContext instance methods need to be bound
 
 The priority should be on binding the remaining top-level wx.* functions and the most commonly used instance methods.
+
+## Recently Implemented (2026-01-02)
+
+### Phase 17: Base/System (3 functions)
+- wx.updateWeChatApp, wx.getApiCategory, wx.env.USER_DATA_PATH
+
+### Phase 18: Canvas Advanced (~25 functions)
+- CanvasContext: createLinearGradient, createCircularGradient, setStrokeStyle, setGlobalAlpha, setFontSize, setTextAlign, setTextBaseline, closePath, fill, stroke, clip, rect, setTransform
+- CanvasGradient: addColorStop
+- Canvas: toDataURL, getContext
+- OffscreenCanvas: createImage
+- Path2D: addPath, closePath, moveTo, lineTo, arc, rect, bezierCurveTo, quadraticCurveTo
+
+### Phase 19: WXML Advanced (3 functions)
+- wx.createMediaQueryObserver, MediaQueryObserver.disconnect, MediaQueryObserver.observe
+
+### Phase 20: Location Advanced (9 functions)
+- wx.startLocationUpdate, wx.startLocationUpdateBackground, wx.stopLocationUpdate
+- wx.onLocationChange, wx.offLocationChange, wx.onLocationChangeError, wx.offLocationChangeError
+- wx.getFuzzyLocation, wx.choosePoi
+
+### Phase 21: File Advanced (5 functions)
+- FileSystemManager: truncate, truncateSync, readZipEntry
+- Stats: isDirectory, isFile

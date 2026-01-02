@@ -183,3 +183,110 @@ export function requestAnimationFrame(cb) {
 export function cancelAnimationFrame(requestId) {
   wx.cancelAnimationFrame(requestId)
 }
+
+// Phase 18: Canvas Advanced
+
+export function createLinearGradient(ctx, x0, y0, x1, y1) {
+  return ctx.createLinearGradient(x0, y0, x1, y1)
+}
+
+export function createCircularGradient(ctx, x, y, r) {
+  return ctx.createCircularGradient(x, y, r)
+}
+
+export function canvasGradientAddColorStop(gradient, offset, color) {
+  gradient.addColorStop(offset, color)
+}
+
+export function setStrokeStyle(ctx, color) {
+  ctx.strokeStyle = color
+}
+
+export function setGlobalAlpha(ctx, alpha) {
+  ctx.globalAlpha = alpha
+}
+
+export function setFontSize(ctx, size) {
+  ctx.setFontSize(size)
+}
+
+export function setTextAlign(ctx, align) {
+  ctx.setTextAlign(align)
+}
+
+export function setTextBaseline(ctx, baseline) {
+  ctx.setTextBaseline(baseline)
+}
+
+export function closePath(ctx) {
+  ctx.closePath()
+}
+
+export function fill(ctx) {
+  ctx.fill()
+}
+
+export function stroke(ctx) {
+  ctx.stroke()
+}
+
+export function clip(ctx) {
+  ctx.clip()
+}
+
+export function rect(ctx, x, y, w, h) {
+  ctx.rect(x, y, w, h)
+}
+
+export function setTransform(ctx, a, b, c, d, e, f) {
+  ctx.setTransform(a, b, c, d, e, f)
+}
+
+export function canvasToDataURL(canvas, fileType, quality) {
+  return new Promise(resolve => {
+    const dataURL = canvas.toDataURL(fileType, quality)
+    resolve(new Ok(dataURL))
+  })
+}
+
+export function canvasGetContext(canvas, contextType) {
+  return canvas.getContext(contextType)
+}
+
+export function offscreenCanvasCreateImage(canvas) {
+  return canvas.createImage()
+}
+
+// Path2D methods
+
+export function path2dAddPath(path, otherPath) {
+  path.addPath(otherPath)
+}
+
+export function path2dClosePath(path) {
+  path.closePath()
+}
+
+export function path2dMoveTo(path, x, y) {
+  path.moveTo(x, y)
+}
+
+export function path2dLineTo(path, x, y) {
+  path.lineTo(x, y)
+}
+
+export function path2dArc(path, x, y, r, sa, ea, ac) {
+  path.arc(x, y, r, sa, ea, ac)
+}
+
+export function path2dRect(path, x, y, w, h) {
+  path.rect(x, y, w, h)
+}
+
+export function path2dBezierCurveTo(path, cp1x, cp1y, cp2x, cp2y, x, y) {
+  path.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+}
+
+export function path2dQuadraticCurveTo(path, cpx, cpy, x, y) {
+  path.quadraticCurveTo(cpx, cpy, x, y)
+}

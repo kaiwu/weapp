@@ -317,3 +317,224 @@ pub fn request_animation_frame(callback cb: fn(JsObject) -> Nil) -> Int
 ///
 @external(javascript, "../wechat_canvas_ffi.mjs", "cancelAnimationFrame")
 pub fn cancel_animation_frame(request_id i: Int) -> Nil
+
+/// Phase 18: Canvas Advanced
+///
+/// CanvasGradient type
+///
+pub type CanvasGradient
+
+/// `CanvasContext.createLinearGradient`
+/// Create a linear gradient
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "createLinearGradient")
+pub fn canvas_create_linear_gradient(
+  ctx: CanvasContext,
+  x0: Float,
+  y0: Float,
+  x1: Float,
+  y1: Float,
+) -> CanvasGradient
+
+/// `CanvasContext.createCircularGradient`
+/// Create a circular gradient
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "createCircularGradient")
+pub fn canvas_create_circular_gradient(
+  ctx: CanvasContext,
+  x: Float,
+  y: Float,
+  r: Float,
+) -> CanvasGradient
+
+/// `CanvasGradient.addColorStop`
+/// Add color stop to gradient
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "canvasGradientAddColorStop")
+pub fn canvas_gradient_add_color_stop(
+  gradient: CanvasGradient,
+  offset: Float,
+  color: String,
+) -> Nil
+
+/// `CanvasContext.setStrokeStyle`
+/// Set stroke style
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "setStrokeStyle")
+pub fn canvas_set_stroke_style(ctx: CanvasContext, color: String) -> Nil
+
+/// `CanvasContext.setGlobalAlpha`
+/// Set global transparency
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "setGlobalAlpha")
+pub fn canvas_set_global_alpha(ctx: CanvasContext, alpha: Float) -> Nil
+
+/// `CanvasContext.setFontSize`
+/// Set font size
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "setFontSize")
+pub fn canvas_set_font_size(ctx: CanvasContext, size: Float) -> Nil
+
+/// `CanvasContext.setTextAlign`
+/// Set text alignment
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "setTextAlign")
+pub fn canvas_set_text_align(ctx: CanvasContext, align: String) -> Nil
+
+/// `CanvasContext.setTextBaseline`
+/// Set text baseline
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "setTextBaseline")
+pub fn canvas_set_text_baseline(ctx: CanvasContext, baseline: String) -> Nil
+
+/// `CanvasContext.closePath`
+/// Close current path
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "closePath")
+pub fn canvas_close_path(ctx: CanvasContext) -> Nil
+
+/// `CanvasContext.fill`
+/// Fill path
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "fill")
+pub fn canvas_fill(ctx: CanvasContext) -> Nil
+
+/// `CanvasContext.stroke`
+/// Stroke path
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "stroke")
+pub fn canvas_stroke(ctx: CanvasContext) -> Nil
+
+/// `CanvasContext.clip`
+/// Clip drawing area
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "clip")
+pub fn canvas_clip(ctx: CanvasContext) -> Nil
+
+/// `CanvasContext.rect`
+/// Draw rectangle path
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "rect")
+pub fn canvas_rect(
+  ctx: CanvasContext,
+  x: Float,
+  y: Float,
+  width: Float,
+  height: Float,
+) -> Nil
+
+/// `CanvasContext.setTransform`
+/// Set transformation matrix
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "setTransform")
+pub fn canvas_set_transform(
+  ctx: CanvasContext,
+  a: Float,
+  b: Float,
+  c: Float,
+  d: Float,
+  e: Float,
+  f: Float,
+) -> Nil
+
+/// Canvas.toDataURL (OffscreenCanvas only)
+/// Export canvas as data URL string
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "canvasToDataURL")
+pub fn canvas_to_data_url(
+  canvas: JsObject,
+  file_type ft: String,
+  quality q: Float,
+) -> Promise(JsObject)
+
+/// Canvas.getContext
+/// Get canvas rendering context
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "canvasGetContext")
+pub fn canvas_get_context(canvas: JsObject, context_type ct: String) -> JsObject
+
+/// OffscreenCanvas.createImage
+/// Create Image object for offscreen canvas
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "offscreenCanvasCreateImage")
+pub fn offscreen_canvas_create_image(canvas: JsObject) -> JsObject
+
+/// Path2D type
+///
+pub type Path2D
+
+/// Path2D.addPath
+/// Add another path
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dAddPath")
+pub fn path_2d_add_path(path: Path2D, other_path: Path2D) -> Nil
+
+/// Path2D.closePath
+/// Close path
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dClosePath")
+pub fn path_2d_close_path(path: Path2D) -> Nil
+
+/// Path2D.moveTo
+/// Move to point
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dMoveTo")
+pub fn path_2d_move_to(path: Path2D, x: Float, y: Float) -> Nil
+
+/// Path2D.lineTo
+/// Draw line to point
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dLineTo")
+pub fn path_2d_line_to(path: Path2D, x: Float, y: Float) -> Nil
+
+/// Path2D.arc
+/// Draw arc
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dArc")
+pub fn path_2d_arc(
+  path: Path2D,
+  x: Float,
+  y: Float,
+  radius: Float,
+  start_angle: Float,
+  end_angle: Float,
+  anticlockwise: Bool,
+) -> Nil
+
+/// Path2D.rect
+/// Draw rectangle
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dRect")
+pub fn path_2d_rect(
+  path: Path2D,
+  x: Float,
+  y: Float,
+  width: Float,
+  height: Float,
+) -> Nil
+
+/// Path2D.bezierCurveTo
+/// Draw cubic bezier curve
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dBezierCurveTo")
+pub fn path_2d_bezier_curve_to(
+  path: Path2D,
+  cp1x: Float,
+  cp1y: Float,
+  cp2x: Float,
+  cp2y: Float,
+  x: Float,
+  y: Float,
+) -> Nil
+
+/// Path2D.quadraticCurveTo
+/// Draw quadratic bezier curve
+///
+@external(javascript, "../wechat_canvas_ffi.mjs", "path2dQuadraticCurveTo")
+pub fn path_2d_quadratic_curve_to(
+  path: Path2D,
+  cpx: Float,
+  cpy: Float,
+  x: Float,
+  y: Float,
+) -> Nil

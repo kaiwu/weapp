@@ -1,18 +1,18 @@
 # WeChat API Coverage Report
 
-**Generated**: Fri Jan  2 03:41:38 PM CST 2026
+**Generated**: Fri Jan  2 08:31:38 PM CST 2026
 
 ## Summary
 
-- **Total wx Functions Covered**: 363
+- **Total wx Functions Covered**: 375
 - **Estimated Total in WeChat Docs**: ~600
-- **Coverage**: ~60%
+- **Coverage**: ~62%
 
 ## Coverage by FFI Module
 
 | Module | Count | Functions |
 |--------|-------|-----------|
-| wechat_base_ffi | 104 | addPhoneCalendar, addPhoneContact, addPhoneRepeatCalendar, authorize, batchGetStorage, ... |
+| wechat_base_ffi | 115 | addPhoneCalendar, addPhoneContact, addPhoneRepeatCalendar, authorize, batchGetStorage, ... |
 | wechat_cache_ffi | 1 | createCacheManager, ... |
 | wechat_canvas_ffi | 9 | cancelAnimationFrame, canvasGetImageData, canvasPutImageData, canvasToTempFilePath, createCanvasContext, ... |
 | wechat_device_ffi | 93 | checkIsOpenAccessibility, closeBLEConnection, closeBluetoothAdapter, connectWifi, createBLEConnection, ... |
@@ -22,7 +22,7 @@
 | wechat_media_ffi | 37 | checkDeviceSupportHevc, chooseImage, chooseMedia, chooseMessageFile, chooseVideo, ... |
 | wechat_network_ffi | 45 | closeSocket, connectSocket, createTCPSocket, createUDPSocket, downloadFile, ... |
 | wechat_ui_ffi | 52 | authPrivateMessage, checkIsPictureInPictureActive, createAnimation, disableAlertBeforeUnload, enableAlertBeforeUnload, ... |
-| wechat_wxml_ffi | 2 | createIntersectionObserver, createSelectorQuery, ... |
+| wechat_wxml_ffi | 3 | createIntersectionObserver, createMediaQueryObserver, createSelectorQuery, ... |
 
 ## All Covered Functions
 
@@ -52,6 +52,7 @@ chooseImage
 chooseLocation
 chooseMedia
 chooseMessageFile
+choosePoi
 chooseVideo
 clearStorage
 clearStorageSync
@@ -81,6 +82,7 @@ createLivePusherContext
 createMapContext
 createMediaAudioPlayer
 createMediaContainer
+createMediaQueryObserver
 createMediaRecorder
 createOffscreenCanvas
 createRewardedVideoAd
@@ -99,6 +101,7 @@ enableAlertBeforeUnload
 exitMiniProgram
 exitVoIPChat
 getAccountInfoSync
+getApiCategory
 getAppAuthorizeSetting
 getAppBaseInfo
 getAvailableAudioSources
@@ -123,6 +126,7 @@ getEnterOptionsSync
 getExptInfoSync
 getFileInfo
 getFileSystemManager
+getFuzzyLocation
 getImageInfo
 getLaunchOptionsSync
 getLocalIPAddress
@@ -207,6 +211,8 @@ offLocalServiceDiscoveryStop
 offLocalServiceFound
 offLocalServiceLost
 offLocalServiceResolveFail
+offLocationChange
+offLocationChangeError
 offMemoryWarning
 offMenuButtonBoundingClientRectWeightChange
 offNetworkStatusChange
@@ -262,6 +268,8 @@ onLocalServiceDiscoveryStop
 onLocalServiceFound
 onLocalServiceLost
 onLocalServiceResolveFail
+onLocationChange
+onLocationChangeError
 onMemoryWarning
 onMenuButtonBoundingClientRectWeightChange
 onNeedPrivacyAuthorization
@@ -368,6 +376,8 @@ startCompass
 startDeviceMotionListening
 startGyroscope
 startLocalServiceDiscovery
+startLocationUpdate
+startLocationUpdateBackground
 startPullDownRefresh
 startRecord
 startWifi
@@ -378,6 +388,7 @@ stopCompass
 stopDeviceMotionListening
 stopGyroscope
 stopLocalServiceDiscovery
+stopLocationUpdate
 stopPullDownRefresh
 stopRecord
 stopVoice
@@ -386,6 +397,7 @@ subscribeVoIPVideoMembers
 switchTab
 updateShareMenu
 updateVoIPChatMuteConfig
+updateWeChatApp
 uploadFile
 vibrateLong
 vibrateShort

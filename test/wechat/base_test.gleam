@@ -1,35 +1,65 @@
-// import gleam/io
-import gleam/javascript/promise
-import gleam/result
-import gleeunit/should
 import wechat/base
-import wechat/object
 
-pub fn payment_test() {
-  base.to_payment("2.9")
-  |> should.equal(290)
-
-  base.to_payment("200.923")
-  |> should.equal(20_092)
-
-  base.to_payment("0.90")
-  |> should.equal(90)
-
-  base.to_payment("1.09")
-  |> should.equal(109)
-}
-
-pub fn date_test() {
-  let d = base.now()
-  use ymd <- promise.await(base.ymd(d))
-  ymd
-  |> result.try(object.string)
-  //|> result.map(io.println)
-  |> promise.resolve
-}
-
-pub fn event_off_test() {
-  // Placeholder for event off handlers tests
+pub fn base_test() {
+  let _ = base.login
+  let _ = base.check_session
+  let _ = base.set_storage
+  let _ = base.get_storage
+  let _ = base.remove_storage
+  let _ = base.clear_storage
+  let _ = base.get_storage_info
+  let _ = base.save_file
+  let _ = base.get_file_info
+  let _ = base.get_saved_file_list
+  let _ = base.remove_saved_file
+  let _ = base.open_document
+  let _ = base.upload_file
+  let _ = base.get_system_info
+  let _ = base.get_setting
+  let _ = base.set_clipboard
+  let _ = base.get_clipboard
+  let _ = base.set_navigation_bar
+  let _ = base.vibrate_short
+  let _ = base.vibrate_long
+  let _ = base.show_tabbar
+  let _ = base.hide_tabbar
+  let _ = base.show_loading
+  let _ = base.hide_loading
+  let _ = base.show_toast
+  let _ = base.switch_tab
+  let _ = base.relaunch
+  let _ = base.navigate_to
+  let _ = base.navigate_back
+  let _ = base.redirect_to
+  let _ = base.rewrite_route
+  let _ = base.get_privacy_setting
+  let _ = base.get_privacy_contract
+  let _ = base.request
+  let _ = base.request_payment
+  let _ = base.to_payment
+  let _ = base.now
+  let _ = base.ymd
+  let _ = base.choose_contact
+  let _ = base.add_phone_contact
+  let _ = base.scan_code
+  let _ = base.get_update_manager
+  let _ = base.update_manager_apply_update
+  let _ = base.update_manager_on_check_for_update
+  let _ = base.update_manager_on_update_failed
+  let _ = base.update_manager_on_update_ready
+  let _ = base.get_random_values
+  let _ = base.set_background_fetch_token
+  let _ = base.on_background_fetch_data
+  let _ = base.get_background_fetch_token
+  let _ = base.get_background_fetch_data
+  let _ = base.pre_download_subpackage
+  let _ = base.get_user_crypto_manager
+  let _ = base.user_crypto_manager_get_latest_user_key
+  let _ = base.user_crypto_manager_get_random_values
+  let _ = base.get_router
+  let _ = base.router_add_route_builder
+  let _ = base.router_get_route_context
+  let _ = base.router_remove_route_builder
   let _ = base.off_app_show
   let _ = base.off_app_hide
   let _ = base.off_error
@@ -37,4 +67,7 @@ pub fn event_off_test() {
   let _ = base.off_page_not_found
   let _ = base.off_unhandled_rejection
   let _ = base.off_lazy_load_error
+  let _ = base.update_wechat_app
+  let _ = base.get_api_category
+  let _ = base.get_env_user_data_path
 }

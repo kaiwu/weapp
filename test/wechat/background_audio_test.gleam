@@ -1,8 +1,45 @@
 import wechat/background_audio
 
 pub fn background_audio_test() {
-  // Placeholder for background audio tests
   let _ = background_audio.get_background_audio_manager
+  let _ = background_audio.set_background_audio_manager_src
+  let _ = background_audio.set_background_audio_manager_start_time
+  let _ = background_audio.set_background_audio_manager_title
+  let _ = background_audio.set_background_audio_manager_epname
+  let _ = background_audio.set_background_audio_manager_singer
+  let _ = background_audio.set_background_audio_manager_cover_img_url
+  let _ = background_audio.set_background_audio_manager_web_url
+  let _ = background_audio.set_background_audio_manager_protocol
+  let _ = background_audio.get_background_audio_manager_duration
+  let _ = background_audio.get_background_audio_manager_current_time
+  let _ = background_audio.get_background_audio_manager_paused
+  let _ = background_audio.get_background_audio_manager_buffered
   let _ = background_audio.background_audio_manager_play
   let _ = background_audio.background_audio_manager_pause
+  let _ = background_audio.background_audio_manager_stop
+  let _ = background_audio.background_audio_manager_seek
+  let _ = background_audio.background_audio_manager_on_canplay
+  let _ = background_audio.background_audio_manager_on_ended
+  let _ = background_audio.background_audio_manager_on_error
+  let _ = background_audio.background_audio_manager_on_next
+  let _ = background_audio.background_audio_manager_on_pause
+  let _ = background_audio.background_audio_manager_on_play
+  let _ = background_audio.background_audio_manager_on_prev
+  let _ = background_audio.background_audio_manager_on_seeked
+  let _ = background_audio.background_audio_manager_on_seeking
+  let _ = background_audio.background_audio_manager_on_stop
+  let _ = background_audio.background_audio_manager_on_time_update
+  let _ = background_audio.background_audio_manager_on_waiting
+  let _ = background_audio.background_audio_manager_off_canplay
+  let _ = background_audio.background_audio_manager_off_ended
+  let _ = background_audio.background_audio_manager_off_error
+  let _ = background_audio.background_audio_manager_off_next
+  let _ = background_audio.background_audio_manager_off_pause
+  let _ = background_audio.background_audio_manager_off_play
+  let _ = background_audio.background_audio_manager_off_prev
+  let _ = background_audio.background_audio_manager_off_seeked
+  let _ = background_audio.background_audio_manager_off_seeking
+  let _ = background_audio.background_audio_manager_off_stop
+  let _ = background_audio.background_audio_manager_off_time_update
+  let _ = background_audio.background_audio_manager_off_waiting
 }

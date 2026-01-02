@@ -73,6 +73,65 @@ pub fn create_audio_context(id s: String) -> AudioContext
 @external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioSrc")
 pub fn set_inner_audio_src(ctx: InnerAudioContext, src s: String) -> Nil
 
+/// InnerAudioContext.setStartTime
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioStartTime")
+pub fn set_inner_audio_start_time(
+  ctx: InnerAudioContext,
+  start_time st: Float,
+) -> Nil
+
+/// InnerAudioContext.setAutoplay
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioAutoplay")
+pub fn set_inner_audio_autoplay(ctx: InnerAudioContext, autoplay a: Bool) -> Nil
+
+/// InnerAudioContext.setLoop
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioLoop")
+pub fn set_inner_audio_loop(ctx: InnerAudioContext, loop l: Bool) -> Nil
+
+/// InnerAudioContext.setObeyMuteSwitch
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioObeyMuteSwitch")
+pub fn set_inner_audio_obey_mute_switch(
+  ctx: InnerAudioContext,
+  obey o: Bool,
+) -> Nil
+
+/// InnerAudioContext.setVolume
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioVolume")
+pub fn set_inner_audio_volume(ctx: InnerAudioContext, volume v: Float) -> Nil
+
+/// InnerAudioContext.setPlaybackRate
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setInnerAudioPlaybackRate")
+pub fn set_inner_audio_playback_rate(
+  ctx: InnerAudioContext,
+  rate r: Float,
+) -> Nil
+
+/// InnerAudioContext.getDuration
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getInnerAudioDuration")
+pub fn get_inner_audio_duration(ctx: InnerAudioContext) -> Float
+
+/// InnerAudioContext.getCurrentTime
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getInnerAudioCurrentTime")
+pub fn get_inner_audio_current_time(ctx: InnerAudioContext) -> Float
+
+/// InnerAudioContext.getPaused
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getInnerAudioPaused")
+pub fn get_inner_audio_paused(ctx: InnerAudioContext) -> Bool
+
+/// InnerAudioContext.getBuffered
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getInnerAudioBuffered")
+pub fn get_inner_audio_buffered(ctx: InnerAudioContext) -> Float
+
 /// InnerAudioContext.play
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "innerAudioPlay")
@@ -153,6 +212,91 @@ pub fn on_inner_audio_time_update(
   ctx: InnerAudioContext,
   cb: WechatResultCallback,
 ) -> Nil
+
+/// InnerAudioContext.onCanplay
+///
+@external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioCanplay")
+pub fn on_inner_audio_canplay(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.onWaiting
+///
+@external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioWaiting")
+pub fn on_inner_audio_waiting(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.onSeeking
+///
+@external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioSeeking")
+pub fn on_inner_audio_seeking(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.onSeeked
+///
+@external(javascript, "../wechat_media_ffi.mjs", "onInnerAudioSeeked")
+pub fn on_inner_audio_seeked(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.offPlay
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioPlay")
+pub fn off_inner_audio_play(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.offPause
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioPause")
+pub fn off_inner_audio_pause(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.offStop
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioStop")
+pub fn off_inner_audio_stop(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.offEnded
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioEnded")
+pub fn off_inner_audio_ended(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
+
+/// InnerAudioContext.offError
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioError")
+pub fn off_inner_audio_error(
+  ctx: InnerAudioContext,
+  cb: WechatResultCallback,
+) -> Nil
+
+/// InnerAudioContext.offTimeUpdate
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioTimeUpdate")
+pub fn off_inner_audio_time_update(
+  ctx: InnerAudioContext,
+  cb: WechatResultCallback,
+) -> Nil
+
+/// InnerAudioContext.offCanplay
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioCanplay")
+pub fn off_inner_audio_canplay(
+  ctx: InnerAudioContext,
+  cb: WechatCallback,
+) -> Nil
+
+/// InnerAudioContext.offWaiting
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioWaiting")
+pub fn off_inner_audio_waiting(
+  ctx: InnerAudioContext,
+  cb: WechatCallback,
+) -> Nil
+
+/// InnerAudioContext.offSeeking
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioSeeking")
+pub fn off_inner_audio_seeking(
+  ctx: InnerAudioContext,
+  cb: WechatCallback,
+) -> Nil
+
+/// InnerAudioContext.offSeeked
+///
+@external(javascript, "../wechat_media_ffi.mjs", "offInnerAudioSeeked")
+pub fn off_inner_audio_seeked(ctx: InnerAudioContext, cb: WechatCallback) -> Nil
 
 /// WebAudioContext type
 ///

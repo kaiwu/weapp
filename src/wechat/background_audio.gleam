@@ -10,6 +10,96 @@ import wechat/object.{type JsObject, type WechatResultCallback}
 @external(javascript, "../wechat_media_ffi.mjs", "getBackgroundAudioManager")
 pub fn get_background_audio_manager() -> JsObject
 
+/// `BackgroundAudioManager.setSrc`
+/// Set audio resource URL
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerSrc")
+pub fn set_background_audio_manager_src(bam: JsObject, src s: String) -> Nil
+
+/// `BackgroundAudioManager.setStartTime`
+/// Set playback start position in seconds
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerStartTime")
+pub fn set_background_audio_manager_start_time(
+  bam: JsObject,
+  start_time st: Float,
+) -> Nil
+
+/// `BackgroundAudioManager.setTitle`
+/// Set audio title
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerTitle")
+pub fn set_background_audio_manager_title(bam: JsObject, title t: String) -> Nil
+
+/// `BackgroundAudioManager.setEpname`
+/// Set album name
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerEpname")
+pub fn set_background_audio_manager_epname(
+  bam: JsObject,
+  epname e: String,
+) -> Nil
+
+/// `BackgroundAudioManager.setSinger`
+/// Set singer name
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerSinger")
+pub fn set_background_audio_manager_singer(
+  bam: JsObject,
+  singer s: String,
+) -> Nil
+
+/// `BackgroundAudioManager.setCoverImgUrl`
+/// Set cover image URL
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerCoverImgUrl")
+pub fn set_background_audio_manager_cover_img_url(
+  bam: JsObject,
+  cover_img_url c: String,
+) -> Nil
+
+/// `BackgroundAudioManager.setWebUrl`
+/// Set web page URL
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerWebUrl")
+pub fn set_background_audio_manager_web_url(
+  bam: JsObject,
+  web_url w: String,
+) -> Nil
+
+/// `BackgroundAudioManager.setProtocol`
+/// Set audio protocol
+///
+@external(javascript, "../wechat_media_ffi.mjs", "setBackgroundAudioManagerProtocol")
+pub fn set_background_audio_manager_protocol(
+  bam: JsObject,
+  protocol p: String,
+) -> Nil
+
+/// `BackgroundAudioManager.getDuration`
+/// Get current audio length in seconds
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getBackgroundAudioManagerDuration")
+pub fn get_background_audio_manager_duration(bam: JsObject) -> Float
+
+/// `BackgroundAudioManager.getCurrentTime`
+/// Get current playback position in seconds
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getBackgroundAudioManagerCurrentTime")
+pub fn get_background_audio_manager_current_time(bam: JsObject) -> Float
+
+/// `BackgroundAudioManager.getPaused`
+/// Get whether currently paused
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getBackgroundAudioManagerPaused")
+pub fn get_background_audio_manager_paused(bam: JsObject) -> Bool
+
+/// `BackgroundAudioManager.getBuffered`
+/// Get buffered time point in seconds
+///
+@external(javascript, "../wechat_media_ffi.mjs", "getBackgroundAudioManagerBuffered")
+pub fn get_background_audio_manager_buffered(bam: JsObject) -> Float
+
 /// `BackgroundAudioManager.play`
 /// Play audio
 ///

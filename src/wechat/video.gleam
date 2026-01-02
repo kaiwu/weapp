@@ -40,7 +40,7 @@ pub fn video_playback_rate(ctx vc: VideoContext, rate r: Float) -> Nil
 /// VideoContext.requestFullScreen
 ///
 @external(javascript, "../wechat_media_ffi.mjs", "videoContextRequestFullScreen")
-pub fn video_request_full_screen(ctx vc: VideoContext) -> Nil
+pub fn video_request_full_screen(ctx vc: VideoContext, direction d: Int) -> Nil
 
 /// VideoContext.exitFullScreen
 ///

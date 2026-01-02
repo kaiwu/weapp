@@ -113,6 +113,46 @@ export function setInnerAudioSrc(ctx, s) {
   ctx.src = s;
 }
 
+export function setInnerAudioStartTime(ctx, startTime) {
+  ctx.startTime = startTime;
+}
+
+export function setInnerAudioAutoplay(ctx, autoplay) {
+  ctx.autoplay = autoplay;
+}
+
+export function setInnerAudioLoop(ctx, loop) {
+  ctx.loop = loop;
+}
+
+export function setInnerAudioObeyMuteSwitch(ctx, obeyMuteSwitch) {
+  ctx.obeyMuteSwitch = obeyMuteSwitch;
+}
+
+export function setInnerAudioVolume(ctx, volume) {
+  ctx.volume = volume;
+}
+
+export function setInnerAudioPlaybackRate(ctx, playbackRate) {
+  ctx.playbackRate = playbackRate;
+}
+
+export function getInnerAudioDuration(ctx) {
+  return ctx.duration;
+}
+
+export function getInnerAudioCurrentTime(ctx) {
+  return ctx.currentTime;
+}
+
+export function getInnerAudioPaused(ctx) {
+  return ctx.paused;
+}
+
+export function getInnerAudioBuffered(ctx) {
+  return ctx.buffered;
+}
+
 export function innerAudioPlay(ctx) {
   ctx.play();
 }
@@ -173,6 +213,62 @@ export function onInnerAudioTimeUpdate(ctx, cb) {
   ctx.onTimeUpdate(cb);
 }
 
+export function onInnerAudioCanplay(ctx, cb) {
+  ctx.onCanplay(cb);
+}
+
+export function onInnerAudioWaiting(ctx, cb) {
+  ctx.onWaiting(cb);
+}
+
+export function onInnerAudioSeeking(ctx, cb) {
+  ctx.onSeeking(cb);
+}
+
+export function onInnerAudioSeeked(ctx, cb) {
+  ctx.onSeeked(cb);
+}
+
+export function offInnerAudioPlay(ctx, cb) {
+  ctx.offPlay(cb);
+}
+
+export function offInnerAudioPause(ctx, cb) {
+  ctx.offPause(cb);
+}
+
+export function offInnerAudioStop(ctx, cb) {
+  ctx.offStop(cb);
+}
+
+export function offInnerAudioEnded(ctx, cb) {
+  ctx.offEnded(cb);
+}
+
+export function offInnerAudioError(ctx, cb) {
+  ctx.offError(cb);
+}
+
+export function offInnerAudioTimeUpdate(ctx, cb) {
+  ctx.offTimeUpdate(cb);
+}
+
+export function offInnerAudioCanplay(ctx, cb) {
+  ctx.offCanplay(cb);
+}
+
+export function offInnerAudioWaiting(ctx, cb) {
+  ctx.offWaiting(cb);
+}
+
+export function offInnerAudioSeeking(ctx, cb) {
+  ctx.offSeeking(cb);
+}
+
+export function offInnerAudioSeeked(ctx, cb) {
+  ctx.offSeeked(cb);
+}
+
 export function createVideoContext(id) {
   return wx.createVideoContext(id);
 }
@@ -197,8 +293,8 @@ export function videoContextPlaybackRate(vc, r) {
   vc.playbackRate(r);
 }
 
-export function videoContextRequestFullScreen(vc) {
-  vc.requestFullScreen();
+export function videoContextRequestFullScreen(vc, direction) {
+  vc.requestFullScreen({ direction });
 }
 
 export function videoContextExitFullScreen(vc) {
@@ -340,6 +436,54 @@ export function recorderManagerOnInterruptionEnd(rm, cb) {
 
 export function getBackgroundAudioManager() {
   return wx.getBackgroundAudioManager();
+}
+
+export function setBackgroundAudioManagerSrc(bam, src) {
+  bam.src = src;
+}
+
+export function setBackgroundAudioManagerStartTime(bam, startTime) {
+  bam.startTime = startTime;
+}
+
+export function setBackgroundAudioManagerTitle(bam, title) {
+  bam.title = title;
+}
+
+export function setBackgroundAudioManagerEpname(bam, epname) {
+  bam.epname = epname;
+}
+
+export function setBackgroundAudioManagerSinger(bam, singer) {
+  bam.singer = singer;
+}
+
+export function setBackgroundAudioManagerCoverImgUrl(bam, coverImgUrl) {
+  bam.coverImgUrl = coverImgUrl;
+}
+
+export function setBackgroundAudioManagerWebUrl(bam, webUrl) {
+  bam.webUrl = webUrl;
+}
+
+export function setBackgroundAudioManagerProtocol(bam, protocol) {
+  bam.protocol = protocol;
+}
+
+export function getBackgroundAudioManagerDuration(bam) {
+  return bam.duration;
+}
+
+export function getBackgroundAudioManagerCurrentTime(bam) {
+  return bam.currentTime;
+}
+
+export function getBackgroundAudioManagerPaused(bam) {
+  return bam.paused;
+}
+
+export function getBackgroundAudioManagerBuffered(bam) {
+  return bam.buffered;
 }
 
 export function backgroundAudioManagerPlay(bam) {

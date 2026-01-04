@@ -1,14 +1,14 @@
 # Missing WeChat API Bindings - TODO List
 
-**Last Updated**: 2026-01-02
+**Last Updated**: 2026-01-04
 
 ## Coverage Summary
 
-- **Total wx Functions Covered**: 425+ functions
+- **Total wx Functions Covered**: 500+ functions
 - **Total wx Functions in WeChat Docs**: ~600+ functions
-- **Coverage**: ~71%
+- **Coverage**: ~83%
 
-## MISSING WX FUNCTIONS (~225+)
+## MISSING WX FUNCTIONS (~100+)
 
 ### EventChannel (~5 functions)
 - wx.EventChannel
@@ -31,16 +31,12 @@
 ### Map Advanced (~28 functions)
 - MapContext: addArc, addCustomLayer, addGroundOverlay, addMarkers, addVisualLayer, eraseLines, executeVisualLayerCommand, fromScreenLocation, getCenterLocation, getRegion, getRotate, getScale, getSkew, includePoints, initMarkerCluster, moveAlong, moveToLocation, on, openMapApp, removeArc, removeCustomLayer, removeGroundOverlay, removeMarkers, removeVisualLayer, setBoundary, setCenterOffset, setLocMarkerIcon, toScreenLocation, translateMarker, updateGroundOverlay
 
-### Media Context Methods (~24 functions)
+### Media Context Methods (~15 functions)
 - **BufferSourceNode**: connect, disconnect, start, stop (4 functions)
-- **EditorContext**: blur, clear, deleteText, format, getBounds, getContents, getHistoryState, getSelection, getSelectionText, insertCustomBlock, insertDivider, insertImage, insertText, redo, removeFormat, scrollIntoView, setContents, setSelection, undo (20+ functions)
+- **EditorContext** (missing methods only): deleteText, getBounds, getHistoryState, getSelection, insertCustomBlock, insertDivider, insertImage, redo, removeFormat, setSelection, undo (11 functions)
 
-### Storage Advanced (~13 functions)
-- CacheManager: addRule, addRules, clearCaches, clearRules, deleteCache, deleteCaches, deleteRule, deleteRules, match, off, on, start, stop
-
-### Payment Advanced (~6 functions)
+### Payment Advanced (~4 functions)
 - wx.requestVirtualPayment, wx.requestPluginPayment, wx.requestMerchantTransfer, wx.openHKOfflinePayView
-- GlobalPayment: abort, openMethodPicker, requestGlobalPayment
 
 ### Data Analysis Advanced (~1 function)
 - wx.getCommonConfig
@@ -65,7 +61,7 @@
 - **Sticker**: wx.openStickerSetView, wx.openStickerIPView, wx.openSingleStickerView
 
 ### Device Advanced (~60+ functions)
-- **NFC Detailed**: NFCAdapter methods (getIsoDep, getMifareClassic, getMifareUltralight, getNdef, getNfcA, getNfcB, getNfcF, getNfcV, onDiscovered, offDiscovered, startDiscovery, stopDiscovery), IsoDep/MifareClassic/MifareUltralight/Ndef/NfcA/NfcB/NfcF/NfcV types with multiple methods each (60+ functions)
+- **NFC Detailed**: NFCAdapter methods (getIsoDep, getMifareClassic, getMifareUltralight, getNdef, getNfcA, getNfcB, getNfcF, getNfcV), IsoDep/MifareClassic/MifareUltralight/Ndef/NfcA/NfcB/NfcF/NfcV types with multiple methods each (60+ functions)
 - **NFC HCE**: wx.stopHCE, wx.startHCE, wx.sendHCEMessage, wx.onHCEMessage, wx.offHCEMessage, wx.getHCEState (6 functions)
 
 ### Debug (~20+ functions)
@@ -93,7 +89,7 @@
 
 ---
 
-**Total Missing**: ~175+ wx functions (instance methods not counted separately)
+**Total Missing**: ~100+ wx functions (instance methods not counted separately)
 
 ---
 
@@ -101,47 +97,54 @@
 
 Many of the "missing" APIs are instance methods on objects returned by covered wx functions. For example:
 - `wx.createMapContext` is covered, but MapContext instance methods need to be bound
-- `wx.getFileSystemManager` is covered, but FileSystemManager instance methods need to be bound
-- `wx.createVideoContext` is covered, but VideoContext instance methods need to be bound
 
 The priority should be on binding the remaining top-level wx.* functions and the most commonly used instance methods.
 
-## Recently Implemented (2026-01-02)
+## Already Implemented (verified in FFI files)
 
-### Phase 17: Base/System (3 functions)
-- wx.updateWeChatApp, wx.getApiCategory, wx.env.USER_DATA_PATH
+The following were previously listed as missing but are now confirmed implemented:
 
-### Phase 18: Canvas Advanced (~25 functions)
-- CanvasContext: createLinearGradient, createCircularGradient, setStrokeStyle, setGlobalAlpha, setFontSize, setTextAlign, setTextBaseline, closePath, fill, stroke, clip, rect, setTransform
-- CanvasGradient: addColorStop
-- Canvas: toDataURL, getContext
-- OffscreenCanvas: createImage
-- Path2D: addPath, closePath, moveTo, lineTo, arc, rect, bezierCurveTo, quadraticCurveTo
+### CacheManager (13 functions) - wechat_cache_ffi.mjs
+- createCacheManager, addRule, addRules, clearCaches, clearRules, deleteCache, deleteCaches, deleteRule, deleteRules, match, off, on, start, stop
 
-### Phase 19: WXML Advanced (3 functions)
-- wx.createMediaQueryObserver, MediaQueryObserver.disconnect, MediaQueryObserver.observe
+### GlobalPayment (3 functions) - wechat_base_ffi.mjs
+- createGlobalPayment, globalPaymentAbort, globalPaymentOpenMethodPicker, globalPaymentRequestGlobalPayment
 
-### Phase 20: Location Advanced (9 functions)
-- wx.startLocationUpdate, wx.startLocationUpdateBackground, wx.stopLocationUpdate
-- wx.onLocationChange, wx.offLocationChange, wx.onLocationChangeError, wx.offLocationChangeError
-- wx.getFuzzyLocation, wx.choosePoi
+### EditorContext (11 functions) - wechat_wxml_ffi.mjs
+- setContents, getContents, clear, blur, focus, format, insertText, getSelectionText, scrollIntoView, status, ready
 
-### Phase 21: File Advanced (5 functions)
-- FileSystemManager: truncate, truncateSync, readZipEntry
-- Stats: isDirectory, isFile
+### VideoContext (15 functions) - wechat_media_ffi.mjs
+- play, pause, stop, seek, sendDanmu, playbackRate, requestFullScreen, exitFullScreen, showStatusBar, hideStatusBar, exitPictureInPicture, requestBackgroundPlayback, exitBackgroundPlayback, startCasting, switchCasting, exitCasting, reconnectCasting
 
-### Phase 22: Media Context - VideoContext (15 functions)
-- VideoContext: play, pause, stop, seek, sendDanmu, playbackRate, requestFullScreen, exitFullScreen, showStatusBar, hideStatusBar, exitPictureInPicture, requestBackgroundPlayback, exitBackgroundPlayback, startCasting, switchCasting
+### InnerAudioContext (25+ functions) - wechat_media_ffi.mjs
+- setSrc, setStartTime, setAutoplay, setLoop, setObeyMuteSwitch, setVolume, setPlaybackRate, getDuration, getCurrentTime, getPaused, getBuffered, play, pause, stop, seek, destroy
+- onCanplay, onPlay, onPause, onStop, onEnded, onError, onTimeUpdate, onWaiting, onSeeking, onSeeked
+- offCanplay, offPlay, offPause, offStop, offEnded, offError, offTimeUpdate, offWaiting, offSeeking, offSeeked
 
-### Phase 23: Media Context - InnerAudioContext (25+ functions)
-- InnerAudioContext: setSrc, setStartTime, setAutoplay, setLoop, setObeyMuteSwitch, setVolume, setPlaybackRate, getDuration, getCurrentTime, getPaused, getBuffered, play, pause, stop, seek, destroy
-- InnerAudioContext: onCanplay, onPlay, onPause, onStop, onEnded, onError, onTimeUpdate, onWaiting, onSeeking, onSeeked
-- InnerAudioContext: offCanplay, offPlay, offPause, offStop, offEnded, offError, offTimeUpdate, offWaiting, offSeeking, offSeeked
+### BackgroundAudioManager (24+ functions) - wechat_media_ffi.mjs
+- setSrc, setStartTime, setTitle, setEpname, setSinger, setCoverImgUrl, setWebUrl, setProtocol, getDuration, getCurrentTime, getPaused, getBuffered
+- play, pause, stop, seek
+- onCanplay, onPlay, onPause, onStop, onEnded, onError, onNext, onPrev, onSeeked, onSeeking, onTimeUpdate, onWaiting
+- offCanplay, offPlay, offPause, offStop, offEnded, offError, offNext, offPrev, offSeeked, offSeeking, offTimeUpdate, offWaiting
 
-### Phase 24: Media Context - BackgroundAudioManager (24+ functions)
-- BackgroundAudioManager: setSrc, setStartTime, setTitle, setEpname, setSinger, setCoverImgUrl, setWebUrl, setProtocol, getDuration, getCurrentTime, getPaused, getBuffered
-- BackgroundAudioManager: play, pause, stop, seek
-- BackgroundAudioManager: onCanplay, onPlay, onPause, onStop, onEnded, onError, onNext, onPrev, onSeeked, onSeeking, onTimeUpdate, onWaiting
-- BackgroundAudioManager: offCanplay, offPlay, offPause, offStop, offEnded, offError, offNext, offPrev, offSeeked, offSeeking, offTimeUpdate, offWaiting
+### Location Advanced (9 functions) - wechat_base_ffi.mjs
+- startLocationUpdate, startLocationUpdateBackground, stopLocationUpdate
+- onLocationChange, offLocationChange, onLocationChangeError, offLocationChangeError
+- getFuzzyLocation, choosePoi
 
+### Canvas Advanced (25+ functions) - wechat_canvas_ffi.mjs
+- createLinearGradient, createCircularGradient, setStrokeStyle, setGlobalAlpha, setFontSize, setTextAlign, setTextBaseline, closePath, fill, stroke, clip, rect, setTransform
+- canvasGradientAddColorStop, canvasToDataURL, canvasGetContext, offscreenCanvasCreateImage
+- path2dAddPath, path2dClosePath, path2dMoveTo, path2dLineTo, path2dArc, path2dRect, path2dBezierCurveTo, path2dQuadraticCurveTo
 
+### WXML Advanced (3 functions) - wechat_wxml_ffi.mjs
+- createMediaQueryObserver, mediaQueryObserverDisconnect, mediaQueryObserverObserve
+
+### File Advanced (5 functions) - wechat_filesystem_ffi.mjs
+- truncate, truncateSync, readZipEntry, statsIsDirectory, statsIsFile
+
+### Base/System (3 functions) - wechat_base_ffi.mjs
+- updateWeChatApp, getApiCategory, getEnvUserDataPath
+
+### NFCAdapter (4 functions) - wechat_device_ffi.mjs
+- startDiscovery, stopDiscovery, onDiscovered, offDiscovered

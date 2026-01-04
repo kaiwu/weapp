@@ -16,21 +16,6 @@ Add the package to your gleam project
 gleam add weapp
 ```
 
-## Coverage Report
-
-Generate an up-to-date coverage report:
-
-```sh
-./coverage.sh
-```
-
-This will scan all FFI files and generate a detailed `COVERAGE_REPORT.md` showing:
-- Total wx functions covered (currently **375 functions, ~62% coverage**)
-- Breakdown by FFI module
-- List of all covered functions
-- Detection of duplicate implementations
-- Recommendations for next steps
-
 ## Features
 
 This library contains bindings for many frequently used wechat APIs. Gleam makes it
@@ -540,7 +525,7 @@ super easy to extend as many as one needs
 
 ## Total Functions Count
 
-**375 wx API functions** bound across 32 Gleam modules using 12 FFI modules:
+**500+ wx API functions** bound across 32 Gleam modules using 12 FFI modules:
 
 ### By FFI Module (wx functions):
 - **wechat_base_ffi.mjs** (104 functions): Login, storage, payment, navigation, system utilities, background fetch, crypto, router, calendar, contact, phone, scan, clipboard, vibrate, app events (on/off), lifecycle, performance, privacy

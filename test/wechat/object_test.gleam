@@ -1,3 +1,5 @@
+import gleam/dynamic/decode
+import gleam/javascript/array
 import gleam/result
 import gleeunit/should
 import wechat/object.{WechatError}
@@ -8,6 +10,20 @@ pub fn set_test() {
   |> object.get("a")
   |> result.try(object.int)
   |> should.equal(Ok(1))
+
+  object.new()
+  |> object.set("a", 1)
+  |> object.mutate("a.b", 2)
+  |> object.paths("a.b")
+  |> result.try(object.int)
+  |> should.equal(Ok(2))
+
+  object.new()
+  |> object.set("a", array.from_list([0, 1, 2]))
+  |> object.mutate("a.1", 10)
+  |> object.path("a")
+  |> result.try(fn(o) { object.list(o, decode.int) })
+  |> should.equal(Ok([0, 10, 2]))
 
   object.new()
   |> object.set("ab", 1)

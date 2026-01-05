@@ -158,6 +158,11 @@ pub fn set(o: JsObject, k: k, v: v) -> JsObject
 @external(javascript, "../wechat_ffi.mjs", "obj_assign")
 pub fn merge(o: JsObject, n: JsObject) -> JsObject
 
+/// mutate object by path
+///
+@external(javascript, "../wechat_ffi.mjs", "obj_mutate")
+pub fn mutate(o: JsObject, p: String, v: v) -> JsObject
+
 /// convenient constructor if the `(k, v)` pairs are of same type
 /// since gleam is strongly typed
 ///

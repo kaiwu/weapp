@@ -218,3 +218,28 @@ export function obj_set(o, k, v) {
 export function obj_assign(o, n) {
   return Object.assign({}, o, n)
 }
+
+export function obj_mutate(obj, path, value) {
+  const keys = path.split('.');
+  let current = obj;
+
+  for (let i = 0; i < keys.length - 1; i++) {
+    const key = keys[i];
+
+    // Create if doesn't exist or is wrong type
+    if (!current[key] || typeof current[key] !== 'object') {
+      current[key] = {};
+    }
+
+    // Special case: don't overwrite arrays with objects
+    if (Array.isArray(current[key]) && !/^\d+$/.test(keys[i + 1])) {
+      throw new Error(`Cannot set object property on array at ${key}`);
+    }
+
+    current = current[key];
+  }
+
+  const lastKey = keys[keys.length - 1];
+  current[lastKey] = value;
+  return obj;
+}

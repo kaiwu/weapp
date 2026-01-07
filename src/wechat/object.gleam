@@ -224,6 +224,32 @@ pub fn field(
   |> result.map_error(WechatDecodeError)
 }
 
+fn drop_last(p: List(a), ps: List(a)) -> List(a) {
+  case ps {
+    [] -> p
+    [_] -> p
+    [h, ..tail] -> drop_last(list.append(p, [h]), tail)
+  }
+}
+
+/// get o field "p" as t
+///
+pub fn path_field(
+  o: JsObject,
+  path p: String,
+  of b: Decoder(t),
+) -> Result(t, WechatError) {
+  let ps = string.split(p, ".")
+  case list.last(ps) {
+    Ok(last) -> {
+      let p0 = drop_last([], ps) |> string.join(".")
+      use o0 <- result.try(paths(o, p0))
+      field(o0, last, b)
+    }
+    Error(_) -> Error(WechatError("empty path"))
+  }
+}
+
 /// convert to `list(t)` with `gleam/dynamic`
 ///
 pub fn list(o: JsObject, of f: Decoder(t)) -> Result(List(t), WechatError) {

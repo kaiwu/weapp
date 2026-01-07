@@ -73,3 +73,15 @@ pub fn call_test() {
   |> result.try(object.int)
   |> should.equal(Error(WechatError("not a function")))
 }
+
+pub fn field_test() {
+  object.new()
+  |> object.mutate("a.b", 10)
+  |> object.path_field("a.b", decode.int)
+  |> should.equal(Ok(10))
+
+  object.new()
+  |> object.mutate("a.b", [1, 2])
+  |> object.path_field("a.b", decode.list(decode.int))
+  |> should.equal(Ok([1, 2]))
+}

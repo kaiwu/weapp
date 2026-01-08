@@ -22,7 +22,7 @@ pub fn set_test() {
   |> object.set("a", array.from_list([0, 1, 2]))
   |> object.mutate("a.1", 10)
   |> object.path("a")
-  |> result.try(fn(o) { object.list(o, decode.int) })
+  |> result.try(object.list(_, decode.int))
   |> should.equal(Ok([0, 10, 2]))
 
   object.new()

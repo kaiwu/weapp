@@ -48,7 +48,7 @@ pub fn set_data(
 
 /// `page.selectComponent()` for the specified page
 ///
-@external(javascript, "../wechat_ffi.mjs", "select_component")
+@external(javascript, "../wechat_component_ffi.mjs", "select_component")
 pub fn select_component(page p: JsObject, component c: String) -> JsObject
 
 /// page utility function `page.route()`

@@ -2,8 +2,9 @@
 //// details in [wechat document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/)
 ////
 
+import gleam/javascript/promise.{type Promise}
 import gleam/list
-import wechat/object.{type JsObject}
+import wechat/object.{type JsObject, type WechatResult}
 
 /// SelectorQuery type
 ///
@@ -24,6 +25,14 @@ fn to_obj(n: String, t: String, v: v) -> JsObject
 
 @external(javascript, "../wechat_component_ffi.mjs", "array_to_object")
 fn array_to_obj(n: String, v: v) -> JsObject
+
+@external(javascript, "../wechat_component_ffi.mjs", "trigger_event")
+pub fn trigger_event(
+  component c: JsObject,
+  event e: String,
+  detail d: JsObject,
+  option o: JsObject,
+) -> Promise(WechatResult)
 
 /// property to object
 ///

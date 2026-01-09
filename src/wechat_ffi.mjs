@@ -17,6 +17,10 @@ export function get_current_pages() {
   return getCurrentPages();
 }
 
+export function bind(f, o) {
+    return f.bind(o)
+}
+
 export function set_data(p, d, f) {
   return new Promise(resolve => {
     p.setData(d, f);

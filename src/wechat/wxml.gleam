@@ -71,7 +71,10 @@ pub fn selector_query_exec(query q: SelectorQuery) -> Promise(WechatResult)
 /// Returns NodesRef for chaining
 ///
 @external(javascript, "../wechat_wxml_ffi.mjs", "nodes_ref_bounding_client_rect")
-pub fn nodes_ref_bounding_client_rect(ref r: NodesRef) -> NodesRef
+pub fn nodes_ref_bounding_client_rect(
+  ref r: NodesRef,
+  callback cb: WechatResultCallback,
+) -> SelectorQuery
 
 /// `NodesRef.scrollOffset()`
 /// Add request to get node scroll position

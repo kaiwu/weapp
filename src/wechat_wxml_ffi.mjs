@@ -29,8 +29,8 @@ export function selector_query_exec(query) {
   });
 }
 
-export function nodes_ref_bounding_client_rect(ref) {
-  return ref.boundingClientRect();
+export function nodes_ref_bounding_client_rect(ref, cb) {
+  return ref.boundingClientRect(cb);
 }
 
 export function nodes_ref_scroll_offset(ref) {

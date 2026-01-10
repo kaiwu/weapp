@@ -32,7 +32,7 @@ export function decode_uri_component(u) {
   return decodeURIComponent(u);
 }
 
-export function set_timeout(cb, d, o) {
+export function set_timeout(d, o, cb) {
   return setTimeout(cb, d, o)
 }
 
@@ -40,7 +40,7 @@ export function clear_timeout(id) {
   return clearTimeout(id)
 }
 
-export function set_interval(cb, d, o) {
+export function set_interval(d, o, cb) {
   return setInterval(cb, d, o)
 }
 

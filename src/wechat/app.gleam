@@ -92,9 +92,9 @@ pub fn run_app(o: JsObject) -> Nil
 ///
 @external(javascript, "../wechat_ffi.mjs", "set_timeout")
 pub fn set_timeout(
-  callback cb: WechatResultCallback,
   delay d: Int,
   with o: JsObject,
+  callback cb: WechatResultCallback,
 ) -> Int
 
 /// global function `clearTimeout(...)`
@@ -106,9 +106,9 @@ pub fn clear_timeout(id id: Int) -> Nil
 ///
 @external(javascript, "../wechat_ffi.mjs", "set_interval")
 pub fn set_interval(
-  callback cb: WechatResultCallback,
   delay d: Int,
   with o: JsObject,
+  callback cb: WechatResultCallback,
 ) -> Int
 
 /// global function `clearInterval(...)`

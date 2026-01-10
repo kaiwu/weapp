@@ -26,10 +26,3 @@ pub fn bind(f: f, o: JsObject) -> f
 pub fn drain(_: a) -> Nil {
   Nil
 }
-
-/// drain and echo every side effect
-///
-pub fn drain_echo(a: a) -> Nil {
-  echo a
-  Nil
-}

@@ -70,4 +70,6 @@ pub fn base_test() {
   let _ = base.update_wechat_app
   let _ = base.get_api_category
   let _ = base.get_env_user_data_path
+  let _ = base.require
+  let _ = base.require_async
 }

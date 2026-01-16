@@ -585,3 +585,13 @@ pub fn get_api_category() -> String
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "getEnvUserDataPath")
 pub fn get_env_user_data_path() -> String
+
+/// require
+///
+@external(javascript, "../wechat_base_ffi.mjs", "requireSync")
+pub fn require(path p: String) -> JsObject
+
+/// require async
+///
+@external(javascript, "../wechat_base_ffi.mjs", "requireAsync")
+pub fn require_async(path p: String) -> Promise(WechatResult)

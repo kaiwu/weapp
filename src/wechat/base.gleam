@@ -595,3 +595,8 @@ pub fn require(path p: String) -> JsObject
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "requireAsync")
 pub fn require_async(path p: String) -> Promise(WechatResult)
+
+/// exports
+///
+@external(javascript, "../wechat_base_ffi.mjs", "toExport")
+pub fn exports(key k: String, value v: v) -> Nil

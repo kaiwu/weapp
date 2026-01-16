@@ -1174,5 +1174,8 @@ export function requireAsync(p) {
                 resolve(new Error(new WechatError(err.errMsg)))
             })
     })
+}
 
+export function toExport(k, v) {
+    module.exports[k] = v
 }

@@ -151,7 +151,7 @@ pub fn vibrate_short(
 @external(javascript, "../wechat_base_ffi.mjs", "vibrateLong")
 pub fn vibrate_long(complete cb: WechatCallback) -> Promise(WechatResult)
 
-/// `wx.showTabbar`
+/// `wx.showTabBar`
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "showTabbar")
 pub fn show_tabbar(
@@ -159,7 +159,7 @@ pub fn show_tabbar(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
-/// `wx.hideTabbar`
+/// `wx.hideTabBar`
 ///
 @external(javascript, "../wechat_base_ffi.mjs", "hideTabbar")
 pub fn hide_tabbar(

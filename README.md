@@ -406,7 +406,7 @@ super easy to extend as many as one needs
 - Router: `add_route_builder`, `get_route_context`, `remove_route_builder`
 
 **Other:**
-- `wx.showTabbar`, `wx.hideTabbar` - Tabbar control
+- `wx.showTabBar`, `wx.hideTabBar` - TabBar control
 - `wx.showLoading`, `wx.hideLoading` - Loading
 - `wx.showToast` - Toast
 

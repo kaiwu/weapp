@@ -214,7 +214,7 @@ export function vibrateLong(cb) {
 
 export function showTabbar(a, cb) {
     return new Promise(resolve => {
-        wx.showTabbar({
+        wx.showTabBar({
             animation: a,
             complete: cb,
             success(res) { resolve(new Ok(res)) },
@@ -223,9 +223,10 @@ export function showTabbar(a, cb) {
     })
 }
 
-export function hideTabbar(cb) {
+export function hideTabbar(a, cb) {
     return new Promise(resolve => {
-        wx.hideTabbar({
+        wx.hideTabBar({
+            animation: a,
             complete: cb,
             success(res) { resolve(new Ok(res)) },
             fail(err) { resolve(new Error(new WechatError(err.errMsg))) }

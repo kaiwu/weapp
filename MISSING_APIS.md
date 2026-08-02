@@ -1,6 +1,6 @@
 # Missing WeChat API Bindings - TODO List
 
-**Last Updated**: 2026-01-04
+**Last Updated**: 2026-08-03
 
 ## Coverage Summary
 
@@ -101,6 +101,11 @@ Many of the "missing" APIs are instance methods on objects returned by covered w
 The priority should be on binding the remaining top-level wx.* functions and the most commonly used instance methods.
 
 ## Already Implemented (verified in FFI files)
+
+### Network task starters and file sharing
+- Task-returning variants for `wx.request`, `wx.downloadFile`, and `wx.uploadFile`
+- `wx.shareFileMessage` with `fileName`
+- URI component encoding and additive safe decoding helpers
 
 The following were previously listed as missing but are now confirmed implemented:
 

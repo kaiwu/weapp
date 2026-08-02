@@ -50,9 +50,9 @@ super easy to extend as many as one needs
 - `wx.onSocketMessage` - Listen for WebSocket message
 - `wx.onSocketError` - Listen for WebSocket error
 - `wx.onSocketClose` - Listen for WebSocket close
-- RequestTask - Network request task management
-- UploadTask - Upload task management
-- DownloadTask - Download task management
+- RequestTask - task-returning requests and task management
+- UploadTask - task-returning uploads, progress, and task management
+- DownloadTask - task-returning downloads, progress, and task management
 - SocketTask - WebSocket task management
 - `wx.createTCPSocket` - Create TCP Socket instance
 - `wx.createUDPSocket` - Create UDP Socket instance
@@ -488,6 +488,7 @@ super easy to extend as many as one needs
 - `wx.showShareMenu`, `wx.hideShareMenu` - Share menu control
 - `wx.updateShareMenu` - Update share menu
 - `wx.shareAppMessage` - Share app message
+- `wx.shareFileMessage` - Share a file, optionally with a displayed file name
 - `wx.onShareAppMessage`, `wx.offShareAppMessage` - Share event handlers
 
 </details>
@@ -552,7 +553,7 @@ super easy to extend as many as one needs
 - **wechat/canvas** - Canvas context creation
 - **wechat/filesystem** - File system manager
 - **wechat/map** - Map context and location
-- **wechat/app** - App constructor, system info (getAppBaseInfo, getSystemInfo sync/async, getDeviceInfo, getWindowInfo, etc.), utilities (canIUse, base64 conversion)
+- **wechat/app** - App constructor, system info (getAppBaseInfo, getSystemInfo sync/async, getDeviceInfo, getWindowInfo, etc.), utilities (URI components, canIUse, base64 conversion)
 - **wechat/page** - Page constructor and data management
 - **wechat/storage** - Storage operations
 - **wechat/cache** - Cache manager

@@ -1,6 +1,14 @@
 import { Ok, Error } from "./gleam.mjs"
 import { WechatError } from "./wechat/object.mjs"
 
+function taskResult(start) {
+  let task;
+  const result = new Promise(resolve => {
+    task = start(resolve);
+  });
+  return [task, result];
+}
+
 export function downloadFile(u, h, cb) {
   return new Promise(resolve => {
     wx.downloadFile({
@@ -11,6 +19,18 @@ export function downloadFile(u, h, cb) {
       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
     })
   })
+}
+
+export function downloadFileWithTask(u, h, cb) {
+  return taskResult(resolve =>
+    wx.downloadFile({
+      url: u,
+      header: h,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  );
 }
 
 export function connectSocket(u, h, p, cb) {
@@ -106,6 +126,21 @@ export function request(u, m, d, h, t, cb) {
   })
 }
 
+export function requestWithTask(u, m, d, h, t, cb) {
+  return taskResult(resolve =>
+    wx.request({
+      url: u,
+      method: m,
+      data: d,
+      header: h,
+      timeout: t,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  );
+}
+
 export function requestTaskAbort(task) {
   task.abort();
 }
@@ -164,6 +199,22 @@ export function uploadTaskOnHeadersReceived(task, cb) {
 
 export function uploadTaskOnProgressUpdate(task, cb) {
   task.onProgressUpdate(cb);
+}
+
+export function uploadFileWithTask(u, fp, n, h, fd, t, cb) {
+  return taskResult(resolve =>
+    wx.uploadFile({
+      url: u,
+      filePath: fp,
+      name: n,
+      header: h,
+      formData: fd,
+      timeout: t,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  );
 }
 
 // Socket APIs
@@ -451,4 +502,3 @@ export function onNetworkWeakChange(cb) {
 export function offNetworkWeakChange(cb) {
   wx.offNetworkWeakChange(cb);
 }
-

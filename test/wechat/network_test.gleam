@@ -6,6 +6,9 @@ pub fn request_test() {
   let _cb: fn(object.WechatCallback) -> Nil = fn(_) { Nil }
   let request_fn = network.request
   let _ = request_fn
+  let _ = network.request_with_task
+  let _ = network.download_file_with_task
+  let _ = network.upload_file_with_task
 }
 
 pub fn websocket_test() {

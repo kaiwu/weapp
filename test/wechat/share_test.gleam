@@ -12,6 +12,7 @@ pub fn share_test() {
   let _ = share.share_video_message
   let _ = share.share_to_official_account
   let _ = share.share_file_message
+  let _ = share.share_file_message_named
   let _ = share.on_copy_url
   let _ = share.off_copy_url
   let _ = share.auth_private_message

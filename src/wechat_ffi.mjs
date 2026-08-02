@@ -28,8 +28,20 @@ export function set_data(p, d, f) {
   })
 }
 
+export function encode_uri_component(u) {
+  return encodeURIComponent(u);
+}
+
 export function decode_uri_component(u) {
   return decodeURIComponent(u);
+}
+
+export function safe_decode_uri_component(u) {
+  try {
+    return decodeURIComponent(u);
+  } catch (_) {
+    return u;
+  }
 }
 
 export function set_timeout(d, o, cb) {

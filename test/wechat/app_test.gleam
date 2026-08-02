@@ -1,5 +1,11 @@
 import wechat/app
 
+pub fn uri_component_test() {
+  assert app.encode_uri_component("舒尔 MV7") == "%E8%88%92%E5%B0%94%20MV7"
+  assert app.decode_uri_component("%E8%88%92%E5%B0%94%20MV7") == "舒尔 MV7"
+  assert app.safe_decode_uri_component("broken%query") == "broken%query"
+}
+
 pub fn app_lifecycle_test() {
   // Placeholder for app lifecycle tests
   let _ = app.get_app
@@ -21,6 +27,9 @@ pub fn app_lifecycle_test() {
   let _ = app.get_enter_options_sync
 
   // Utility APIs
+  let _ = app.encode_uri_component
+  let _ = app.decode_uri_component
+  let _ = app.safe_decode_uri_component
   let _ = app.can_i_use
   let _ = app.base64_to_array_buffer
   let _ = app.array_buffer_to_base64

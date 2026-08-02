@@ -116,10 +116,23 @@ pub fn set_interval(
 @external(javascript, "../wechat_ffi.mjs", "clear_interval")
 pub fn clear_interval(id id: Int) -> Nil
 
+/// global function `encodeURIComponent`
+///
+@external(javascript, "../wechat_ffi.mjs", "encode_uri_component")
+pub fn encode_uri_component(uri: String) -> String
+
 /// global function `decodeURIComponent`
 ///
+/// This preserves the global function's throwing behavior for malformed escape
+/// sequences. Use `safe_decode_uri_component` when fallback behavior is wanted.
+///
 @external(javascript, "../wechat_ffi.mjs", "decode_uri_component")
-pub fn decode_uri_component(uri: String) -> JsObject
+pub fn decode_uri_component(uri: String) -> String
+
+/// Decode a URI component, returning malformed escape sequences unchanged.
+///
+@external(javascript, "../wechat_ffi.mjs", "safe_decode_uri_component")
+pub fn safe_decode_uri_component(uri: String) -> String
 
 /// `wx.canIUse`
 /// Check if API is available

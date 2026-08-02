@@ -103,6 +103,15 @@ pub fn share_file_message(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
+/// `wx.shareFileMessage` with the displayed file name.
+///
+@external(javascript, "../wechat_ui_ffi.mjs", "shareFileMessageNamed")
+pub fn share_file_message_named(
+  file_path fp: String,
+  file_name name: String,
+  complete cb: WechatCallback,
+) -> Promise(WechatResult)
+
 /// `wx.onCopyUrl`
 /// Listen for copy URL events
 ///

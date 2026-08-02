@@ -18,6 +18,18 @@ pub fn download_file(
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 
+/// `wx.downloadFile`, returning both its `DownloadTask` and eventual result.
+///
+/// Use the first tuple item with the `download_task_*` functions to observe
+/// progress or abort the transfer. Await the second item for completion.
+///
+@external(javascript, "../wechat_network_ffi.mjs", "downloadFileWithTask")
+pub fn download_file_with_task(
+  url u: String,
+  header h: JsObject,
+  complete cb: WechatCallback,
+) -> #(JsObject, Promise(WechatResult))
+
 /// `wx.connectSocket`
 /// Create a WebSocket connection
 ///
@@ -120,6 +132,21 @@ pub fn request(
   timeout t: Int,
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
+
+/// `wx.request`, returning both its `RequestTask` and eventual result.
+///
+/// Use the first tuple item with the `request_task_*` functions. Await the
+/// second item for the request result.
+///
+@external(javascript, "../wechat_network_ffi.mjs", "requestWithTask")
+pub fn request_with_task(
+  url u: String,
+  method m: String,
+  data d: JsObject,
+  header h: JsObject,
+  timeout t: Int,
+  complete cb: WechatCallback,
+) -> #(JsObject, Promise(WechatResult))
 
 /// `RequestTask.abort`
 /// Abort the request
@@ -237,6 +264,22 @@ pub fn upload_task_on_progress_update(
   task: JsObject,
   callback cb: WechatResultCallback,
 ) -> Nil
+
+/// `wx.uploadFile`, returning both its `UploadTask` and eventual result.
+///
+/// This variant exposes the task required by the `upload_task_*` functions
+/// while retaining the Promise-based result used by the rest of this package.
+///
+@external(javascript, "../wechat_network_ffi.mjs", "uploadFileWithTask")
+pub fn upload_file_with_task(
+  url u: String,
+  file_path fp: String,
+  name n: String,
+  header h: JsObject,
+  form_data fd: JsObject,
+  timeout t: Int,
+  complete cb: WechatCallback,
+) -> #(JsObject, Promise(WechatResult))
 
 /// Socket APIs
 ///

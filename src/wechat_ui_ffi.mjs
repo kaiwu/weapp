@@ -475,6 +475,18 @@ export function shareFileMessage(filePath, cb) {
   })
 }
 
+export function shareFileMessageNamed(filePath, fileName, cb) {
+  return new Promise(resolve => {
+    wx.shareFileMessage({
+      filePath,
+      fileName,
+      complete: cb,
+      success(res) { resolve(new Ok(res)) },
+      fail(err) { resolve(new Error(new WechatError(err.errMsg))) }
+    })
+  })
+}
+
 export function onCopyUrl(cb) {
   wx.onCopyUrl(cb)
 }

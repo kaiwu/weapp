@@ -95,12 +95,12 @@ pub fn off_gyroscope_change(callback cb: WechatResultCallback) -> Nil
 /// Device Motion
 ///
 /// `wx.startDeviceMotionListening`
-/// Start device motion listening
+/// Start listening for device orientation changes.
+/// `interval` is `"game"`, `"ui"`, or `"normal"`.
 ///
 @external(javascript, "../wechat_device_ffi.mjs", "startDeviceMotionListening")
 pub fn start_device_motion_listening(
-  acceleration ai: Bool,
-  rotation_rate rr: Bool,
+  interval i: String,
   complete cb: WechatCallback,
 ) -> Promise(WechatResult)
 

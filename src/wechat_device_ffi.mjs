@@ -95,11 +95,10 @@ export function offGyroscopeChange(cb) {
 
 // Device Motion
 
-export function startDeviceMotionListening(ai, rr, cb) {
+export function startDeviceMotionListening(i, cb) {
   return new Promise(resolve => {
     wx.startDeviceMotionListening({
-      acceleration: ai,
-      rotationRate: rr,
+      interval: i,
       complete: cb,
       success(res) { resolve(new Ok(res)) },
       fail(err) { resolve(new Error(new WechatError(err.errMsg))) }

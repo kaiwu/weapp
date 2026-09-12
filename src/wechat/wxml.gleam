@@ -66,6 +66,14 @@ pub fn selector_query_select_viewport(query q: SelectorQuery) -> NodesRef
 @external(javascript, "../wechat_wxml_ffi.mjs", "selector_query_exec")
 pub fn selector_query_exec(query q: SelectorQuery) -> Promise(WechatResult)
 
+/// Execute with the native completion callback, retaining native callback
+/// ordering when a caller must update the measured instance immediately.
+@external(javascript, "../wechat_wxml_ffi.mjs", "selector_query_exec_with_callback")
+pub fn selector_query_exec_with_callback(
+  query q: SelectorQuery,
+  callback cb: WechatResultCallback,
+) -> Nil
+
 /// `NodesRef.boundingClientRect()`
 /// Add request to get node layout position relative to display area
 /// Returns NodesRef for chaining

@@ -1,4 +1,4 @@
-import { Ok, Error } from "./gleam.mjs"
+import { Ok, Error, NonEmpty } from "./gleam.mjs"
 import { NilError, WechatError } from "./wechat/object.mjs"
 
 export function get_app() {
@@ -57,7 +57,7 @@ export function set_interval(d, o, cb) {
 }
 
 export function clear_interval(id) {
-  return clearInverval(id)
+  return clearInterval(id)
 }
 
 // System Info APIs
@@ -216,6 +216,34 @@ export function obj_get(o, k) {
   return k in o ? new Ok(o[k]) : new Error(e);
 }
 
+// Additive safe lookup; obj_get retains its original invalid-receiver throws.
+export function obj_lookup(o, k) {
+  return o !== null && (typeof o === 'object' || typeof o === 'function') && k in o
+    ? new Ok(o[k]) : new Error(new NilError(undefined));
+}
+
+// Construct one fresh object without repeatedly copying its growing prefix.
+// Define own properties, preserving computed __proto__ keys and symbols.
+export function obj_literal(entries) {
+  // Walk the Gleam list directly. Its iterator allocates private-field state
+  // when lowered for ES2017; the temporary pairs array keeps element identity.
+  // Let the engine construct all own properties in one pass when supported.
+  // Keep the descriptor path for older runtimes without Object.fromEntries.
+  if (typeof Object.fromEntries === 'function') {
+    const pairs = [];
+    for (let cursor = entries; cursor instanceof NonEmpty; cursor = cursor.tail) {
+      pairs.push(cursor.head);
+    }
+    return Object.fromEntries(pairs);
+  }
+  const value = {};
+  for (let cursor = entries; cursor instanceof NonEmpty; cursor = cursor.tail) {
+    const [key, item] = cursor.head;
+    Object.defineProperty(value, key, { value: item, enumerable: true, configurable: true, writable: true });
+  }
+  return value;
+}
+
 export function obj_set(o, k, v) {
   return {
     ...o,
@@ -251,3 +279,5 @@ export function obj_mutate(obj, path, value) {
   current[lastKey] = value;
   return obj;
 }
+
+export function obj_invoke(receiver, method, args) { return receiver[method](...args); }

@@ -24,6 +24,7 @@
 import gleam/dict.{type Dict}
 import gleam/dynamic.{type Dynamic}
 import gleam/dynamic/decode.{type DecodeError, type Decoder}
+import gleam/javascript/array.{type Array}
 import gleam/json.{type Json}
 import gleam/list
 import gleam/result
@@ -166,9 +167,8 @@ pub fn mutate(o: JsObject, p: String, v: v) -> JsObject
 /// convenient constructor if the `(k, v)` pairs are of same type
 /// since gleam is strongly typed
 ///
-pub fn literal(ls: List(#(k, v))) -> JsObject {
-  list.fold(ls, new(), fn(o, p) { set(o, p.0, p.1) })
-}
+@external(javascript, "../wechat_ffi.mjs", "obj_literal")
+pub fn literal(ls: List(#(k, v))) -> JsObject
 
 /// convert to int with `gleam/dynamic`
 ///
@@ -257,4 +257,24 @@ pub fn list(o: JsObject, of f: Decoder(t)) -> Result(List(t), WechatError) {
   |> dynamic
   |> decode.run(decode.list(f))
   |> result.map_error(WechatDecodeError)
+}
+
+/// Invoke a native method with its receiver and positional JavaScript arguments.
+/// Useful for callback/task APIs and injected native adapters.
+@external(javascript, "../wechat_ffi.mjs", "obj_invoke")
+pub fn invoke(
+  receiver: JsObject,
+  method: String,
+  arguments: Array(Dynamic),
+) -> Dynamic
+
+/// Read a property, returning NilError for missing, null or scalar receivers.
+/// Unlike `path`, this is safe to use while traversing optional native data.
+@external(javascript, "../wechat_ffi.mjs", "obj_lookup")
+pub fn lookup(o: JsObject, key: k) -> Result(JsObject, WechatError)
+
+/// Traverse optional native data without changing the legacy `paths` contract.
+pub fn lookup_path(o: JsObject, path: String) -> Result(JsObject, WechatError) {
+  string.split(path, ".")
+  |> list.try_fold(o, fn(value, key) { lookup(value, key) })
 }

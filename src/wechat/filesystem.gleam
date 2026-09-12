@@ -165,6 +165,15 @@ pub fn mkdir(
 @external(javascript, "../wechat_filesystem_ffi.mjs", "fileSystemManagerMkdirSync")
 pub fn mkdir_sync(fsm: JsObject, dir d: String, options o: JsObject) -> Nil
 
+/// Create a directory with the native recursive boolean. The original
+/// `mkdir_sync` argument type and labels remain available for existing callers.
+@external(javascript, "../wechat_filesystem_ffi.mjs", "fileSystemManagerMkdirSync")
+pub fn mkdir_recursive_sync(
+  fsm: JsObject,
+  dir d: String,
+  recursive r: Bool,
+) -> Nil
+
 /// `FileSystemManager.open`
 /// Open a file
 ///

@@ -29,6 +29,10 @@ export function selector_query_exec(query) {
   });
 }
 
+export function selector_query_exec_with_callback(query, callback) {
+  query.exec(callback);
+}
+
 export function nodes_ref_bounding_client_rect(ref, cb) {
   return ref.boundingClientRect(cb);
 }
@@ -234,4 +238,3 @@ export function mediaQueryObserverDisconnect(mq) {
 export function mediaQueryObserverObserve(mq, descriptor, cb) {
   mq.observe(descriptor, cb)
 }
-
